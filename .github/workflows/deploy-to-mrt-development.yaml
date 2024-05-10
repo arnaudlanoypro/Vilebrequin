@@ -13,7 +13,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     env:
-      PROJECT_SLUG: 'sarenza'
+      PROJECT_SLUG: 'vbq'
       TARGET_SLUG: 'pwa-development'
 
     steps:
