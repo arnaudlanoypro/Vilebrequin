@@ -1,0 +1,45 @@
+general:
+  show-welcome-message: true # enable welcome message. Default is true
+  
+pull-request-ai-assist:
+  auto-summary: on-push # possible values: on-push / on-open / disabled. Default is disabled
+  auto-title: on-push # possible values: on-push / on-open / disabled. Default is disabled
+
+auto-link-references:
+  match: "NUMERIC" # or "ALPHANUMERIC", default is "NUMERIC";
+  reference-prefix: "VRAM-"
+  target-url: "https://vilebrequin.atlassian.net/browse/VRAM-<match>"
+
+release-notes-ai-assist:
+  auto-generate: true # true/false. Default is false.
+
+metadata-linter:
+  run-on: disabled # can be one of: 'disabled' or 'pull-request' or 'repository'. Default is disabled
+  xsds-path: "path/to/xsds/folder" # folder where the xsds reside inside the repository
+  xmls-path: "path/to/xmls/folder" # folder where the xmls reside inside the repository
+
+code-checks:
+  bug-fixer:
+    run-on-push: true # enable bugfixer to run on push. Default is false.
+    ignore-paths: # list of path patterns to be ignored in this check. Default is empty list.
+      - "**/*.min.js" # this is an example path. You can add as many paths as you want.
+    ignore-branches: # list of branches to be ignored in this check. Default is empty list.
+      - "*release*" # this is an example branch. 
+  docgen:
+    run-on-push: true # enable docgen to run on push. Default is false.
+    ignore-paths: # list of path patterns to be ignored in this check. Default is empty list.
+      - "**/*.min.js" # this is an example path. You can add as many paths as you want.
+    ignore-branches: # list of branches to be ignored in this check. Default is empty list.
+      - "*release*" # this is an example branch.
+  pmd-fixer:
+    run-on-push: false # enable pmd-fixer to run on push. Default is false.
+    ignore-paths: # list of path patterns to be ignored in this check. Default is empty list.
+      - "**/*.min.js" # this is an example path. You can add as many paths as you want.
+    ignore-branches: # list of branches to be ignored in this check. Default is empty list.
+      - "*release*" # this is an example branch.
+  testgen:
+    run-on-push: false # enable testgen to run on push. Default is false.
+    ignore-paths: # list of path patterns to be ignored in this check. Default is empty list.
+      - "**/*.min.js" # this is an example path. You can add as many paths as you want.
+    ignore-branches: # list of branches to be ignored in this check. Default is empty list.
+      - "*release*" # this is an example branch.
