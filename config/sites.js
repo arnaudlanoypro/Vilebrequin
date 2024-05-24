@@ -9,7 +9,37 @@
 // You can also provide aliases for your locale. They will be used in place of your locale id when generating paths across the app
 module.exports = [
     {
-        id: 'RefArch',
+        id: 'VBQ-EU',
+        l10n: {
+            supportedCurrencies: ['EUR,USD,AUD,CAD,HKD,JPY,MOP,MXN,GBP,SGD,CHF,CNY'],
+            defaultCurrency: 'EUR',
+            defaultLocale: 'en-GB',
+            supportedLocales: [
+                {
+                    id: 'en-GB',
+                    preferredCurrency: 'GBP'
+                },
+                {
+                    id: 'fr-FR',
+                    preferredCurrency: 'EUR'
+                },
+                {
+                    id: 'it-IT',
+                    preferredCurrency: 'EUR'
+                },
+                {
+                    id: 'de-DE',
+                    preferredCurrency: 'EUR'
+                },
+                {
+                    id: 'es-ES',
+                    preferredCurrency: 'EUR'
+                }
+            ]
+        }
+    },
+    {
+        id: 'VBQ-US',
         l10n: {
             supportedCurrencies: ['USD'],
             defaultCurrency: 'USD',
@@ -17,7 +47,58 @@ module.exports = [
             supportedLocales: [
                 {
                     id: 'en-US',
-                    // alias: 'us',
+                    preferredCurrency: 'USD'
+                },
+                {
+                    id: 'es-US',
+                    preferredCurrency: 'USD'
+                }
+            ]
+        }
+    },
+    {
+        id: 'VBQ-OUTLET-EU',
+        l10n: {
+            supportedCurrencies: ['EUR,USD,AUD,CAD,HKD,JPY,MOP,MXN,GBP,SGD,CHF,CNY'],
+            defaultCurrency: 'EUR',
+            defaultLocale: 'en-GB',
+            supportedLocales: [
+                {
+                    id: 'en-GB',
+                    preferredCurrency: 'GBP'
+                },
+                {
+                    id: 'fr-FR',
+                    preferredCurrency: 'EUR'
+                },
+                {
+                    id: 'it-IT',
+                    preferredCurrency: 'EUR'
+                },
+                {
+                    id: 'de-DE',
+                    preferredCurrency: 'EUR'
+                },
+                {
+                    id: 'es-ES',
+                    preferredCurrency: 'EUR'
+                }
+            ]
+        }
+    },
+    {
+        id: 'VBQ-OUTLET-US',
+        l10n: {
+            supportedCurrencies: ['USD'],
+            defaultCurrency: 'USD',
+            defaultLocale: 'en-US',
+            supportedLocales: [
+                {
+                    id: 'en-US',
+                    preferredCurrency: 'USD'
+                },
+                {
+                    id: 'es-US',
                     preferredCurrency: 'USD'
                 }
             ]
