@@ -17,22 +17,27 @@ module.exports = [
             supportedLocales: [
                 {
                     id: 'en-GB',
+                    alias: 'en',
                     preferredCurrency: 'GBP'
                 },
                 {
                     id: 'fr-FR',
+                    alias: 'fr',
                     preferredCurrency: 'EUR'
                 },
                 {
                     id: 'it-IT',
+                    alias: 'it',
                     preferredCurrency: 'EUR'
                 },
                 {
                     id: 'de-DE',
+                    alias: 'de',
                     preferredCurrency: 'EUR'
                 },
                 {
                     id: 'es-ES',
+                    alias: 'es',
                     preferredCurrency: 'EUR'
                 }
             ]
@@ -47,10 +52,12 @@ module.exports = [
             supportedLocales: [
                 {
                     id: 'en-US',
+                    alias: 'en',
                     preferredCurrency: 'USD'
                 },
                 {
                     id: 'es-US',
+                    alias: 'es',
                     preferredCurrency: 'USD'
                 }
             ]
@@ -65,22 +72,27 @@ module.exports = [
             supportedLocales: [
                 {
                     id: 'en-GB',
+                    alias: 'en',
                     preferredCurrency: 'GBP'
                 },
                 {
                     id: 'fr-FR',
+                    alias: 'fr',
                     preferredCurrency: 'EUR'
                 },
                 {
                     id: 'it-IT',
+                    alias: 'it',
                     preferredCurrency: 'EUR'
                 },
                 {
                     id: 'de-DE',
+                    alias: 'de',
                     preferredCurrency: 'EUR'
                 },
                 {
                     id: 'es-ES',
+                    alias: 'es',
                     preferredCurrency: 'EUR'
                 }
             ]
@@ -95,10 +107,12 @@ module.exports = [
             supportedLocales: [
                 {
                     id: 'en-US',
+                    alias: 'en',
                     preferredCurrency: 'USD'
                 },
                 {
                     id: 'es-US',
+                    alias: 'es',
                     preferredCurrency: 'USD'
                 }
             ]
