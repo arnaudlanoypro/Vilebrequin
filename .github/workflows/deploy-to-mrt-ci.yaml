@@ -36,7 +36,7 @@ jobs:
     needs: deploy
     runs-on: ubuntu-latest
     env:
-      SLACK_CHANNEL: 'vilebrequin-composable-ext'
+      SLACK_CHANNEL: 'vilebrequin-composable'
       TARGET_URL: 'https://vbq-pwa-ci.mobify-storefront.com'
 
     steps:
