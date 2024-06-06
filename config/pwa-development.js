@@ -10,29 +10,29 @@ module.exports = {
     app: {
         // Customize how your 'site' and 'locale' are displayed in the url.
         url: {
-            // Determine where the siteRef is located. Valid values include 'path|query_param|none'. Defaults to: 'none'
-            // site: 'none',
-            // Determine where the localeRef is located. Valid values include 'path|query_param|none'. Defaults to: 'none'
-            locale: 'none'
-            // This boolean value dictates whether or not default site or locale values are shown in the url. Defaults to: false
-            // showDefaults: true
+            site: 'path',
+            locale: 'path',
+            showDefaults: true,
+            interpretPlusSignAsSpace: false
         },
         // The default site for your app. This value will be used when a siteRef could not be determined from the url
-        defaultSite: 'RefArch',
-        // Provide aliases for your sites. These will be used in place of your site id when generating paths throughout the application.
-        // siteAliases: {
-        //     RefArch: 'us'
-        // },
+        defaultSite: 'VBQ-EU',
+        siteAliases: {
+            'VBQ-EU': 'eu',
+            'VBQ-US': 'us',
+            'VBQ-OUTLET-EU': 'outlet-eu',
+            'VBQ-OUTLET-US': 'outlet-us'
+        },
         // The sites for your app, which is imported from sites.js
         sites,
         // Commerce api config
         commerceAPI: {
             proxyPath: '/mobify/proxy/api',
             parameters: {
-                clientId: '1fd1bb0f-ed82-4c8c-a1f8-b190162fb7f2',
+                clientId: '3c757c7b-6acf-4ccb-926b-cc7165617705',
                 organizationId: 'f_ecom_blgh_dev',
                 shortCode: 'kechoqs6',
-                siteId: 'RefArch'
+                siteId: 'VBQ-EU'
             }
         },
         // Einstein api config

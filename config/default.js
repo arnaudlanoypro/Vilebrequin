@@ -32,7 +32,7 @@ module.exports = {
                 clientId: '1fd1bb0f-ed82-4c8c-a1f8-b190162fb7f2',
                 organizationId: 'f_ecom_blgh_002',
                 shortCode: 'kechoqs6',
-                siteId: 'RefArch'
+                siteId: 'VBQ-EU'
             }
         },
         // Einstein api config
