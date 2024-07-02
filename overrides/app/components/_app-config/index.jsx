@@ -20,7 +20,7 @@ import {ChakraProvider} from '@salesforce/retail-react-app/app/components/shared
 // Removes focus for non-keyboard interactions for the whole application
 import 'focus-visible/dist/focus-visible'
 
-import theme from '@salesforce/retail-react-app/app/theme'
+import theme from '../../theme';
 import {MultiSiteProvider} from '@salesforce/retail-react-app/app/contexts'
 import {
     resolveSiteFromUrl,

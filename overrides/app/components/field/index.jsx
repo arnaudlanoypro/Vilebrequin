@@ -66,20 +66,22 @@ const Field = ({
                     typeof inputProps === 'function' ? inputProps({value, onChange}) : inputProps
 
                 return (
-                    <FormControl id={name} isInvalid={error}>
-                        {!['checkbox', 'radio', 'hidden'].includes(type) &&
-                            (formLabel || <FormLabel>{label}</FormLabel>)}
-
+                    <FormControl
+                        variant="floating"
+                        id={name}
+                        isInvalid={error}
+                    >
                         <InputGroup>
                             {['text', 'password', 'email', 'phone', 'tel', 'number'].includes(
                                 type
                             ) && (
                                 <Input
+                                    variant="basic"
                                     ref={ref}
                                     onChange={onChange}
                                     value={value}
                                     type={inputType}
-                                    placeholder={placeholder}
+                                    placeholder=""
                                     autoComplete={autoComplete}
                                     {..._inputProps}
                                 />
@@ -108,10 +110,11 @@ const Field = ({
 
                             {type === 'select' && (
                                 <Select
+                                    variant="basic"
                                     ref={ref}
                                     onChange={onChange}
                                     value={value}
-                                    placeholder={placeholder}
+                                    placeholder=""
                                     {..._inputProps}
                                 >
                                     {options.map((opt) => (
@@ -136,11 +139,11 @@ const Field = ({
                             {children}
                         </InputGroup>
 
+                        {!['checkbox', 'radio', 'hidden'].includes(type) &&
+                            (formLabel || <FormLabel>{label}</FormLabel>)}
+
                         {error && type !== 'hidden' && (
-                            <FormErrorMessage color="red.600">
-                                <AlertIcon aria-hidden="true" mr={2} />
-                                {error.message}
-                            </FormErrorMessage>
+                            <FormErrorMessage>{error.message}</FormErrorMessage>
                         )}
 
                         {helpText}

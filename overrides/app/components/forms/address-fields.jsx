@@ -14,7 +14,7 @@ import {
     Stack
 } from '@salesforce/retail-react-app/app/components/shared/ui'
 import useAddressFields from '@salesforce/retail-react-app/app/components/forms/useAddressFields'
-import Field from '@salesforce/retail-react-app/app/components/field'
+import Field from '../field'
 import {useCurrentCustomer} from '@salesforce/retail-react-app/app/hooks/use-current-customer'
 
 const AddressFields = ({form, prefix = ''}) => {
