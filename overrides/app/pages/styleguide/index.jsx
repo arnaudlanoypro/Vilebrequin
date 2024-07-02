@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
+import {useIntl, FormattedMessage} from 'react-intl'
 import {
     Box,
     Container,
@@ -10,6 +11,7 @@ import {
     Text,
     Grid,
     GridItem,
+    Spacer
 } from '@salesforce/retail-react-app/app/components/shared/ui'
 import {
     FormControl,
@@ -35,10 +37,17 @@ import {
     PaypalIcon
 } from '@salesforce/retail-react-app/app/components/icons'
 
+import { CustomIcon } from '../../components/custom-icons/index';
+import { ResponsivePicture } from '../../components/responsive-picture/index';
+import Link from '@salesforce/retail-react-app/app/components/link';
+
 // Hook form import
 import {useForm} from 'react-hook-form'
 
+import {getAssetUrl} from '@salesforce/pwa-kit-react-sdk/ssr/universal/utils'
+
 const Styleguide = () => {
+    const intl = useIntl()
     // React hook form setup
     const {
         handleSubmit,
@@ -74,7 +83,237 @@ const Styleguide = () => {
                 bg="white"
                 paddingBottom={14}
             >
+
+                {/* Typography */}
+
                 <Heading fontSize="24px">
+                Typography
+                </Heading>
+
+                <Divider my="15px"/>
+
+                <Heading
+                    as="h1"
+                    fontSize="6xl"
+                >
+                    {intl.formatMessage({
+                        defaultMessage: 'THIS IS A H1 HEADLINE',
+                        id: 'typoex.h1'
+                    })}
+                </Heading>
+
+                <Heading
+                    as="h2"
+                    fontSize="5xl"
+                >
+                    {intl.formatMessage({
+                        defaultMessage: 'THIS IS A H2 HEADLINE',
+                        id: 'typoex.h2'
+                    })}
+                </Heading>
+
+                <Heading
+                    as="h3"
+                    fontSize="4xl"
+                >
+                    {intl.formatMessage({
+                        defaultMessage: 'THIS IS A H3 HEADLINE',
+                        id: 'typoex.h3'
+                    })}
+                </Heading>
+
+                <Heading
+                    as="h4"
+                    fontSize="3xl"
+                >
+                    {intl.formatMessage({
+                        defaultMessage: 'THIS IS A H4 HEADLINE',
+                        id: 'typoex.h4'
+                    })}
+                </Heading>
+
+                <Heading
+                    as="h5"
+                    fontSize="2xl"
+                >
+                    {intl.formatMessage({
+                        defaultMessage: 'THIS IS A H5 HEADLINE',
+                        id: 'typoex.h5'
+                    })}
+                </Heading>
+
+                <Heading
+                    as="h6"
+                    fontSize="xl"
+                >
+                    {intl.formatMessage({
+                        defaultMessage: 'THIS IS A H6 HEADLINE',
+                        id: 'typoex.h6'
+                    })}
+                </Heading>
+
+                {/* Fonts */}
+
+                <Heading fontSize="24px" mt="50px">
+                    Fonts
+                </Heading>
+
+                <Divider my="15px"/>
+
+                TO BE ADDED
+
+                {/* Color palette */}
+
+                <Heading fontSize="24px" mt="50px">
+                    Color palette
+                </Heading>
+
+                <Divider my="15px"/>
+
+                TO BE ADDED
+
+                {/* Icons */}
+
+                <Heading fontSize="24px" mt="50px">
+                    Icons
+                </Heading>
+
+                <Divider my="15px"/>
+
+                <CustomIcon
+                    boxSize="50px"
+                    color="blue"
+                    aria-label={intl.formatMessage({
+                        defaultMessage: 'Aria label for custom icon',
+                        id: 'aria.label.customicon'
+                    })}
+                    aria-describedby={intl.formatMessage({
+                        defaultMessage: 'Describe by for custom icon',
+                        id: 'describeby.customicon'
+                    })}
+                    aria-hidden="false"
+                />
+
+                <CustomIcon
+                    svgTitle="overwrite custom title"
+                />
+
+                {/* Button */}
+
+                <Heading fontSize="24px" mt="50px">
+                    Button
+                </Heading>
+
+                <Divider my="15px"/>
+
+                <Flex alignItems="center" justify="center">
+                    <Button
+                        type="submit"
+                        variant={"ghost"}
+                        align="center"
+                        maxWidth="300px"
+                    >
+                        Click me to submit
+                    </Button>
+
+                    <Spacer />
+
+                    <Button
+                        type="submit"
+                        variant={"ghost"}
+                        align="center"
+                        maxWidth="300px"
+                        isDisabled
+                    >
+                        Click me to submit
+                    </Button>
+
+                    <Spacer />
+
+                    <Button
+                        type="submit"
+                        align="center"
+                        maxWidth="300px"
+                    >
+                        Click me to submit
+                    </Button>
+                </Flex>
+
+                {/* Link */}
+
+                <Heading fontSize="24px" mt="50px">
+                    Link
+                </Heading>
+
+                <Divider my="15px"/>
+
+                <Link
+                    to={"/login"}
+                >
+                    <FormattedMessage
+                        defaultMessage="Click here to login!"
+                        id="test.link.clickherenow"
+                    />
+                </Link>
+
+                {/* Toast */}
+
+                <Heading fontSize="24px" mt="50px">
+                    Toast
+                </Heading>
+
+                <Divider my="15px"/>
+
+                TO BE ADDED
+
+                {/* Responsive Picture */}
+
+                <Heading fontSize="24px" mt="50px">
+                    Responsive Picture
+                </Heading>
+
+                <Divider my="15px"/>
+
+                <ResponsivePicture
+                    src={{
+                        sm: getAssetUrl('static/img/hero-sm.png'),
+                        md: getAssetUrl('static/img/hero-md.png'),
+                        lg: getAssetUrl('static/img/hero-lg.png'),
+                        sm2x: getAssetUrl('static/img/hero-sm2x.png'),
+                        md2x: getAssetUrl('static/img/hero-md2x.png'),
+                        lg2x: getAssetUrl('static/img/hero-lg2x.png'),
+                    }}
+                    loading={'auto'}
+                    fetchpriority={'high'}
+                    ratio={{sm: 390 / 416, md: 16 / 9, lg: 1512 / 455}}
+                    alt="Banner image"
+                    width={'100%'}
+                    height={'auto'}
+                />
+
+                {/* Modal */}
+
+                <Heading fontSize="24px" mt="50px">
+                    Modal
+                </Heading>
+
+                <Divider my="15px"/>
+
+                TO BE ADDED
+
+                {/* Accordion */}
+
+                <Heading fontSize="24px" mt="50px">
+                    Accordion
+                </Heading>
+
+                <Divider my="15px"/>
+
+                TO BE ADDED
+
+                {/* Forms */}
+
+                <Heading fontSize="24px" mt="50px">
                     Forms
                 </Heading>
 
