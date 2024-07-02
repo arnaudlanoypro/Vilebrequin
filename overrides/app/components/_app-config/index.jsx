@@ -4,6 +4,15 @@
  * SPDX-License-Identifier: BSD-3-Clause
  * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
+
+/*
+ * Developer note! When updating this file, make sure to also update the
+ * _app-config template files in pwa-kit-create-app.
+ *
+ * In the pwa-kit-create-app, the templates are found under:
+ * - assets/bootstrap/js/overrides/app/components/_app-config
+ * - assets/templates/@salesforce/retail-react-app/app/components/_app-config
+ */
 import React from 'react'
 import PropTypes from 'prop-types'
 import {ChakraProvider} from '@salesforce/retail-react-app/app/components/shared/ui'
@@ -57,11 +66,11 @@ const AppConfig = ({children, locals = {}}) => {
             redirectURI={`${appOrigin}/callback`}
             proxy={`${appOrigin}${commerceApiConfig.proxyPath}`}
             headers={headers}
-            OCAPISessionsURL={`${appOrigin}${proxyBasePath}/ocapi/s/${locals.site?.id}/dw/shop/v22_8/sessions`}
-            logger={createLogger({packageName: 'commerce-sdk-react'})}
-            // Set 'enablePWAKitPrivateClient' to true use SLAS private client login flows.
+            // Uncomment 'enablePWAKitPrivateClient' to use SLAS private client login flows.
             // Make sure to also enable useSLASPrivateClient in ssr.js when enabling this setting.
             enablePWAKitPrivateClient={true}
+            OCAPISessionsURL={`${appOrigin}${proxyBasePath}/ocapi/s/${locals.site?.id}/dw/shop/v22_8/sessions`}
+            logger={createLogger({packageName: 'commerce-sdk-react'})}
         >
             <MultiSiteProvider site={locals.site} locale={locals.locale} buildUrl={locals.buildUrl}>
                 <ChakraProvider theme={theme}>{children}</ChakraProvider>
