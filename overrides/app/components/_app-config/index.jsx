@@ -20,7 +20,7 @@ import {ChakraProvider} from '@salesforce/retail-react-app/app/components/shared
 // Removes focus for non-keyboard interactions for the whole application
 import 'focus-visible/dist/focus-visible'
 
-import theme from '../../theme';
+import theme from '../../theme'
 import {MultiSiteProvider} from '@salesforce/retail-react-app/app/contexts'
 import {
     resolveSiteFromUrl,
@@ -36,6 +36,8 @@ import {withReactQuery} from '@salesforce/pwa-kit-react-sdk/ssr/universal/compon
 import {useCorrelationId} from '@salesforce/pwa-kit-react-sdk/ssr/universal/hooks'
 import {getAppOrigin} from '@salesforce/pwa-kit-react-sdk/utils/url'
 import {ReactQueryDevtools} from '@tanstack/react-query-devtools'
+
+import {LocalFonts} from '../_app/partials/fonts'
 
 /**
  * Use the AppConfig component to inject extra arguments into the getProps
@@ -73,7 +75,10 @@ const AppConfig = ({children, locals = {}}) => {
             logger={createLogger({packageName: 'commerce-sdk-react'})}
         >
             <MultiSiteProvider site={locals.site} locale={locals.locale} buildUrl={locals.buildUrl}>
-                <ChakraProvider theme={theme}>{children}</ChakraProvider>
+                <ChakraProvider theme={theme}>
+                    <LocalFonts />
+                    {children}
+                </ChakraProvider>
             </MultiSiteProvider>
             <ReactQueryDevtools />
         </CommerceApiProvider>

@@ -1,28 +1,86 @@
 export default {
     baseStyle: {
         borderRadius: 'none',
-        zIndex: "1111",
+        fontSize: 'md',
+        bg: 'fullBlack',
+        color: 'white',
+        textTransform: 'uppercase',
+        fontWeight: 'medium',
+        _focus: {
+            outline: '3px solid #4794F7',
+            outlineOffset: '0'
+        },
+        _active: {
+            color: 'white',
+            bg: 'fullBlack',
+            border: 'none'
+        },
+        _disabled: {
+            opacity: 1
+        }
     },
     variants: {
-        basic: {
-            fontSize: '2xl',
-            bg: 'fullBlack',
-            color: 'white',
+        primary: {
             _hover: {
-                backgroundColor: 'darkGray',
-                color: 'white',
+                backgroundColor: 'darkGray'
             },
-            _active: {
-                bg: 'fullBlack'
-            },
-            paddingLeft: 30,
-            paddingRight: 30
+            _disabled: {
+                color: 'darkGray',
+                bg: 'borderGray'
+            }
         },
+        secondary: {
+            color: 'fullBlack',
+            border: '1px solid',
+            borderColor: 'gray',
+            bg: 'transparent',
+            _hover: {
+                backgroundColor: 'transparent',
+                borderColor: 'darkGray'
+            },
+            _focus: {
+                color: 'white',
+                bg: 'fullBlack',
+                borderColor: 'fullBlack'
+            },
+            _disabled: {
+                color: 'darkGray',
+                borderColor: 'borderGray'
+            }
+        },
+        tertiary: {
+            color: 'fullBlack',
+            bg: 'white',
+            _hover: {
+                color: 'white',
+                backgroundColor: 'fullBlack'
+            },
+            _disabled: {
+                color: 'darkGray'
+            }
+        },
+        invertedOutline: {
+            color: 'white',
+            bg: 'transparent',
+            border: '1px solid',
+            borderColor: 'white',
+            _hover: {
+                color: 'fullBlack',
+                backgroundColor: 'white',
+                border: 'none'
+            },
+            _focus: {
+                color: 'white',
+                bg: 'fullBlack',
+                borderColor: 'fullBlack'
+            }
+        }
     },
     sizes: {
         md: {
-            height: 11,
-            minWidth: 11
+            height: '50px',
+            minWidth: 11,
+            px: '32px'
         }
     }
-};
+}

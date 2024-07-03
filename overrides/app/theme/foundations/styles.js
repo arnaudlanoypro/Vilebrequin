@@ -8,7 +8,8 @@ export default {
     global: {
         'html, body': {
             backgroundColor: 'white',
-            color: 'gray.900'
+            color: 'gray.900',
+            fontFamily: 'body'
         },
         body: {
             minHeight: '100vh'
@@ -19,4 +20,4 @@ export default {
             maxWidth: '2520px'
         }
     }
-};
+}
