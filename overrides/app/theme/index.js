@@ -16,6 +16,7 @@ import Checkbox from './components/base/checkbox';
 import Radio from './components/base/radio';
 import FormError from './components/base/formError';
 import Accordion from './components/base/accordion';
+import Tooltip from './components/base/tooltip';
 
 // Please refer to the Chakra-Ui theme customization docs found
 // here https://chakra-ui.com/docs/theming/customize-theme to learn
@@ -40,6 +41,7 @@ export const overrides = {
         Radio,
         FormError,
         Accordion,
+        Tooltip,
     }
 };
 

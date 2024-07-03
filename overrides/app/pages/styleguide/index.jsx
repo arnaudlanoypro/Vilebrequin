@@ -221,7 +221,7 @@ const Styleguide = () => {
                 <Flex alignItems="center" justify="center">
                     <Button
                         type="submit"
-                        variant={"ghost"}
+                        variant={"basic"}
                         align="center"
                         maxWidth="300px"
                     >
@@ -232,7 +232,7 @@ const Styleguide = () => {
 
                     <Button
                         type="submit"
-                        variant={"ghost"}
+                        variant={"basic"}
                         align="center"
                         maxWidth="300px"
                         isDisabled
@@ -388,6 +388,71 @@ const Styleguide = () => {
                     </Accordion>
                     <Box display={['none', 'none', 'none', 'block']} flex={4}></Box>
                 </Stack>
+
+                {/* Tooltip */}
+
+                <Heading fontSize="24px" mt="50px">
+                    Tooltip
+                </Heading>
+
+                <Divider my="15px"/>
+
+                <SimpleGrid columns={{sm: 2, md: 4}} spacing={10} mb="30px">
+                    <Tooltip
+                        hasArrow
+                        label='Here is the tooltip text info - placement bottom'
+                    >
+                        <Button
+                            type="button"
+                            variant={"basic"}
+                            maxWidth="300px"
+                        >
+                            Hover me!
+                        </Button>
+                    </Tooltip>
+
+                    <Tooltip
+                        hasArrow={true}
+                        label='Here is the tooltip text info - placement bottom'
+                        placement="top"
+                    >
+                        <Button
+                            type="button"
+                            variant={"basic"}
+                            maxWidth="300px"
+                        >
+                            Hover me!
+                        </Button>
+                    </Tooltip>
+
+                    <Tooltip
+                        hasArrow
+                        label='Here is the tooltip text info - placement left'
+                        placement="left"
+                    >
+                        <Button
+                            type="button"
+                            variant={"basic"}
+                            maxWidth="300px"
+                        >
+                            Hover me!
+                        </Button>
+                    </Tooltip>
+
+                    <Tooltip
+                        hasArrow
+                        label='Here is the tooltip text info - placement right'
+                        placement="right"
+                    >
+                        <Button
+                            type="button"
+                            variant={"basic"}
+                            maxWidth="300px"
+                        >
+                            Hover me!
+                        </Button>
+                    </Tooltip>
+                </SimpleGrid>
 
                 {/* Forms */}
 
@@ -549,7 +614,7 @@ const Styleguide = () => {
                                 />
                                 <InputRightElement>
                                     <IconButton
-                                        variant="ghosted"
+                                        variant="basiced"
                                         icon={<PasswordIcon color="fullBlack" boxSize={6} />}
                                         onClick={() => setHidePassword(!hidePassword)}
                                     />
@@ -765,7 +830,7 @@ const Styleguide = () => {
                         <Button
                             type="submit"
                             isLoading={isSubmitting}
-                            variant={"ghost"}
+                            variant={"basic"}
                             align="center"
                             maxWidth="300px"
                         >

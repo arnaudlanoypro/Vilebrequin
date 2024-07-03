@@ -1,14 +1,15 @@
 export default {
     baseStyle: {
-        borderRadius: 'base'
+        borderRadius: 'none',
+        zIndex: "1111",
     },
     variants: {
-        ghost: {
+        basic: {
             fontSize: '2xl',
-            bg: 'orange',
+            bg: 'fullBlack',
             color: 'white',
             _hover: {
-                backgroundColor: 'fullBlack',
+                backgroundColor: 'darkGray',
                 color: 'white',
             },
             _active: {
