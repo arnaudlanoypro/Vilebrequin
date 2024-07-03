@@ -29,12 +29,20 @@ import {
     Button,
     Select,
     Divider,
+    Accordion,
+    AccordionItem,
+    AccordionButton,
+    AccordionPanel,
+    AccordionIcon,
 } from '@chakra-ui/react'
+import {
+    MinusIcon,
+    AddIcon,
+} from '@chakra-ui/icons'
 import {
     VisibilityIcon,
     VisibilityOffIcon,
-    LockIcon,
-    PaypalIcon
+
 } from '@salesforce/retail-react-app/app/components/icons'
 
 import { CustomIcon } from '../../components/custom-icons/index';
@@ -71,6 +79,10 @@ const Styleguide = () => {
             }, 3000)
         })
     }
+
+    const CustomAccordionIcon = ({ isExpanded }) => {
+        return isExpanded ? <MinusIcon w={"10px"} h={"10px"} /> : <AddIcon w={"10px"} h={"10px"} />;
+    };
 
     return (
         <Box data-testid="styleguide-page" bg={'gray.50'} py={[8, 16]}>
@@ -309,7 +321,73 @@ const Styleguide = () => {
 
                 <Divider my="15px"/>
 
-                TO BE ADDED
+                <Stack direction="row" spacing={[0, 0, 0, 16]}>
+                    <Accordion allowMultiple maxWidth={'896px'} flex={[1, 1, 1, 5]}>
+                        <AccordionItem>
+                            {({ isExpanded }) => (
+                                <>
+                                    <Heading as="h2">
+                                        <AccordionButton>
+                                            <Box flex="1" textAlign="left">
+                                                Accordion Item One - Title
+                                            </Box>
+                                            <CustomAccordionIcon isExpanded={isExpanded} />
+                                        </AccordionButton>
+                                    </Heading>
+                                    <AccordionPanel>
+                                        <div>
+                                            Accordion Item One - Description.
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                        </div>
+                                    </AccordionPanel>
+                                </>
+                            )}
+                        </AccordionItem>
+
+                        <AccordionItem>
+                            {({ isExpanded }) => (
+                                <>
+                                    <Heading as="h2">
+                                        <AccordionButton>
+                                            <Box flex="1" textAlign="left">
+                                                Accordion Item Two - Title
+                                            </Box>
+                                            <CustomAccordionIcon isExpanded={isExpanded} />
+                                        </AccordionButton>
+                                    </Heading>
+                                    <AccordionPanel>
+                                        <div>
+                                            Accordion Item Two - Description.
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                        </div>
+                                    </AccordionPanel>
+                                </>
+                            )}
+                        </AccordionItem>
+
+                        <AccordionItem>
+                            {({ isExpanded }) => (
+                                <>
+                                    <Heading as="h2">
+                                        <AccordionButton>
+                                            <Box flex="1" textAlign="left">
+                                                Accordion Item Three - Title
+                                            </Box>
+                                            <CustomAccordionIcon isExpanded={isExpanded} />
+                                        </AccordionButton>
+                                    </Heading>
+                                    <AccordionPanel>
+                                        <div>
+                                            Accordion Item Three - Description.
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                        </div>
+                                    </AccordionPanel>
+                                </>
+                            )}
+                        </AccordionItem>
+                    </Accordion>
+                    <Box display={['none', 'none', 'none', 'block']} flex={4}></Box>
+                </Stack>
 
                 {/* Forms */}
 
