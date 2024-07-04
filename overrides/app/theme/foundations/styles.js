@@ -8,11 +8,12 @@ export default {
     global: {
         'html, body': {
             backgroundColor: 'white',
-            color: 'gray.900',
+            color: 'fullBlack',
             fontFamily: 'body'
         },
         body: {
-            minHeight: '100vh'
+            minHeight: '100vh',
+            color: 'fullBlack',
         },
         '.react-target': {
             display: 'flex',

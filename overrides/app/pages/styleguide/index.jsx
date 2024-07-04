@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import PropTypes from 'prop-types'
 import {useIntl, FormattedMessage} from 'react-intl'
+import useNavigation from '@salesforce/retail-react-app/app/hooks/use-navigation'
 import {
     Box,
     Container,
@@ -44,17 +45,20 @@ import Link from '@salesforce/retail-react-app/app/components/link'
 
 // Hook form import
 import {useForm} from 'react-hook-form'
+import {useToast} from '../../hooks/use-toast'
 
 import {getAssetUrl} from '@salesforce/pwa-kit-react-sdk/ssr/universal/utils'
 
 const Styleguide = () => {
     const intl = useIntl()
+    const navigate = useNavigation()
     // React hook form setup
     const {
         handleSubmit,
         register,
         formState: {errors, isSubmitting}
     } = useForm()
+    const toast = useToast();
 
     const [hidePassword, setHidePassword] = useState(true)
     const PasswordIcon = hidePassword ? VisibilityIcon : VisibilityOffIcon
@@ -160,29 +164,114 @@ const Styleguide = () => {
                     Button
                 </Heading>
                 <Divider my="15px" />
-                <Flex alignItems="center" justify="center">
-                    <Button type="submit" variant={'basic'} align="center" maxWidth="300px">
+                <Flex
+                    alignItems="center"
+                    justify="space-around"
+                >
+                    <Button
+                        type="button"
+                        variant={'primary'}
+                        align="center"
+                        maxWidth="300px"
+                    >
                         Click me to submit
                     </Button>
 
-                    <Spacer />
 
                     <Button
-                        type="submit"
-                        variant={'basic'}
+                        type="button"
+                        variant={'primary'}
                         align="center"
                         maxWidth="300px"
                         isDisabled
                     >
                         Click me to submit
                     </Button>
+                </Flex>
 
-                    <Spacer />
+                <Box my="15px"></Box>
 
-                    <Button type="submit" align="center" maxWidth="300px">
+                <Flex
+                    alignItems="center"
+                    justify="space-around"
+                >
+                    <Button
+                        type="button"
+                        variant={'secondary'}
+                        align="center"
+                        maxWidth="300px"
+                    >
+                        Click me to submit
+                    </Button>
+
+
+                    <Button
+                        type="button"
+                        variant={'secondary'}
+                        align="center"
+                        maxWidth="300px"
+                        isDisabled
+                    >
                         Click me to submit
                     </Button>
                 </Flex>
+
+                <Box my="15px"></Box>
+
+                <Flex
+                    alignItems="center"
+                    justify="space-around"
+                >
+                    <Button
+                        type="button"
+                        variant={'tertiary'}
+                        align="center"
+                        maxWidth="300px"
+                    >
+                        Click me to submit
+                    </Button>
+
+
+                    <Button
+                        type="button"
+                        variant={'tertiary'}
+                        align="center"
+                        maxWidth="300px"
+                        isDisabled
+                    >
+                        Click me to submit
+                    </Button>
+                </Flex>
+
+                <Box my="15px"></Box>
+
+                <Flex
+                    alignItems="center"
+                    justify="space-around"
+                    bg="fullBlack"
+                    py="30px"
+                >
+                    <Button
+                        type="button"
+                        variant={'invertedOutline'}
+                        align="center"
+                        maxWidth="300px"
+                    >
+                        Click me to submit
+                    </Button>
+
+
+                    <Button
+                        type="button"
+                        variant={'invertedOutline'}
+                        align="center"
+                        maxWidth="300px"
+                        isDisabled
+                    >
+                        Click me to submit
+                    </Button>
+                </Flex>
+
                 {/* Link */}
                 <Heading fontSize="24px" mt="50px">
                     Link
@@ -199,7 +288,64 @@ const Styleguide = () => {
                     Toast
                 </Heading>
                 <Divider my="15px" />
-                TO BE ADDED
+
+                <Flex
+                    alignItems="center"
+                    justify="space-around"
+                >
+                    <Button
+                        type="button"
+                        variant={'primary'}
+                        maxWidth="300px"
+                        onClick={() => {
+                            toast({
+                                title: "Item added to wishlist!",
+                                duration: 3000,
+                                isClosable: true,
+                            })
+                        }}
+                    >
+                        Show toast!
+                    </Button>
+
+                    <Button
+                        type="button"
+                        variant={'primary'}
+                        maxWidth="300px"
+                        onClick={() => {
+                            toast({
+                                title: "Apple Pay is currently not available in your cart. Please proceed to checkout to enjoy the convenience of Apple Pay.",
+                                variant: 'warning',
+                                duration: 3000,
+                                isClosable: true,
+                                action: (
+                                    <Link to={'/'}>
+                                        VIEW
+                                    </Link>
+                                )
+                            })
+                        }}
+                    >
+                        Show warning toast!
+                    </Button>
+
+                    <Button
+                        type="button"
+                        variant={'primary'}
+                        maxWidth="300px"
+                        onClick={() => {
+                            toast({
+                                title: "Something went wrong",
+                                variant: 'error',
+                                duration: 3000,
+                                isClosable: true,
+                            })
+                        }}
+                    >
+                        Show error toast!
+                    </Button>
+                </Flex>
+
                 {/* Responsive Picture */}
                 <Heading fontSize="24px" mt="50px">
                     Responsive Picture
@@ -315,7 +461,7 @@ const Styleguide = () => {
                 <Divider my="15px" />
                 <SimpleGrid columns={{sm: 2, md: 4}} spacing={10} mb="30px">
                     <Tooltip hasArrow label="Here is the tooltip text info - placement bottom">
-                        <Button type="button" variant={'basic'} maxWidth="300px">
+                        <Button type="button" variant={'primary'} maxWidth="300px">
                             Hover me!
                         </Button>
                     </Tooltip>
@@ -325,7 +471,7 @@ const Styleguide = () => {
                         label="Here is the tooltip text info - placement bottom"
                         placement="top"
                     >
-                        <Button type="button" variant={'basic'} maxWidth="300px">
+                        <Button type="button" variant={'primary'} maxWidth="300px">
                             Hover me!
                         </Button>
                     </Tooltip>
@@ -335,7 +481,7 @@ const Styleguide = () => {
                         label="Here is the tooltip text info - placement left"
                         placement="left"
                     >
-                        <Button type="button" variant={'basic'} maxWidth="300px">
+                        <Button type="button" variant={'primary'} maxWidth="300px">
                             Hover me!
                         </Button>
                     </Tooltip>
@@ -345,7 +491,7 @@ const Styleguide = () => {
                         label="Here is the tooltip text info - placement right"
                         placement="right"
                     >
-                        <Button type="button" variant={'basic'} maxWidth="300px">
+                        <Button type="button" variant={'primary'} maxWidth="300px">
                             Hover me!
                         </Button>
                     </Tooltip>
@@ -705,7 +851,7 @@ const Styleguide = () => {
                         <Button
                             type="submit"
                             isLoading={isSubmitting}
-                            variant={'basic'}
+                            variant={'primary'}
                             align="center"
                             maxWidth="300px"
                         >
