@@ -23,6 +23,7 @@ import Tooltip from './components/base/tooltip'
 import Heading from './components/base/heading'
 import Text from './components/base/text'
 import Alert from './components/base/alert'
+import Modal from './components/base/modal'
 
 // Project Component style overrides
 import Footer from './components/project/footer'
@@ -59,6 +60,7 @@ export const overrides = {
         Heading,
         Text,
         Alert,
+        Modal,
 
         // project components
         Footer,

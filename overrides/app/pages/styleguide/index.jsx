@@ -12,7 +12,15 @@ import {
     Text,
     Grid,
     GridItem,
-    Spacer
+    Spacer,
+    useDisclosure,
+    Modal,
+    ModalHeader,
+    ModalBody,
+    ModalFooter,
+    ModalContent,
+    ModalCloseButton,
+    ModalOverlay,
 } from '@salesforce/retail-react-app/app/components/shared/ui'
 import {
     FormControl,
@@ -52,6 +60,11 @@ import {getAssetUrl} from '@salesforce/pwa-kit-react-sdk/ssr/universal/utils'
 const Styleguide = () => {
     const intl = useIntl()
     const navigate = useNavigation()
+    const {isOpen: isSmallModalOpen, onOpen: onSmallModalOpen, onClose: onSmallModalClose} = useDisclosure()
+    const {isOpen: isMediumModalOpen, onOpen: onMediumModalOpen, onClose: onMediumModalClose} = useDisclosure()
+    const {isOpen: isLargeModalOpen, onOpen: onLargeModalOpen, onClose: onLargeModalClose} = useDisclosure()
+    const {isOpen: isFullscreenModalOpen, onOpen: onFullscreenModalOpen, onClose: onFullscreenModalClose} = useDisclosure()
+
     // React hook form setup
     const {
         handleSubmit,
@@ -371,8 +384,194 @@ const Styleguide = () => {
                 <Heading fontSize="24px" mt="50px">
                     Modal
                 </Heading>
+
                 <Divider my="15px" />
-                TO BE ADDED
+
+                <SimpleGrid columns={{sm: 2, md: 4}} spacing={10} mb="30px">
+                    <Button
+                        type="button"
+                        variant={'primary'}
+                        maxWidth="300px"
+                        onClick={onSmallModalOpen}
+                    >
+                        Open `small` modal
+                    </Button>
+
+                    <Button
+                        type="button"
+                        variant={'primary'}
+                        maxWidth="300px"
+                        onClick={onMediumModalOpen}
+                    >
+                        Open `Medium` modal
+                    </Button>
+
+                    <Button
+                        type="button"
+                        variant={'primary'}
+                        maxWidth="300px"
+                        onClick={onLargeModalOpen}
+                    >
+                        Open `Large` modal
+                    </Button>
+
+                    <Button
+                        type="button"
+                        variant={'primary'}
+                        maxWidth="300px"
+                        onClick={onFullscreenModalOpen}
+                    >
+                        Open `Fullscreen` modal
+                    </Button>
+                </SimpleGrid>
+
+                <Modal
+                    isOpen={isSmallModalOpen}
+                    onClose={onSmallModalClose}
+                    size="small"
+                    isCentered
+                >
+                    <ModalOverlay />
+
+                    <ModalContent p="24px">
+                        <ModalHeader>
+                            <Text fontWeight="bold" fontSize="2xl">
+                                CONFIRM REMOVE ITEM
+                            </Text>
+                        </ModalHeader>
+
+                        <ModalCloseButton />
+
+                        <ModalBody py={20}>
+                            <Text>
+                                Are you sure you want to remove this item from your cart?
+                            </Text>
+                        </ModalBody>
+
+                        <ModalFooter
+                            justify="space-between"
+                            display="block"
+                            width="full"
+                            p="0"
+                        >
+                            <Flex alignItems="center" justify="space-between">
+                                <Button
+                                    type="button"
+                                    variant={'secondary'}
+                                    align="center"
+                                    w="170px"
+                                    onClick={onSmallModalClose}
+                                >
+                                    NO, KEEP ITEM
+                                </Button>
+
+                                <Button
+                                    type="button"
+                                    variant={'primary'}
+                                    align="center"
+                                    w="170px"
+                                >
+                                    YES, REMOVE ITEM
+                                </Button>
+                            </Flex>
+                        </ModalFooter>
+                    </ModalContent>
+                </Modal>
+
+                <Modal
+                    isOpen={isMediumModalOpen}
+                    onClose={onMediumModalClose}
+                    size="medium"
+                    isCentered
+                    scrollBehavior={'inside'}
+                >
+                    <ModalOverlay />
+
+                    <ModalContent p="24px">
+                        <ModalHeader>
+                            <Text fontWeight="bold" fontSize="2xl">
+                                Medium size modal with big content and scrollbar
+                            </Text>
+                        </ModalHeader>
+
+                        <ModalCloseButton />
+
+                        <ModalBody py={20}>
+                            <Text>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Scelerisque fermentum dui faucibus in. Vulputate odio ut enim blandit volutpat maecenas. Vitae auctor eu augue ut lectus arcu bibendum at varius. Suspendisse interdum consectetur libero id faucibus nisl tincidunt. Odio ut sem nulla pharetra. Tortor condimentum lacinia quis vel eros donec. Imperdiet nulla malesuada pellentesque elit. Ultrices in iaculis nunc sed. A arcu cursus vitae congue mauris rhoncus aenean vel. Facilisis volutpat est velit egestas dui id. Ipsum faucibus vitae aliquet nec. Tellus cras adipiscing enim eu turpis. Pellentesque habitant morbi tristique senectus et netus et. Scelerisque viverra mauris in aliquam sem fringilla ut. Nisl suscipit adipiscing bibendum est ultricies integer.
+
+                                Volutpat ac tincidunt vitae semper quis. Montes nascetur ridiculus mus mauris. Senectus et netus et malesuada fames ac turpis egestas. Fermentum et sollicitudin ac orci phasellus egestas. Sed sed risus pretium quam vulputate. Quis lectus nulla at volutpat diam ut venenatis tellus in. Integer vitae justo eget magna fermentum. Maecenas ultricies mi eget mauris pharetra et ultrices neque ornare. Purus in massa tempor nec feugiat nisl. In arcu cursus euismod quis viverra nibh cras pulvinar. Ac tortor vitae purus faucibus ornare suspendisse sed nisi. Arcu cursus vitae congue mauris rhoncus aenean vel elit. Velit laoreet id donec ultrices tincidunt. Massa ultricies mi quis hendrerit dolor magna eget est lorem.
+
+                                Et tortor consequat id porta nibh venenatis. Morbi blandit cursus risus at. Massa tincidunt dui ut ornare. Felis imperdiet proin fermentum leo vel. Sodales neque sodales ut etiam sit amet nisl. Nisl vel pretium lectus quam id leo in vitae. Turpis egestas maecenas pharetra convallis posuere. Turpis egestas integer eget aliquet nibh praesent tristique magna sit. Diam maecenas ultricies mi eget mauris. Eu consequat ac felis donec et odio pellentesque diam volutpat. Cras adipiscing enim eu turpis. Consectetur adipiscing elit duis tristique sollicitudin nibh sit amet commodo. Turpis egestas sed tempus urna et pharetra pharetra. Tempor id eu nisl nunc mi ipsum faucibus vitae aliquet. Ut enim blandit volutpat maecenas volutpat blandit aliquam etiam. Blandit massa enim nec dui nunc mattis enim ut. Lorem dolor sed viverra ipsum nunc.
+
+                                Viverra nibh cras pulvinar mattis nunc sed blandit libero volutpat. Diam vel quam elementum pulvinar etiam non quam. Diam vulputate ut pharetra sit amet aliquam id diam maecenas. Diam in arcu cursus euismod quis viverra nibh cras pulvinar. Turpis egestas sed tempus urna et pharetra. Congue quisque egestas diam in arcu cursus euismod. Mi sit amet mauris commodo quis imperdiet massa tincidunt. Sed viverra ipsum nunc aliquet bibendum enim facilisis gravida neque. Leo integer malesuada nunc vel risus commodo. Metus dictum at tempor commodo ullamcorper a lacus. Diam vel quam elementum pulvinar etiam non. Urna cursus eget nunc scelerisque viverra mauris in. Ullamcorper velit sed ullamcorper morbi.
+
+                                Senectus et netus et malesuada fames ac turpis. Eu turpis egestas pretium aenean pharetra magna ac placerat. Curabitur vitae nunc sed velit. Feugiat pretium nibh ipsum consequat nisl. Sed vulputate odio ut enim blandit volutpat maecenas. Semper eget duis at tellus. Quis lectus nulla at volutpat diam ut venenatis. Pellentesque nec nam aliquam sem et tortor consequat id porta. Rhoncus aenean vel elit scelerisque mauris pellentesque. Facilisis mauris sit amet massa vitae tortor condimentum lacinia. Ac ut consequat semper viverra nam libero justo laoreet sit. Ornare suspendisse sed nisi lacus sed. Sit amet risus nullam eget felis eget. Auctor neque vitae tempus quam pellentesque. Congue eu consequat ac felis donec.
+                            </Text>
+                        </ModalBody>
+                    </ModalContent>
+                </Modal>
+
+                <Modal
+                    isOpen={isLargeModalOpen}
+                    onClose={onLargeModalClose}
+                    size="large"
+                    isCentered
+                    scrollBehavior={'inside'}
+                >
+                    <ModalOverlay />
+
+                    <ModalContent p="24px">
+                        <ModalHeader>
+                            <Text fontWeight="bold" fontSize="2xl">
+                                Large size modal with content and scrollbar
+                            </Text>
+                        </ModalHeader>
+
+                        <ModalCloseButton />
+
+                        <ModalBody py={20}>
+                            <Text>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Scelerisque fermentum dui faucibus in. Vulputate odio ut enim blandit volutpat maecenas. Vitae auctor eu augue ut lectus arcu bibendum at varius. Suspendisse interdum consectetur libero id faucibus nisl tincidunt. Odio ut sem nulla pharetra. Tortor condimentum lacinia quis vel eros donec. Imperdiet nulla malesuada pellentesque elit. Ultrices in iaculis nunc sed. A arcu cursus vitae congue mauris rhoncus aenean vel. Facilisis volutpat est velit egestas dui id. Ipsum faucibus vitae aliquet nec. Tellus cras adipiscing enim eu turpis. Pellentesque habitant morbi tristique senectus et netus et. Scelerisque viverra mauris in aliquam sem fringilla ut. Nisl suscipit adipiscing bibendum est ultricies integer.
+
+                                Volutpat ac tincidunt vitae semper quis. Montes nascetur ridiculus mus mauris. Senectus et netus et malesuada fames ac turpis egestas. Fermentum et sollicitudin ac orci phasellus egestas. Sed sed risus pretium quam vulputate. Quis lectus nulla at volutpat diam ut venenatis tellus in. Integer vitae justo eget magna fermentum. Maecenas ultricies mi eget mauris pharetra et ultrices neque ornare. Purus in massa tempor nec feugiat nisl. In arcu cursus euismod quis viverra nibh cras pulvinar. Ac tortor vitae purus faucibus ornare suspendisse sed nisi. Arcu cursus vitae congue mauris rhoncus aenean vel elit. Velit laoreet id donec ultrices tincidunt. Massa ultricies mi quis hendrerit dolor magna eget est lorem.
+
+                                Et tortor consequat id porta nibh venenatis. Morbi blandit cursus risus at. Massa tincidunt dui ut ornare. Felis imperdiet proin fermentum leo vel. Sodales neque sodales ut etiam sit amet nisl. Nisl vel pretium lectus quam id leo in vitae. Turpis egestas maecenas pharetra convallis posuere. Turpis egestas integer eget aliquet nibh praesent tristique magna sit. Diam maecenas ultricies mi eget mauris. Eu consequat ac felis donec et odio pellentesque diam volutpat. Cras adipiscing enim eu turpis. Consectetur adipiscing elit duis tristique sollicitudin nibh sit amet commodo. Turpis egestas sed tempus urna et pharetra pharetra. Tempor id eu nisl nunc mi ipsum faucibus vitae aliquet. Ut enim blandit volutpat maecenas volutpat blandit aliquam etiam. Blandit massa enim nec dui nunc mattis enim ut. Lorem dolor sed viverra ipsum nunc.
+                            </Text>
+                        </ModalBody>
+                    </ModalContent>
+                </Modal>
+
+                <Modal
+                    isOpen={isFullscreenModalOpen}
+                    onClose={onFullscreenModalClose}
+                    size="full"
+                    isCentered
+                    scrollBehavior={'inside'}
+                >
+                    <ModalOverlay />
+
+                    <ModalContent p="24px">
+                        <ModalHeader>
+                            <Text fontWeight="bold" fontSize="2xl">
+                                Fullscreen size modal with content and scrollbar
+                            </Text>
+                        </ModalHeader>
+
+                        <ModalCloseButton />
+
+                        <ModalBody py={20}>
+                            <Text>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Scelerisque fermentum dui faucibus in. Vulputate odio ut enim blandit volutpat maecenas. Vitae auctor eu augue ut lectus arcu bibendum at varius. Suspendisse interdum consectetur libero id faucibus nisl tincidunt. Odio ut sem nulla pharetra. Tortor condimentum lacinia quis vel eros donec. Imperdiet nulla malesuada pellentesque elit. Ultrices in iaculis nunc sed. A arcu cursus vitae congue mauris rhoncus aenean vel. Facilisis volutpat est velit egestas dui id. Ipsum faucibus vitae aliquet nec. Tellus cras adipiscing enim eu turpis. Pellentesque habitant morbi tristique senectus et netus et. Scelerisque viverra mauris in aliquam sem fringilla ut. Nisl suscipit adipiscing bibendum est ultricies integer.
+
+                                Volutpat ac tincidunt vitae semper quis. Montes nascetur ridiculus mus mauris. Senectus et netus et malesuada fames ac turpis egestas. Fermentum et sollicitudin ac orci phasellus egestas. Sed sed risus pretium quam vulputate. Quis lectus nulla at volutpat diam ut venenatis tellus in. Integer vitae justo eget magna fermentum. Maecenas ultricies mi eget mauris pharetra et ultrices neque ornare. Purus in massa tempor nec feugiat nisl. In arcu cursus euismod quis viverra nibh cras pulvinar. Ac tortor vitae purus faucibus ornare suspendisse sed nisi. Arcu cursus vitae congue mauris rhoncus aenean vel elit. Velit laoreet id donec ultrices tincidunt. Massa ultricies mi quis hendrerit dolor magna eget est lorem.
+
+                                Et tortor consequat id porta nibh venenatis. Morbi blandit cursus risus at. Massa tincidunt dui ut ornare. Felis imperdiet proin fermentum leo vel. Sodales neque sodales ut etiam sit amet nisl. Nisl vel pretium lectus quam id leo in vitae. Turpis egestas maecenas pharetra convallis posuere. Turpis egestas integer eget aliquet nibh praesent tristique magna sit. Diam maecenas ultricies mi eget mauris. Eu consequat ac felis donec et odio pellentesque diam volutpat. Cras adipiscing enim eu turpis. Consectetur adipiscing elit duis tristique sollicitudin nibh sit amet commodo. Turpis egestas sed tempus urna et pharetra pharetra. Tempor id eu nisl nunc mi ipsum faucibus vitae aliquet. Ut enim blandit volutpat maecenas volutpat blandit aliquam etiam. Blandit massa enim nec dui nunc mattis enim ut. Lorem dolor sed viverra ipsum nunc.
+                            </Text>
+                        </ModalBody>
+                    </ModalContent>
+                </Modal>
+
                 {/* Accordion */}
                 <Heading fontSize="24px" mt="50px">
                     Accordion
