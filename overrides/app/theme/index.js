@@ -26,6 +26,8 @@ import Alert from './components/base/alert'
 import Modal from './components/base/modal'
 
 // Project Component style overrides
+import App from './components/project/_app'
+import Breadcrumb from './components/project/breadcrumb'
 import Footer from './components/project/footer'
 
 // Please refer to the Chakra-Ui theme customization docs found
@@ -63,6 +65,8 @@ export const overrides = {
         Modal,
 
         // project components
+        App,
+        Breadcrumb,
         Footer,
     }
 }

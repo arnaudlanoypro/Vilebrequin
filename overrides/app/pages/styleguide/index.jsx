@@ -50,6 +50,7 @@ import {VisibilityIcon, VisibilityOffIcon} from '@salesforce/retail-react-app/ap
 import {CustomIcon} from '../../components/custom-icons/index'
 import {ResponsivePicture} from '../../components/responsive-picture/index'
 import Link from '@salesforce/retail-react-app/app/components/link'
+import Breadcrumb from '../../components/breadcrumb'
 
 // Hook form import
 import {useForm} from 'react-hook-form'
@@ -177,10 +178,7 @@ const Styleguide = () => {
                     Button
                 </Heading>
                 <Divider my="15px" />
-                <Flex
-                    alignItems="center"
-                    justify="space-around"
-                >
+                <SimpleGrid columns={{sm: 1, md: 2}} spacing={10} mb="30px">
                     <Button
                         type="button"
                         variant={'primary'}
@@ -200,14 +198,11 @@ const Styleguide = () => {
                     >
                         Click me to submit
                     </Button>
-                </Flex>
+                </SimpleGrid>
 
                 <Box my="15px"></Box>
 
-                <Flex
-                    alignItems="center"
-                    justify="space-around"
-                >
+                <SimpleGrid columns={{sm: 1, md: 2}} spacing={10} mb="30px">
                     <Button
                         type="button"
                         variant={'secondary'}
@@ -227,14 +222,11 @@ const Styleguide = () => {
                     >
                         Click me to submit
                     </Button>
-                </Flex>
+                </SimpleGrid>
 
                 <Box my="15px"></Box>
 
-                <Flex
-                    alignItems="center"
-                    justify="space-around"
-                >
+                <SimpleGrid columns={{sm: 1, md: 2}} spacing={10} mb="30px">
                     <Button
                         type="button"
                         variant={'tertiary'}
@@ -254,13 +246,14 @@ const Styleguide = () => {
                     >
                         Click me to submit
                     </Button>
-                </Flex>
+                </SimpleGrid>
 
                 <Box my="15px"></Box>
 
-                <Flex
-                    alignItems="center"
-                    justify="space-around"
+                <SimpleGrid
+                    columns={{sm: 1, md: 2}}
+                    spacing={10}
+                    mb="30px"
                     bg="fullBlack"
                     py="30px"
                 >
@@ -283,7 +276,7 @@ const Styleguide = () => {
                     >
                         Click me to submit
                     </Button>
-                </Flex>
+                </SimpleGrid>
 
                 {/* Link */}
                 <Heading fontSize="24px" mt="50px">
@@ -302,10 +295,7 @@ const Styleguide = () => {
                 </Heading>
                 <Divider my="15px" />
 
-                <Flex
-                    alignItems="center"
-                    justify="space-around"
-                >
+                <SimpleGrid columns={{sm: 1, md: 4}} spacing={10} mb="30px">
                     <Button
                         type="button"
                         variant={'primary'}
@@ -357,7 +347,21 @@ const Styleguide = () => {
                     >
                         Show error toast!
                     </Button>
-                </Flex>
+                </SimpleGrid>
+
+                {/* Breadcrumbs */}
+                <Heading fontSize="24px" mt="50px">
+                    Breadcrumbs
+                </Heading>
+                <Divider my="15px" />
+
+                <Breadcrumb
+                    categories={[
+                        { id: 1, name: "Shop" },
+                        { id: 2, name: "Men swimwear" }
+                    ]}
+                    product={{id: "3525", name: "Men Swim Shorts Ronde des Tortues"}}
+                />
 
                 {/* Responsive Picture */}
                 <Heading fontSize="24px" mt="50px">
@@ -387,7 +391,7 @@ const Styleguide = () => {
 
                 <Divider my="15px" />
 
-                <SimpleGrid columns={{sm: 2, md: 4}} spacing={10} mb="30px">
+                <SimpleGrid columns={{sm: 1, md: 4}} spacing={10} mb="30px">
                     <Button
                         type="button"
                         variant={'primary'}
@@ -568,6 +572,15 @@ const Styleguide = () => {
 
                                 Et tortor consequat id porta nibh venenatis. Morbi blandit cursus risus at. Massa tincidunt dui ut ornare. Felis imperdiet proin fermentum leo vel. Sodales neque sodales ut etiam sit amet nisl. Nisl vel pretium lectus quam id leo in vitae. Turpis egestas maecenas pharetra convallis posuere. Turpis egestas integer eget aliquet nibh praesent tristique magna sit. Diam maecenas ultricies mi eget mauris. Eu consequat ac felis donec et odio pellentesque diam volutpat. Cras adipiscing enim eu turpis. Consectetur adipiscing elit duis tristique sollicitudin nibh sit amet commodo. Turpis egestas sed tempus urna et pharetra pharetra. Tempor id eu nisl nunc mi ipsum faucibus vitae aliquet. Ut enim blandit volutpat maecenas volutpat blandit aliquam etiam. Blandit massa enim nec dui nunc mattis enim ut. Lorem dolor sed viverra ipsum nunc.
                             </Text>
+
+                            <Button
+                                type="button"
+                                variant={'primary'}
+                                maxWidth="300px"
+                                onClick={onMediumModalOpen}
+                            >
+                                Open `Medium` modal
+                            </Button>
                         </ModalBody>
                     </ModalContent>
                 </Modal>
@@ -658,7 +671,7 @@ const Styleguide = () => {
                     Tooltip
                 </Heading>
                 <Divider my="15px" />
-                <SimpleGrid columns={{sm: 2, md: 4}} spacing={10} mb="30px">
+                <SimpleGrid columns={{sm: 1, md: 4}} spacing={10} mb="30px">
                     <Tooltip hasArrow label="Here is the tooltip text info - placement bottom">
                         <Button type="button" variant={'primary'} maxWidth="300px">
                             Hover me!

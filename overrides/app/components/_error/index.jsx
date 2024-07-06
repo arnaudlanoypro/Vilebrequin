@@ -34,7 +34,7 @@ const Error = (props) => {
 
     const title = "This page isn't working"
     return (
-        <Flex id="sf-app" flex={1} direction="column" minWidth={'375px'}>
+        <Flex id="sf-app" flex={1} direction="column" minWidth={'320px'}>
             <Helmet>
                 <title>{title}</title>
             </Helmet>

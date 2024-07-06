@@ -29,7 +29,7 @@ import {categoryUrlBuilder} from '@salesforce/retail-react-app/app/utils/url'
  * A simplification of the Chakra `Breadcrumb` component for our project needs. Given
  * a list of categories, display a breadcrumb and it's items.
  */
-const Breadcrumb = ({categories, ...rest}) => {
+const Breadcrumb = ({categories, product, ...rest}) => {
     const intl = useIntl()
     const styles = useStyleConfig('Breadcrumb')
 
@@ -37,7 +37,8 @@ const Breadcrumb = ({categories, ...rest}) => {
         <ChakraBreadcrumb
             className="sf-breadcrumb"
             {...styles.container}
-            separator={<ChevronRightIcon {...styles.icon} />}
+            separator={"/"}
+            spacing={"3"}
             {...rest}
         >
             {categories.map((category) => (
@@ -51,6 +52,19 @@ const Breadcrumb = ({categories, ...rest}) => {
                     </ChakraBreadcrumbLink>
                 </ChakraBreadcrumbItem>
             ))}
+            {product &&
+                <ChakraBreadcrumbItem
+                    key={product.id}
+                    data-testid="sf-crumb-item"
+                    isCurrentPage
+                >
+                    <ChakraBreadcrumbLink
+                        {...styles.lastitem}
+                    >
+                        {product.name}
+                    </ChakraBreadcrumbLink>
+                </ChakraBreadcrumbItem>
+            }
         </ChakraBreadcrumb>
     )
 }

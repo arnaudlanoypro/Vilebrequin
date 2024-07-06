@@ -12,7 +12,11 @@ export default {
         },
         closeButton: {
             top: "24px",
-            right: "24px"
+            right: "24px",
+            _focus: {
+                outline: '3px solid #4794F7',
+                outlineOffset: '0'
+            },
         }
     },
     sizes: {

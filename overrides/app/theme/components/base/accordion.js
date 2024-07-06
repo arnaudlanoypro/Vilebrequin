@@ -8,7 +8,11 @@ export default {
             h: "auto",
             _hover: {
                 background: 'none'
-            }
+            },
+            _focus: {
+                outline: '3px solid #4794F7',
+                outlineOffset: '0'
+            },
         },
         container : {
             borderColor: "borderGray",
