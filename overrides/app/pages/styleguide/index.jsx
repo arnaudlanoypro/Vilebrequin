@@ -21,6 +21,13 @@ import {
     ModalContent,
     ModalCloseButton,
     ModalOverlay,
+    Drawer,
+    DrawerOverlay,
+    DrawerContent,
+    DrawerCloseButton,
+    DrawerHeader,
+    DrawerBody,
+    DrawerFooter,
 } from '@salesforce/retail-react-app/app/components/shared/ui'
 import {
     FormControl,
@@ -42,7 +49,7 @@ import {
     AccordionItem,
     AccordionButton,
     AccordionPanel,
-    AccordionIcon
+    AccordionIcon,
 } from '@chakra-ui/react'
 import {MinusIcon, AddIcon} from '@chakra-ui/icons'
 import {VisibilityIcon, VisibilityOffIcon} from '@salesforce/retail-react-app/app/components/icons'
@@ -61,10 +68,18 @@ import {getAssetUrl} from '@salesforce/pwa-kit-react-sdk/ssr/universal/utils'
 const Styleguide = () => {
     const intl = useIntl()
     const navigate = useNavigation()
+
+    // Modals
     const {isOpen: isSmallModalOpen, onOpen: onSmallModalOpen, onClose: onSmallModalClose} = useDisclosure()
     const {isOpen: isMediumModalOpen, onOpen: onMediumModalOpen, onClose: onMediumModalClose} = useDisclosure()
     const {isOpen: isLargeModalOpen, onOpen: onLargeModalOpen, onClose: onLargeModalClose} = useDisclosure()
     const {isOpen: isFullscreenModalOpen, onOpen: onFullscreenModalOpen, onClose: onFullscreenModalClose} = useDisclosure()
+
+    // Drawer
+    const {isOpen: isDrawerOnTopOpen, onOpen: onDrawerOnTopOpen, onClose: onDrawerOnTopClose} = useDisclosure()
+    const {isOpen: isDrawerOnRightOpen, onOpen: onDrawerOnRightOpen, onClose: onDrawerOnRightClose} = useDisclosure()
+    const {isOpen: isDrawerOnBottomOpen, onOpen: onDrawerOnBottomOpen, onClose: onDrawerOnBottomClose} = useDisclosure()
+    const {isOpen: isDrawerOnLeftOpen, onOpen: onDrawerOnLeftOpen, onClose: onDrawerOnLeftClose} = useDisclosure()
 
     // React hook form setup
     const {
@@ -178,7 +193,13 @@ const Styleguide = () => {
                     Button
                 </Heading>
                 <Divider my="15px" />
-                <SimpleGrid columns={{sm: 1, md: 2}} spacing={10} mb="30px">
+                <SimpleGrid
+                    columns={{sm: 1, md: 2}}
+                    spacing={10}
+                    mb="30px"
+                    justifyItems="center"
+                    alignItems="center"
+                >
                     <Button
                         type="button"
                         variant={'primary'}
@@ -202,7 +223,13 @@ const Styleguide = () => {
 
                 <Box my="15px"></Box>
 
-                <SimpleGrid columns={{sm: 1, md: 2}} spacing={10} mb="30px">
+                <SimpleGrid
+                    columns={{sm: 1, md: 2}}
+                    spacing={10}
+                    mb="30px"
+                    justifyItems="center"
+                    alignItems="center"
+                >
                     <Button
                         type="button"
                         variant={'secondary'}
@@ -226,7 +253,13 @@ const Styleguide = () => {
 
                 <Box my="15px"></Box>
 
-                <SimpleGrid columns={{sm: 1, md: 2}} spacing={10} mb="30px">
+                <SimpleGrid
+                    columns={{sm: 1, md: 2}}
+                    spacing={10}
+                    mb="30px"
+                    justifyItems="center"
+                    alignItems="center"
+                >
                     <Button
                         type="button"
                         variant={'tertiary'}
@@ -256,6 +289,8 @@ const Styleguide = () => {
                     mb="30px"
                     bg="fullBlack"
                     py="30px"
+                    justifyItems="center"
+                    alignItems="center"
                 >
                     <Button
                         type="button"
@@ -295,7 +330,13 @@ const Styleguide = () => {
                 </Heading>
                 <Divider my="15px" />
 
-                <SimpleGrid columns={{sm: 1, md: 4}} spacing={10} mb="30px">
+                <SimpleGrid
+                    columns={{sm: 1, md: 3}}
+                    spacing={10}
+                    mb="30px"
+                    justifyItems="center"
+                    alignItems="center"
+                >
                     <Button
                         type="button"
                         variant={'primary'}
@@ -370,12 +411,12 @@ const Styleguide = () => {
                 <Divider my="15px" />
                 <ResponsivePicture
                     src={{
-                        sm: getAssetUrl('static/img/hero-sm.png'),
-                        md: getAssetUrl('static/img/hero-md.png'),
-                        lg: getAssetUrl('static/img/hero-lg.png'),
-                        sm2x: getAssetUrl('static/img/hero-sm2x.png'),
-                        md2x: getAssetUrl('static/img/hero-md2x.png'),
-                        lg2x: getAssetUrl('static/img/hero-lg2x.png')
+                        sm: getAssetUrl('static/img/hero-sm.jpg'),
+                        md: getAssetUrl('static/img/hero-md.jpg'),
+                        lg: getAssetUrl('static/img/hero-lg.jpg'),
+                        sm2x: getAssetUrl('static/img/hero-sm2x.jpg'),
+                        md2x: getAssetUrl('static/img/hero-md2x.jpg'),
+                        lg2x: getAssetUrl('static/img/hero-lg2x.jpg')
                     }}
                     loading={'auto'}
                     fetchpriority={'high'}
@@ -391,7 +432,13 @@ const Styleguide = () => {
 
                 <Divider my="15px" />
 
-                <SimpleGrid columns={{sm: 1, md: 4}} spacing={10} mb="30px">
+                <SimpleGrid
+                    columns={{sm: 1, md: 4}}
+                    spacing={10}
+                    mb="30px"
+                    justifyItems="center"
+                    alignItems="center"
+                >
                     <Button
                         type="button"
                         variant={'primary'}
@@ -585,6 +632,172 @@ const Styleguide = () => {
                     </ModalContent>
                 </Modal>
 
+                {/* Drawer */}
+                <Heading fontSize="24px" mt="50px">
+                Drawer
+                </Heading>
+
+                <Divider my="15px" />
+
+                <SimpleGrid
+                    columns={{sm: 1, md: 4}}
+                    spacing={10}
+                    mb="30px"
+                    justifyItems="center"
+                    alignItems="center"
+                >
+                    <Button
+                        type="button"
+                        variant={'primary'}
+                        maxWidth="300px"
+                        onClick={onDrawerOnTopOpen}
+                    >
+                        Drawer from top
+                    </Button>
+
+                    <Button
+                        type="button"
+                        variant={'primary'}
+                        maxWidth="300px"
+                        onClick={onDrawerOnRightOpen}
+                    >
+                        Drawer from right
+                    </Button>
+
+                    <Button
+                        type="button"
+                        variant={'primary'}
+                        maxWidth="300px"
+                        onClick={onDrawerOnBottomOpen}
+                    >
+                        Drawer from bottom
+                    </Button>
+
+                    <Button
+                        type="button"
+                        variant={'primary'}
+                        maxWidth="300px"
+                        onClick={onDrawerOnLeftOpen}
+                    >
+                        Drawer from left
+                    </Button>
+                </SimpleGrid>
+
+                <Drawer
+                    isOpen={isDrawerOnTopOpen}
+                    onClose={onDrawerOnTopClose}
+                    placement={'top'}
+                    size="sm"
+                >
+                    <DrawerOverlay />
+                    <DrawerContent>
+                        <DrawerCloseButton />
+                        <DrawerHeader>Drawer opened from the top side</DrawerHeader>
+                        <DrawerBody>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                Consequat nisl vel pretium lectus quam id. Semper quis lectus
+                                nulla at volutpat diam ut venenatis. Dolor morbi non arcu risus
+                                quis varius quam quisque. Massa ultricies mi quis hendrerit dolor
+                                magna eget est lorem. Erat imperdiet sed euismod nisi porta.
+                                Lectus vestibulum mattis ullamcorper velit.
+                            </p>
+                        </DrawerBody>
+                    </DrawerContent>
+                </Drawer>
+
+                <Drawer
+                    isOpen={isDrawerOnRightOpen}
+                    onClose={onDrawerOnRightClose}
+                    placement={'right'}
+                    size="full"
+                >
+                    <DrawerOverlay />
+                    <DrawerContent>
+                        <DrawerCloseButton />
+                        <DrawerHeader>Drawer opened from the right side</DrawerHeader>
+                        <DrawerBody>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                Consequat nisl vel pretium lectus quam id. Semper quis lectus
+                                nulla at volutpat diam ut venenatis. Dolor morbi non arcu risus
+                                quis varius quam quisque. Massa ultricies mi quis hendrerit dolor
+                                magna eget est lorem. Erat imperdiet sed euismod nisi porta.
+                                Lectus vestibulum mattis ullamcorper velit.
+                            </p>
+                        </DrawerBody>
+                    </DrawerContent>
+                </Drawer>
+
+                <Drawer
+                    isOpen={isDrawerOnBottomOpen}
+                    onClose={onDrawerOnBottomClose}
+                    placement={'bottom'}
+                    size="lg"
+                >
+                    <DrawerOverlay />
+                    <DrawerContent>
+                        <DrawerCloseButton />
+                        <DrawerHeader>Drawer opened from the bottom side</DrawerHeader>
+                        <DrawerBody>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                Consequat nisl vel pretium lectus quam id. Semper quis lectus
+                                nulla at volutpat diam ut venenatis. Dolor morbi non arcu risus
+                                quis varius quam quisque. Massa ultricies mi quis hendrerit dolor
+                                magna eget est lorem. Erat imperdiet sed euismod nisi porta.
+                                Lectus vestibulum mattis ullamcorper velit.
+                            </p>
+                        </DrawerBody>
+                    </DrawerContent>
+                </Drawer>
+
+                <Drawer
+                    isOpen={isDrawerOnLeftOpen}
+                    onClose={onDrawerOnLeftClose}
+                    placement={'left'}
+                    size="md"
+                >
+                    <DrawerOverlay />
+                    <DrawerContent>
+                        <DrawerCloseButton />
+
+                        <DrawerHeader>Drawer opened from the left side</DrawerHeader>
+
+                        <DrawerBody>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                Consequat nisl vel pretium lectus quam id. Semper quis lectus
+                                nulla at volutpat diam ut venenatis. Dolor morbi non arcu risus
+                                quis varius quam quisque. Massa ultricies mi quis hendrerit dolor
+                                magna eget est lorem. Erat imperdiet sed euismod nisi porta.
+                                Lectus vestibulum mattis ullamcorper velit.
+                            </p>
+                        </DrawerBody>
+
+                        <DrawerFooter>
+                            <Flex
+                                justifyContent="center"
+                                alignItems="center"
+                                w="full"
+                            >
+                                <Button
+                                    type="button"
+                                    variant={'primary'}
+                                    maxWidth="300px"
+                                    onClick={onMediumModalOpen}
+                                >
+                                    Open `Medium` modal
+                                </Button>
+                            </Flex>
+                        </DrawerFooter>
+                    </DrawerContent>
+                </Drawer>
+
                 {/* Accordion */}
                 <Heading fontSize="24px" mt="50px">
                     Accordion
@@ -671,7 +884,13 @@ const Styleguide = () => {
                     Tooltip
                 </Heading>
                 <Divider my="15px" />
-                <SimpleGrid columns={{sm: 1, md: 4}} spacing={10} mb="30px">
+                <SimpleGrid
+                    columns={{sm: 1, md: 4}}
+                    spacing={10}
+                    mb="30px"
+                    justifyItems="center"
+                    alignItems="center"
+                >
                     <Tooltip hasArrow label="Here is the tooltip text info - placement bottom">
                         <Button type="button" variant={'primary'} maxWidth="300px">
                             Hover me!

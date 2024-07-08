@@ -24,6 +24,7 @@ import Heading from './components/base/heading'
 import Text from './components/base/text'
 import Alert from './components/base/alert'
 import Modal from './components/base/modal'
+import Drawer from './components/base/drawer'
 
 // Project Component style overrides
 import App from './components/project/_app'
@@ -63,6 +64,7 @@ export const overrides = {
         Text,
         Alert,
         Modal,
+        Drawer,
 
         // project components
         App,
