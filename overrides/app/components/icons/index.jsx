@@ -14,48 +14,65 @@ import {Icon, useTheme} from '@salesforce/retail-react-app/app/components/shared
 // during SSR.
 // NOTE: Another solution would be to use `require-context.macro` package to accomplish
 // importing icon svg's.
-import '@salesforce/retail-react-app/app/assets/svg/alert.svg'
+import '/overrides/app/assets/svg/alert.svg'
+import '/overrides/app/assets/svg/alert-2.svg'
 import '@salesforce/retail-react-app/app/assets/svg/account.svg'
-import '@salesforce/retail-react-app/app/assets/svg/basket.svg'
-import '@salesforce/retail-react-app/app/assets/svg/check.svg'
+import '/overrides/app/assets/svg/basket.svg'
+import '/overrides/app/assets/svg/book.svg'
+import '/overrides/app/assets/svg/check.svg'
 import '@salesforce/retail-react-app/app/assets/svg/check-circle.svg'
-import '@salesforce/retail-react-app/app/assets/svg/chevron-up.svg'
-import '@salesforce/retail-react-app/app/assets/svg/chevron-down.svg'
-import '@salesforce/retail-react-app/app/assets/svg/chevron-right.svg'
-import '@salesforce/retail-react-app/app/assets/svg/chevron-left.svg'
-import '@salesforce/retail-react-app/app/assets/svg/chevron-right.svg'
-import '@salesforce/retail-react-app/app/assets/svg/chevron-up.svg'
+import '/overrides/app/assets/svg/chevron-up.svg'
+import '/overrides/app/assets/svg/chevron-down.svg'
+import '/overrides/app/assets/svg/chevron-right.svg'
+import '/overrides/app/assets/svg/chevron-left.svg'
+import '/overrides/app/assets/svg/close.svg'
+import '/overrides/app/assets/svg/cube.svg'
+import '/overrides/app/assets/svg/customer-service.svg'
 import '@salesforce/retail-react-app/app/assets/svg/dashboard.svg'
+import '/overrides/app/assets/svg/easy-returns.svg'
 import '@salesforce/retail-react-app/app/assets/svg/figma-logo.svg'
-import '@salesforce/retail-react-app/app/assets/svg/filter.svg'
+import '/overrides/app/assets/svg/filter.svg'
 import '@salesforce/retail-react-app/app/assets/svg/file.svg'
 import '@salesforce/retail-react-app/app/assets/svg/flag-ca.svg'
-import '@salesforce/retail-react-app/app/assets/svg/flag-us.svg'
+import '/overrides/app/assets/svg/flag-us.svg'
 import '@salesforce/retail-react-app/app/assets/svg/flag-gb.svg'
-import '@salesforce/retail-react-app/app/assets/svg/flag-fr.svg'
+import '/overrides/app/assets/svg/flag-fr.svg'
 import '@salesforce/retail-react-app/app/assets/svg/flag-it.svg'
 import '@salesforce/retail-react-app/app/assets/svg/flag-cn.svg'
 import '@salesforce/retail-react-app/app/assets/svg/flag-jp.svg'
 import '@salesforce/retail-react-app/app/assets/svg/github-logo.svg'
-import '@salesforce/retail-react-app/app/assets/svg/hamburger.svg'
-import '@salesforce/retail-react-app/app/assets/svg/info.svg'
+import '/overrides/app/assets/svg/hamburger.svg'
+import '/overrides/app/assets/svg/info.svg'
+import '/overrides/app/assets/svg/location.svg'
 import '@salesforce/retail-react-app/app/assets/svg/social-facebook.svg'
 import '@salesforce/retail-react-app/app/assets/svg/social-instagram.svg'
 import '@salesforce/retail-react-app/app/assets/svg/social-twitter.svg'
 import '@salesforce/retail-react-app/app/assets/svg/social-youtube.svg'
 import '@salesforce/retail-react-app/app/assets/svg/like.svg'
 import '@salesforce/retail-react-app/app/assets/svg/lock.svg'
+import '/overrides/app/assets/svg/minus.svg'
+import '/overrides/app/assets/svg/no-location.svg'
 import '@salesforce/retail-react-app/app/assets/svg/plug.svg'
-import '@salesforce/retail-react-app/app/assets/svg/plus.svg'
+import '/overrides/app/assets/svg/phone.svg'
+import '/overrides/app/assets/svg/plus.svg'
+import '/overrides/app/assets/svg/privacy.svg'
 import '@salesforce/retail-react-app/app/assets/svg/receipt.svg'
-import '@salesforce/retail-react-app/app/assets/svg/search.svg'
+import '/overrides/app/assets/svg/repair.svg'
+import '/overrides/app/assets/svg/right-arrow.svg'
+import '/overrides/app/assets/svg/search.svg'
+import '/overrides/app/assets/svg/secure-payment.svg'
+import '/overrides/app/assets/svg/shop.svg'
 import '@salesforce/retail-react-app/app/assets/svg/signout.svg'
-import '@salesforce/retail-react-app/app/assets/svg/user.svg'
-import '@salesforce/retail-react-app/app/assets/svg/visibility.svg'
-import '@salesforce/retail-react-app/app/assets/svg/visibility-off.svg'
+import '/overrides/app/assets/svg/success.svg'
+import '/overrides/app/assets/svg/ultra-fast-delivery.svg'
+import '/overrides/app/assets/svg/user.svg'
+import '/overrides/app/assets/svg/visibility.svg'
+import '/overrides/app/assets/svg/visibility-off.svg'
+import '/overrides/app/assets/svg/whatsapp.svg'
+import '/overrides/app/assets/svg/wishlist.svg'
+import '/overrides/app/assets/svg/wishlist-fill.svg'
 import '@salesforce/retail-react-app/app/assets/svg/heart.svg'
 import '@salesforce/retail-react-app/app/assets/svg/heart-solid.svg'
-import '@salesforce/retail-react-app/app/assets/svg/close.svg'
 
 // For non-square SVGs, we can use the symbol data from the import to set the
 // proper viewBox attribute on the Icon wrapper.
@@ -138,18 +155,24 @@ export const icon = (name, passProps, localizationAttributes) => {
 // proper viewBox attribute on the Icon wrapper.
 export const AmexIcon = icon('cc-amex', {viewBox: AmexSymbol.viewBox})
 export const AlertIcon = icon('alert')
+export const Alert2Icon = icon('alert-2')
 export const AccountIcon = icon('account')
 export const BrandLogo = icon('brand-logo', {viewBox: BrandLogoSymbol.viewBox})
 export const BasketIcon = icon('basket')
+export const BookIcon = icon('book')
 export const CheckIcon = icon('check')
 export const CheckCircleIcon = icon('check-circle')
 export const ChevronDownIcon = icon('chevron-down')
 export const ChevronLeftIcon = icon('chevron-left')
 export const ChevronRightIcon = icon('chevron-right')
 export const ChevronUpIcon = icon('chevron-up')
+export const CloseIcon = icon('close')
+export const CubeIcon = icon('cube')
+export const CustomerServiceIcon = icon('customer-service')
 export const CVVIcon = icon('cc-cvv', {viewBox: CVVSymbol.viewBox})
 export const DashboardIcon = icon('dashboard')
 export const DiscoverIcon = icon('cc-discover', {viewBox: DiscoverSymbol.viewBox})
+export const EasyReturnsIcon = icon('easy-returns')
 export const FigmaLogo = icon('figma-logo')
 export const FilterIcon = icon('filter')
 export const FileIcon = icon('file')
@@ -178,12 +201,20 @@ export const LockIcon = icon(
     }
 )
 export const LocationIcon = icon('location')
+export const MastercardIcon = icon('cc-mastercard', {viewBox: MastercardSymbol.viewBox})
+export const MinusIcon = icon('minus')
+export const NoLocationIcon = icon('no-location')
 export const PaypalIcon = icon('paypal', {viewBox: PaypalSymbol.viewBox})
+export const PhoneIcon = icon('phone')
 export const PlugIcon = icon('plug')
 export const PlusIcon = icon('plus')
-export const MastercardIcon = icon('cc-mastercard', {viewBox: MastercardSymbol.viewBox})
+export const PrivacyIcon = icon('privacy')
 export const ReceiptIcon = icon('receipt')
+export const RepairIcon = icon('repair')
+export const RightArrowIcon = icon('right-arrow')
 export const SearchIcon = icon('search', {'aria-hidden': true})
+export const SecurePaymentIcon = icon('secure-payment')
+export const ShopIcon = icon('shop')
 export const SocialFacebookIcon = icon('social-facebook')
 export const SocialInstagramIcon = icon('social-instagram')
 export const SocialPinterestIcon = icon('social-pinterest', {
@@ -192,10 +223,14 @@ export const SocialPinterestIcon = icon('social-pinterest', {
 export const SocialTwitterIcon = icon('social-twitter')
 export const SocialYoutubeIcon = icon('social-youtube')
 export const SignoutIcon = icon('signout')
+export const SuccessIcon = icon('success')
+export const UltraFastDeliveryIcon = icon('ultra-fast-delivery')
 export const UserIcon = icon('user')
 export const VisaIcon = icon('cc-visa', {viewBox: VisaSymbol.viewBox})
 export const VisibilityIcon = icon('visibility')
 export const VisibilityOffIcon = icon('visibility-off')
+export const WhatsAppIcon = icon('whatsapp')
+export const WishlistIcon = icon('wishlist')
+export const WishlistFillIcon = icon('wishlist-fill')
 export const HeartIcon = icon('heart')
 export const HeartSolidIcon = icon('heart-solid')
-export const CloseIcon = icon('close')

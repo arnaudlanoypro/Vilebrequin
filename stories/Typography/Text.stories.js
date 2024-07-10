@@ -1,4 +1,3 @@
-import React from 'react'
 import {Text} from '@salesforce/retail-react-app/app/components/shared/ui/Text'
 
 export default {

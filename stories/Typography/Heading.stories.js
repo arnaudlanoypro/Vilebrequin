@@ -1,4 +1,3 @@
-import React from 'react'
 import {Heading} from '@salesforce/retail-react-app/app/components/shared/ui/Heading'
 
 export default {

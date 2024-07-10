@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import PropTypes from 'prop-types'
 import {useIntl, FormattedMessage} from 'react-intl'
 import useNavigation from '@salesforce/retail-react-app/app/hooks/use-navigation'
+import Link from '@salesforce/retail-react-app/app/components/link'
 import {
     Box,
     Container,
@@ -27,7 +28,7 @@ import {
     DrawerCloseButton,
     DrawerHeader,
     DrawerBody,
-    DrawerFooter,
+    DrawerFooter
 } from '@salesforce/retail-react-app/app/components/shared/ui'
 import {
     FormControl,
@@ -49,15 +50,22 @@ import {
     AccordionItem,
     AccordionButton,
     AccordionPanel,
-    AccordionIcon,
+    AccordionIcon
 } from '@chakra-ui/react'
 import {MinusIcon, AddIcon} from '@chakra-ui/icons'
-import {VisibilityIcon, VisibilityOffIcon} from '@salesforce/retail-react-app/app/components/icons'
-
+import {
+    VisibilityIcon,
+    VisibilityOffIcon,
+    ChevronDownIcon,
+    FlagFRIcon,
+    FlagUSIcon
+} from '../../components/icons'
 import {CustomIcon} from '../../components/custom-icons/index'
 import {ResponsivePicture} from '../../components/responsive-picture/index'
-import Link from '@salesforce/retail-react-app/app/components/link'
 import Breadcrumb from '../../components/breadcrumb'
+import PhoneField from '../../components/phone-field'
+import DateField from '../../components/date-field'
+import InputWithSubmit from '../../components/input-with-submit'
 
 // Hook form import
 import {useForm} from 'react-hook-form'
@@ -70,24 +78,65 @@ const Styleguide = () => {
     const navigate = useNavigation()
 
     // Modals
-    const {isOpen: isSmallModalOpen, onOpen: onSmallModalOpen, onClose: onSmallModalClose} = useDisclosure()
-    const {isOpen: isMediumModalOpen, onOpen: onMediumModalOpen, onClose: onMediumModalClose} = useDisclosure()
-    const {isOpen: isLargeModalOpen, onOpen: onLargeModalOpen, onClose: onLargeModalClose} = useDisclosure()
-    const {isOpen: isFullscreenModalOpen, onOpen: onFullscreenModalOpen, onClose: onFullscreenModalClose} = useDisclosure()
+    const {
+        isOpen: isSmallModalOpen,
+        onOpen: onSmallModalOpen,
+        onClose: onSmallModalClose
+    } = useDisclosure()
+    const {
+        isOpen: isMediumModalOpen,
+        onOpen: onMediumModalOpen,
+        onClose: onMediumModalClose
+    } = useDisclosure()
+    const {
+        isOpen: isLargeModalOpen,
+        onOpen: onLargeModalOpen,
+        onClose: onLargeModalClose
+    } = useDisclosure()
+    const {
+        isOpen: isFullscreenModalOpen,
+        onOpen: onFullscreenModalOpen,
+        onClose: onFullscreenModalClose
+    } = useDisclosure()
 
     // Drawer
-    const {isOpen: isDrawerOnTopOpen, onOpen: onDrawerOnTopOpen, onClose: onDrawerOnTopClose} = useDisclosure()
-    const {isOpen: isDrawerOnRightOpen, onOpen: onDrawerOnRightOpen, onClose: onDrawerOnRightClose} = useDisclosure()
-    const {isOpen: isDrawerOnBottomOpen, onOpen: onDrawerOnBottomOpen, onClose: onDrawerOnBottomClose} = useDisclosure()
-    const {isOpen: isDrawerOnLeftOpen, onOpen: onDrawerOnLeftOpen, onClose: onDrawerOnLeftClose} = useDisclosure()
+    const {
+        isOpen: isDrawerOnTopOpen,
+        onOpen: onDrawerOnTopOpen,
+        onClose: onDrawerOnTopClose
+    } = useDisclosure()
+    const {
+        isOpen: isDrawerOnRightOpen,
+        onOpen: onDrawerOnRightOpen,
+        onClose: onDrawerOnRightClose
+    } = useDisclosure()
+    const {
+        isOpen: isDrawerOnBottomOpen,
+        onOpen: onDrawerOnBottomOpen,
+        onClose: onDrawerOnBottomClose
+    } = useDisclosure()
+    const {
+        isOpen: isDrawerOnLeftOpen,
+        onOpen: onDrawerOnLeftOpen,
+        onClose: onDrawerOnLeftClose
+    } = useDisclosure()
 
     // React hook form setup
     const {
         handleSubmit,
         register,
+        control,
+        watch,
         formState: {errors, isSubmitting}
     } = useForm()
-    const toast = useToast();
+
+    const {
+        handleSubmit: handleSubmit2,
+        control: control2,
+        formState: {errors: errors2, isSubmitting: isSubmitting2}
+    } = useForm()
+    const watchDate = watch('date')
+    const toast = useToast()
 
     const [hidePassword, setHidePassword] = useState(true)
     const PasswordIcon = hidePassword ? VisibilityIcon : VisibilityOffIcon
@@ -200,15 +249,9 @@ const Styleguide = () => {
                     justifyItems="center"
                     alignItems="center"
                 >
-                    <Button
-                        type="button"
-                        variant={'primary'}
-                        align="center"
-                        maxWidth="300px"
-                    >
+                    <Button type="button" variant={'primary'} align="center" maxWidth="300px">
                         Click me to submit
                     </Button>
-
 
                     <Button
                         type="button"
@@ -220,9 +263,7 @@ const Styleguide = () => {
                         Click me to submit
                     </Button>
                 </SimpleGrid>
-
                 <Box my="15px"></Box>
-
                 <SimpleGrid
                     columns={{sm: 1, md: 2}}
                     spacing={10}
@@ -230,15 +271,9 @@ const Styleguide = () => {
                     justifyItems="center"
                     alignItems="center"
                 >
-                    <Button
-                        type="button"
-                        variant={'secondary'}
-                        align="center"
-                        maxWidth="300px"
-                    >
+                    <Button type="button" variant={'secondary'} align="center" maxWidth="300px">
                         Click me to submit
                     </Button>
-
 
                     <Button
                         type="button"
@@ -250,9 +285,7 @@ const Styleguide = () => {
                         Click me to submit
                     </Button>
                 </SimpleGrid>
-
                 <Box my="15px"></Box>
-
                 <SimpleGrid
                     columns={{sm: 1, md: 2}}
                     spacing={10}
@@ -260,15 +293,9 @@ const Styleguide = () => {
                     justifyItems="center"
                     alignItems="center"
                 >
-                    <Button
-                        type="button"
-                        variant={'tertiary'}
-                        align="center"
-                        maxWidth="300px"
-                    >
+                    <Button type="button" variant={'tertiary'} align="center" maxWidth="300px">
                         Click me to submit
                     </Button>
-
 
                     <Button
                         type="button"
@@ -280,9 +307,7 @@ const Styleguide = () => {
                         Click me to submit
                     </Button>
                 </SimpleGrid>
-
                 <Box my="15px"></Box>
-
                 <SimpleGrid
                     columns={{sm: 1, md: 2}}
                     spacing={10}
@@ -301,7 +326,6 @@ const Styleguide = () => {
                         Click me to submit
                     </Button>
 
-
                     <Button
                         type="button"
                         variant={'invertedOutline'}
@@ -312,7 +336,6 @@ const Styleguide = () => {
                         Click me to submit
                     </Button>
                 </SimpleGrid>
-
                 {/* Link */}
                 <Heading fontSize="24px" mt="50px">
                     Link
@@ -329,7 +352,6 @@ const Styleguide = () => {
                     Toast
                 </Heading>
                 <Divider my="15px" />
-
                 <SimpleGrid
                     columns={{sm: 1, md: 3}}
                     spacing={10}
@@ -343,9 +365,9 @@ const Styleguide = () => {
                         maxWidth="300px"
                         onClick={() => {
                             toast({
-                                title: "Item added to wishlist!",
+                                title: 'Item added to wishlist!',
                                 duration: 3000,
-                                isClosable: true,
+                                isClosable: true
                             })
                         }}
                     >
@@ -358,15 +380,11 @@ const Styleguide = () => {
                         maxWidth="300px"
                         onClick={() => {
                             toast({
-                                title: "Apple Pay is currently not available in your cart. Please proceed to checkout to enjoy the convenience of Apple Pay.",
+                                title: 'Apple Pay is currently not available in your cart. Please proceed to checkout to enjoy the convenience of Apple Pay.',
                                 variant: 'warning',
                                 duration: 3000,
                                 isClosable: true,
-                                action: (
-                                    <Link to={'/'}>
-                                        VIEW
-                                    </Link>
-                                )
+                                action: <Link to={'/'}>VIEW</Link>
                             })
                         }}
                     >
@@ -379,31 +397,28 @@ const Styleguide = () => {
                         maxWidth="300px"
                         onClick={() => {
                             toast({
-                                title: "Something went wrong",
+                                title: 'Something went wrong',
                                 variant: 'error',
                                 duration: 3000,
-                                isClosable: true,
+                                isClosable: true
                             })
                         }}
                     >
                         Show error toast!
                     </Button>
                 </SimpleGrid>
-
                 {/* Breadcrumbs */}
                 <Heading fontSize="24px" mt="50px">
                     Breadcrumbs
                 </Heading>
                 <Divider my="15px" />
-
                 <Breadcrumb
                     categories={[
-                        { id: 1, name: "Shop" },
-                        { id: 2, name: "Men swimwear" }
+                        {id: 1, name: 'Shop'},
+                        {id: 2, name: 'Men swimwear'}
                     ]}
-                    product={{id: "3525", name: "Men Swim Shorts Ronde des Tortues"}}
+                    product={{id: '3525', name: 'Men Swim Shorts Ronde des Tortues'}}
                 />
-
                 {/* Responsive Picture */}
                 <Heading fontSize="24px" mt="50px">
                     Responsive Picture
@@ -429,9 +444,7 @@ const Styleguide = () => {
                 <Heading fontSize="24px" mt="50px">
                     Modal
                 </Heading>
-
                 <Divider my="15px" />
-
                 <SimpleGrid
                     columns={{sm: 1, md: 4}}
                     spacing={10}
@@ -475,7 +488,6 @@ const Styleguide = () => {
                         Open `Fullscreen` modal
                     </Button>
                 </SimpleGrid>
-
                 <Modal
                     isOpen={isSmallModalOpen}
                     onClose={onSmallModalClose}
@@ -494,17 +506,10 @@ const Styleguide = () => {
                         <ModalCloseButton />
 
                         <ModalBody py={20}>
-                            <Text>
-                                Are you sure you want to remove this item from your cart?
-                            </Text>
+                            <Text>Are you sure you want to remove this item from your cart?</Text>
                         </ModalBody>
 
-                        <ModalFooter
-                            justify="space-between"
-                            display="block"
-                            width="full"
-                            p="0"
-                        >
+                        <ModalFooter justify="space-between" display="block" width="full" p="0">
                             <Flex alignItems="center" justify="space-between">
                                 <Button
                                     type="button"
@@ -516,19 +521,13 @@ const Styleguide = () => {
                                     NO, KEEP ITEM
                                 </Button>
 
-                                <Button
-                                    type="button"
-                                    variant={'primary'}
-                                    align="center"
-                                    w="170px"
-                                >
+                                <Button type="button" variant={'primary'} align="center" w="170px">
                                     YES, REMOVE ITEM
                                 </Button>
                             </Flex>
                         </ModalFooter>
                     </ModalContent>
                 </Modal>
-
                 <Modal
                     isOpen={isMediumModalOpen}
                     onClose={onMediumModalClose}
@@ -549,20 +548,68 @@ const Styleguide = () => {
 
                         <ModalBody py={20}>
                             <Text>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Scelerisque fermentum dui faucibus in. Vulputate odio ut enim blandit volutpat maecenas. Vitae auctor eu augue ut lectus arcu bibendum at varius. Suspendisse interdum consectetur libero id faucibus nisl tincidunt. Odio ut sem nulla pharetra. Tortor condimentum lacinia quis vel eros donec. Imperdiet nulla malesuada pellentesque elit. Ultrices in iaculis nunc sed. A arcu cursus vitae congue mauris rhoncus aenean vel. Facilisis volutpat est velit egestas dui id. Ipsum faucibus vitae aliquet nec. Tellus cras adipiscing enim eu turpis. Pellentesque habitant morbi tristique senectus et netus et. Scelerisque viverra mauris in aliquam sem fringilla ut. Nisl suscipit adipiscing bibendum est ultricies integer.
-
-                                Volutpat ac tincidunt vitae semper quis. Montes nascetur ridiculus mus mauris. Senectus et netus et malesuada fames ac turpis egestas. Fermentum et sollicitudin ac orci phasellus egestas. Sed sed risus pretium quam vulputate. Quis lectus nulla at volutpat diam ut venenatis tellus in. Integer vitae justo eget magna fermentum. Maecenas ultricies mi eget mauris pharetra et ultrices neque ornare. Purus in massa tempor nec feugiat nisl. In arcu cursus euismod quis viverra nibh cras pulvinar. Ac tortor vitae purus faucibus ornare suspendisse sed nisi. Arcu cursus vitae congue mauris rhoncus aenean vel elit. Velit laoreet id donec ultrices tincidunt. Massa ultricies mi quis hendrerit dolor magna eget est lorem.
-
-                                Et tortor consequat id porta nibh venenatis. Morbi blandit cursus risus at. Massa tincidunt dui ut ornare. Felis imperdiet proin fermentum leo vel. Sodales neque sodales ut etiam sit amet nisl. Nisl vel pretium lectus quam id leo in vitae. Turpis egestas maecenas pharetra convallis posuere. Turpis egestas integer eget aliquet nibh praesent tristique magna sit. Diam maecenas ultricies mi eget mauris. Eu consequat ac felis donec et odio pellentesque diam volutpat. Cras adipiscing enim eu turpis. Consectetur adipiscing elit duis tristique sollicitudin nibh sit amet commodo. Turpis egestas sed tempus urna et pharetra pharetra. Tempor id eu nisl nunc mi ipsum faucibus vitae aliquet. Ut enim blandit volutpat maecenas volutpat blandit aliquam etiam. Blandit massa enim nec dui nunc mattis enim ut. Lorem dolor sed viverra ipsum nunc.
-
-                                Viverra nibh cras pulvinar mattis nunc sed blandit libero volutpat. Diam vel quam elementum pulvinar etiam non quam. Diam vulputate ut pharetra sit amet aliquam id diam maecenas. Diam in arcu cursus euismod quis viverra nibh cras pulvinar. Turpis egestas sed tempus urna et pharetra. Congue quisque egestas diam in arcu cursus euismod. Mi sit amet mauris commodo quis imperdiet massa tincidunt. Sed viverra ipsum nunc aliquet bibendum enim facilisis gravida neque. Leo integer malesuada nunc vel risus commodo. Metus dictum at tempor commodo ullamcorper a lacus. Diam vel quam elementum pulvinar etiam non. Urna cursus eget nunc scelerisque viverra mauris in. Ullamcorper velit sed ullamcorper morbi.
-
-                                Senectus et netus et malesuada fames ac turpis. Eu turpis egestas pretium aenean pharetra magna ac placerat. Curabitur vitae nunc sed velit. Feugiat pretium nibh ipsum consequat nisl. Sed vulputate odio ut enim blandit volutpat maecenas. Semper eget duis at tellus. Quis lectus nulla at volutpat diam ut venenatis. Pellentesque nec nam aliquam sem et tortor consequat id porta. Rhoncus aenean vel elit scelerisque mauris pellentesque. Facilisis mauris sit amet massa vitae tortor condimentum lacinia. Ac ut consequat semper viverra nam libero justo laoreet sit. Ornare suspendisse sed nisi lacus sed. Sit amet risus nullam eget felis eget. Auctor neque vitae tempus quam pellentesque. Congue eu consequat ac felis donec.
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                Scelerisque fermentum dui faucibus in. Vulputate odio ut enim
+                                blandit volutpat maecenas. Vitae auctor eu augue ut lectus arcu
+                                bibendum at varius. Suspendisse interdum consectetur libero id
+                                faucibus nisl tincidunt. Odio ut sem nulla pharetra. Tortor
+                                condimentum lacinia quis vel eros donec. Imperdiet nulla malesuada
+                                pellentesque elit. Ultrices in iaculis nunc sed. A arcu cursus vitae
+                                congue mauris rhoncus aenean vel. Facilisis volutpat est velit
+                                egestas dui id. Ipsum faucibus vitae aliquet nec. Tellus cras
+                                adipiscing enim eu turpis. Pellentesque habitant morbi tristique
+                                senectus et netus et. Scelerisque viverra mauris in aliquam sem
+                                fringilla ut. Nisl suscipit adipiscing bibendum est ultricies
+                                integer. Volutpat ac tincidunt vitae semper quis. Montes nascetur
+                                ridiculus mus mauris. Senectus et netus et malesuada fames ac turpis
+                                egestas. Fermentum et sollicitudin ac orci phasellus egestas. Sed
+                                sed risus pretium quam vulputate. Quis lectus nulla at volutpat diam
+                                ut venenatis tellus in. Integer vitae justo eget magna fermentum.
+                                Maecenas ultricies mi eget mauris pharetra et ultrices neque ornare.
+                                Purus in massa tempor nec feugiat nisl. In arcu cursus euismod quis
+                                viverra nibh cras pulvinar. Ac tortor vitae purus faucibus ornare
+                                suspendisse sed nisi. Arcu cursus vitae congue mauris rhoncus aenean
+                                vel elit. Velit laoreet id donec ultrices tincidunt. Massa ultricies
+                                mi quis hendrerit dolor magna eget est lorem. Et tortor consequat id
+                                porta nibh venenatis. Morbi blandit cursus risus at. Massa tincidunt
+                                dui ut ornare. Felis imperdiet proin fermentum leo vel. Sodales
+                                neque sodales ut etiam sit amet nisl. Nisl vel pretium lectus quam
+                                id leo in vitae. Turpis egestas maecenas pharetra convallis posuere.
+                                Turpis egestas integer eget aliquet nibh praesent tristique magna
+                                sit. Diam maecenas ultricies mi eget mauris. Eu consequat ac felis
+                                donec et odio pellentesque diam volutpat. Cras adipiscing enim eu
+                                turpis. Consectetur adipiscing elit duis tristique sollicitudin nibh
+                                sit amet commodo. Turpis egestas sed tempus urna et pharetra
+                                pharetra. Tempor id eu nisl nunc mi ipsum faucibus vitae aliquet. Ut
+                                enim blandit volutpat maecenas volutpat blandit aliquam etiam.
+                                Blandit massa enim nec dui nunc mattis enim ut. Lorem dolor sed
+                                viverra ipsum nunc. Viverra nibh cras pulvinar mattis nunc sed
+                                blandit libero volutpat. Diam vel quam elementum pulvinar etiam non
+                                quam. Diam vulputate ut pharetra sit amet aliquam id diam maecenas.
+                                Diam in arcu cursus euismod quis viverra nibh cras pulvinar. Turpis
+                                egestas sed tempus urna et pharetra. Congue quisque egestas diam in
+                                arcu cursus euismod. Mi sit amet mauris commodo quis imperdiet massa
+                                tincidunt. Sed viverra ipsum nunc aliquet bibendum enim facilisis
+                                gravida neque. Leo integer malesuada nunc vel risus commodo. Metus
+                                dictum at tempor commodo ullamcorper a lacus. Diam vel quam
+                                elementum pulvinar etiam non. Urna cursus eget nunc scelerisque
+                                viverra mauris in. Ullamcorper velit sed ullamcorper morbi. Senectus
+                                et netus et malesuada fames ac turpis. Eu turpis egestas pretium
+                                aenean pharetra magna ac placerat. Curabitur vitae nunc sed velit.
+                                Feugiat pretium nibh ipsum consequat nisl. Sed vulputate odio ut
+                                enim blandit volutpat maecenas. Semper eget duis at tellus. Quis
+                                lectus nulla at volutpat diam ut venenatis. Pellentesque nec nam
+                                aliquam sem et tortor consequat id porta. Rhoncus aenean vel elit
+                                scelerisque mauris pellentesque. Facilisis mauris sit amet massa
+                                vitae tortor condimentum lacinia. Ac ut consequat semper viverra nam
+                                libero justo laoreet sit. Ornare suspendisse sed nisi lacus sed. Sit
+                                amet risus nullam eget felis eget. Auctor neque vitae tempus quam
+                                pellentesque. Congue eu consequat ac felis donec.
                             </Text>
                         </ModalBody>
                     </ModalContent>
                 </Modal>
-
                 <Modal
                     isOpen={isLargeModalOpen}
                     onClose={onLargeModalClose}
@@ -583,16 +630,47 @@ const Styleguide = () => {
 
                         <ModalBody py={20}>
                             <Text>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Scelerisque fermentum dui faucibus in. Vulputate odio ut enim blandit volutpat maecenas. Vitae auctor eu augue ut lectus arcu bibendum at varius. Suspendisse interdum consectetur libero id faucibus nisl tincidunt. Odio ut sem nulla pharetra. Tortor condimentum lacinia quis vel eros donec. Imperdiet nulla malesuada pellentesque elit. Ultrices in iaculis nunc sed. A arcu cursus vitae congue mauris rhoncus aenean vel. Facilisis volutpat est velit egestas dui id. Ipsum faucibus vitae aliquet nec. Tellus cras adipiscing enim eu turpis. Pellentesque habitant morbi tristique senectus et netus et. Scelerisque viverra mauris in aliquam sem fringilla ut. Nisl suscipit adipiscing bibendum est ultricies integer.
-
-                                Volutpat ac tincidunt vitae semper quis. Montes nascetur ridiculus mus mauris. Senectus et netus et malesuada fames ac turpis egestas. Fermentum et sollicitudin ac orci phasellus egestas. Sed sed risus pretium quam vulputate. Quis lectus nulla at volutpat diam ut venenatis tellus in. Integer vitae justo eget magna fermentum. Maecenas ultricies mi eget mauris pharetra et ultrices neque ornare. Purus in massa tempor nec feugiat nisl. In arcu cursus euismod quis viverra nibh cras pulvinar. Ac tortor vitae purus faucibus ornare suspendisse sed nisi. Arcu cursus vitae congue mauris rhoncus aenean vel elit. Velit laoreet id donec ultrices tincidunt. Massa ultricies mi quis hendrerit dolor magna eget est lorem.
-
-                                Et tortor consequat id porta nibh venenatis. Morbi blandit cursus risus at. Massa tincidunt dui ut ornare. Felis imperdiet proin fermentum leo vel. Sodales neque sodales ut etiam sit amet nisl. Nisl vel pretium lectus quam id leo in vitae. Turpis egestas maecenas pharetra convallis posuere. Turpis egestas integer eget aliquet nibh praesent tristique magna sit. Diam maecenas ultricies mi eget mauris. Eu consequat ac felis donec et odio pellentesque diam volutpat. Cras adipiscing enim eu turpis. Consectetur adipiscing elit duis tristique sollicitudin nibh sit amet commodo. Turpis egestas sed tempus urna et pharetra pharetra. Tempor id eu nisl nunc mi ipsum faucibus vitae aliquet. Ut enim blandit volutpat maecenas volutpat blandit aliquam etiam. Blandit massa enim nec dui nunc mattis enim ut. Lorem dolor sed viverra ipsum nunc.
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                Scelerisque fermentum dui faucibus in. Vulputate odio ut enim
+                                blandit volutpat maecenas. Vitae auctor eu augue ut lectus arcu
+                                bibendum at varius. Suspendisse interdum consectetur libero id
+                                faucibus nisl tincidunt. Odio ut sem nulla pharetra. Tortor
+                                condimentum lacinia quis vel eros donec. Imperdiet nulla malesuada
+                                pellentesque elit. Ultrices in iaculis nunc sed. A arcu cursus vitae
+                                congue mauris rhoncus aenean vel. Facilisis volutpat est velit
+                                egestas dui id. Ipsum faucibus vitae aliquet nec. Tellus cras
+                                adipiscing enim eu turpis. Pellentesque habitant morbi tristique
+                                senectus et netus et. Scelerisque viverra mauris in aliquam sem
+                                fringilla ut. Nisl suscipit adipiscing bibendum est ultricies
+                                integer. Volutpat ac tincidunt vitae semper quis. Montes nascetur
+                                ridiculus mus mauris. Senectus et netus et malesuada fames ac turpis
+                                egestas. Fermentum et sollicitudin ac orci phasellus egestas. Sed
+                                sed risus pretium quam vulputate. Quis lectus nulla at volutpat diam
+                                ut venenatis tellus in. Integer vitae justo eget magna fermentum.
+                                Maecenas ultricies mi eget mauris pharetra et ultrices neque ornare.
+                                Purus in massa tempor nec feugiat nisl. In arcu cursus euismod quis
+                                viverra nibh cras pulvinar. Ac tortor vitae purus faucibus ornare
+                                suspendisse sed nisi. Arcu cursus vitae congue mauris rhoncus aenean
+                                vel elit. Velit laoreet id donec ultrices tincidunt. Massa ultricies
+                                mi quis hendrerit dolor magna eget est lorem. Et tortor consequat id
+                                porta nibh venenatis. Morbi blandit cursus risus at. Massa tincidunt
+                                dui ut ornare. Felis imperdiet proin fermentum leo vel. Sodales
+                                neque sodales ut etiam sit amet nisl. Nisl vel pretium lectus quam
+                                id leo in vitae. Turpis egestas maecenas pharetra convallis posuere.
+                                Turpis egestas integer eget aliquet nibh praesent tristique magna
+                                sit. Diam maecenas ultricies mi eget mauris. Eu consequat ac felis
+                                donec et odio pellentesque diam volutpat. Cras adipiscing enim eu
+                                turpis. Consectetur adipiscing elit duis tristique sollicitudin nibh
+                                sit amet commodo. Turpis egestas sed tempus urna et pharetra
+                                pharetra. Tempor id eu nisl nunc mi ipsum faucibus vitae aliquet. Ut
+                                enim blandit volutpat maecenas volutpat blandit aliquam etiam.
+                                Blandit massa enim nec dui nunc mattis enim ut. Lorem dolor sed
+                                viverra ipsum nunc.
                             </Text>
                         </ModalBody>
                     </ModalContent>
                 </Modal>
-
                 <Modal
                     isOpen={isFullscreenModalOpen}
                     onClose={onFullscreenModalClose}
@@ -613,11 +691,43 @@ const Styleguide = () => {
 
                         <ModalBody py={20}>
                             <Text>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Scelerisque fermentum dui faucibus in. Vulputate odio ut enim blandit volutpat maecenas. Vitae auctor eu augue ut lectus arcu bibendum at varius. Suspendisse interdum consectetur libero id faucibus nisl tincidunt. Odio ut sem nulla pharetra. Tortor condimentum lacinia quis vel eros donec. Imperdiet nulla malesuada pellentesque elit. Ultrices in iaculis nunc sed. A arcu cursus vitae congue mauris rhoncus aenean vel. Facilisis volutpat est velit egestas dui id. Ipsum faucibus vitae aliquet nec. Tellus cras adipiscing enim eu turpis. Pellentesque habitant morbi tristique senectus et netus et. Scelerisque viverra mauris in aliquam sem fringilla ut. Nisl suscipit adipiscing bibendum est ultricies integer.
-
-                                Volutpat ac tincidunt vitae semper quis. Montes nascetur ridiculus mus mauris. Senectus et netus et malesuada fames ac turpis egestas. Fermentum et sollicitudin ac orci phasellus egestas. Sed sed risus pretium quam vulputate. Quis lectus nulla at volutpat diam ut venenatis tellus in. Integer vitae justo eget magna fermentum. Maecenas ultricies mi eget mauris pharetra et ultrices neque ornare. Purus in massa tempor nec feugiat nisl. In arcu cursus euismod quis viverra nibh cras pulvinar. Ac tortor vitae purus faucibus ornare suspendisse sed nisi. Arcu cursus vitae congue mauris rhoncus aenean vel elit. Velit laoreet id donec ultrices tincidunt. Massa ultricies mi quis hendrerit dolor magna eget est lorem.
-
-                                Et tortor consequat id porta nibh venenatis. Morbi blandit cursus risus at. Massa tincidunt dui ut ornare. Felis imperdiet proin fermentum leo vel. Sodales neque sodales ut etiam sit amet nisl. Nisl vel pretium lectus quam id leo in vitae. Turpis egestas maecenas pharetra convallis posuere. Turpis egestas integer eget aliquet nibh praesent tristique magna sit. Diam maecenas ultricies mi eget mauris. Eu consequat ac felis donec et odio pellentesque diam volutpat. Cras adipiscing enim eu turpis. Consectetur adipiscing elit duis tristique sollicitudin nibh sit amet commodo. Turpis egestas sed tempus urna et pharetra pharetra. Tempor id eu nisl nunc mi ipsum faucibus vitae aliquet. Ut enim blandit volutpat maecenas volutpat blandit aliquam etiam. Blandit massa enim nec dui nunc mattis enim ut. Lorem dolor sed viverra ipsum nunc.
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                Scelerisque fermentum dui faucibus in. Vulputate odio ut enim
+                                blandit volutpat maecenas. Vitae auctor eu augue ut lectus arcu
+                                bibendum at varius. Suspendisse interdum consectetur libero id
+                                faucibus nisl tincidunt. Odio ut sem nulla pharetra. Tortor
+                                condimentum lacinia quis vel eros donec. Imperdiet nulla malesuada
+                                pellentesque elit. Ultrices in iaculis nunc sed. A arcu cursus vitae
+                                congue mauris rhoncus aenean vel. Facilisis volutpat est velit
+                                egestas dui id. Ipsum faucibus vitae aliquet nec. Tellus cras
+                                adipiscing enim eu turpis. Pellentesque habitant morbi tristique
+                                senectus et netus et. Scelerisque viverra mauris in aliquam sem
+                                fringilla ut. Nisl suscipit adipiscing bibendum est ultricies
+                                integer. Volutpat ac tincidunt vitae semper quis. Montes nascetur
+                                ridiculus mus mauris. Senectus et netus et malesuada fames ac turpis
+                                egestas. Fermentum et sollicitudin ac orci phasellus egestas. Sed
+                                sed risus pretium quam vulputate. Quis lectus nulla at volutpat diam
+                                ut venenatis tellus in. Integer vitae justo eget magna fermentum.
+                                Maecenas ultricies mi eget mauris pharetra et ultrices neque ornare.
+                                Purus in massa tempor nec feugiat nisl. In arcu cursus euismod quis
+                                viverra nibh cras pulvinar. Ac tortor vitae purus faucibus ornare
+                                suspendisse sed nisi. Arcu cursus vitae congue mauris rhoncus aenean
+                                vel elit. Velit laoreet id donec ultrices tincidunt. Massa ultricies
+                                mi quis hendrerit dolor magna eget est lorem. Et tortor consequat id
+                                porta nibh venenatis. Morbi blandit cursus risus at. Massa tincidunt
+                                dui ut ornare. Felis imperdiet proin fermentum leo vel. Sodales
+                                neque sodales ut etiam sit amet nisl. Nisl vel pretium lectus quam
+                                id leo in vitae. Turpis egestas maecenas pharetra convallis posuere.
+                                Turpis egestas integer eget aliquet nibh praesent tristique magna
+                                sit. Diam maecenas ultricies mi eget mauris. Eu consequat ac felis
+                                donec et odio pellentesque diam volutpat. Cras adipiscing enim eu
+                                turpis. Consectetur adipiscing elit duis tristique sollicitudin nibh
+                                sit amet commodo. Turpis egestas sed tempus urna et pharetra
+                                pharetra. Tempor id eu nisl nunc mi ipsum faucibus vitae aliquet. Ut
+                                enim blandit volutpat maecenas volutpat blandit aliquam etiam.
+                                Blandit massa enim nec dui nunc mattis enim ut. Lorem dolor sed
+                                viverra ipsum nunc.
                             </Text>
 
                             <Button
@@ -631,14 +741,11 @@ const Styleguide = () => {
                         </ModalBody>
                     </ModalContent>
                 </Modal>
-
                 {/* Drawer */}
                 <Heading fontSize="24px" mt="50px">
-                Drawer
+                    Drawer
                 </Heading>
-
                 <Divider my="15px" />
-
                 <SimpleGrid
                     columns={{sm: 1, md: 4}}
                     spacing={10}
@@ -682,7 +789,6 @@ const Styleguide = () => {
                         Drawer from left
                     </Button>
                 </SimpleGrid>
-
                 <Drawer
                     isOpen={isDrawerOnTopOpen}
                     onClose={onDrawerOnTopClose}
@@ -697,16 +803,15 @@ const Styleguide = () => {
                             <p>
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                                 eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                Consequat nisl vel pretium lectus quam id. Semper quis lectus
-                                nulla at volutpat diam ut venenatis. Dolor morbi non arcu risus
-                                quis varius quam quisque. Massa ultricies mi quis hendrerit dolor
-                                magna eget est lorem. Erat imperdiet sed euismod nisi porta.
-                                Lectus vestibulum mattis ullamcorper velit.
+                                Consequat nisl vel pretium lectus quam id. Semper quis lectus nulla
+                                at volutpat diam ut venenatis. Dolor morbi non arcu risus quis
+                                varius quam quisque. Massa ultricies mi quis hendrerit dolor magna
+                                eget est lorem. Erat imperdiet sed euismod nisi porta. Lectus
+                                vestibulum mattis ullamcorper velit.
                             </p>
                         </DrawerBody>
                     </DrawerContent>
                 </Drawer>
-
                 <Drawer
                     isOpen={isDrawerOnRightOpen}
                     onClose={onDrawerOnRightClose}
@@ -721,16 +826,15 @@ const Styleguide = () => {
                             <p>
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                                 eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                Consequat nisl vel pretium lectus quam id. Semper quis lectus
-                                nulla at volutpat diam ut venenatis. Dolor morbi non arcu risus
-                                quis varius quam quisque. Massa ultricies mi quis hendrerit dolor
-                                magna eget est lorem. Erat imperdiet sed euismod nisi porta.
-                                Lectus vestibulum mattis ullamcorper velit.
+                                Consequat nisl vel pretium lectus quam id. Semper quis lectus nulla
+                                at volutpat diam ut venenatis. Dolor morbi non arcu risus quis
+                                varius quam quisque. Massa ultricies mi quis hendrerit dolor magna
+                                eget est lorem. Erat imperdiet sed euismod nisi porta. Lectus
+                                vestibulum mattis ullamcorper velit.
                             </p>
                         </DrawerBody>
                     </DrawerContent>
                 </Drawer>
-
                 <Drawer
                     isOpen={isDrawerOnBottomOpen}
                     onClose={onDrawerOnBottomClose}
@@ -745,16 +849,15 @@ const Styleguide = () => {
                             <p>
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                                 eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                Consequat nisl vel pretium lectus quam id. Semper quis lectus
-                                nulla at volutpat diam ut venenatis. Dolor morbi non arcu risus
-                                quis varius quam quisque. Massa ultricies mi quis hendrerit dolor
-                                magna eget est lorem. Erat imperdiet sed euismod nisi porta.
-                                Lectus vestibulum mattis ullamcorper velit.
+                                Consequat nisl vel pretium lectus quam id. Semper quis lectus nulla
+                                at volutpat diam ut venenatis. Dolor morbi non arcu risus quis
+                                varius quam quisque. Massa ultricies mi quis hendrerit dolor magna
+                                eget est lorem. Erat imperdiet sed euismod nisi porta. Lectus
+                                vestibulum mattis ullamcorper velit.
                             </p>
                         </DrawerBody>
                     </DrawerContent>
                 </Drawer>
-
                 <Drawer
                     isOpen={isDrawerOnLeftOpen}
                     onClose={onDrawerOnLeftClose}
@@ -771,20 +874,16 @@ const Styleguide = () => {
                             <p>
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                                 eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                Consequat nisl vel pretium lectus quam id. Semper quis lectus
-                                nulla at volutpat diam ut venenatis. Dolor morbi non arcu risus
-                                quis varius quam quisque. Massa ultricies mi quis hendrerit dolor
-                                magna eget est lorem. Erat imperdiet sed euismod nisi porta.
-                                Lectus vestibulum mattis ullamcorper velit.
+                                Consequat nisl vel pretium lectus quam id. Semper quis lectus nulla
+                                at volutpat diam ut venenatis. Dolor morbi non arcu risus quis
+                                varius quam quisque. Massa ultricies mi quis hendrerit dolor magna
+                                eget est lorem. Erat imperdiet sed euismod nisi porta. Lectus
+                                vestibulum mattis ullamcorper velit.
                             </p>
                         </DrawerBody>
 
                         <DrawerFooter>
-                            <Flex
-                                justifyContent="center"
-                                alignItems="center"
-                                w="full"
-                            >
+                            <Flex justifyContent="center" alignItems="center" w="full">
                                 <Button
                                     type="button"
                                     variant={'primary'}
@@ -797,7 +896,6 @@ const Styleguide = () => {
                         </DrawerFooter>
                     </DrawerContent>
                 </Drawer>
-
                 {/* Accordion */}
                 <Heading fontSize="24px" mt="50px">
                     Accordion
@@ -1069,8 +1167,8 @@ const Styleguide = () => {
                                 />
                                 <InputRightElement>
                                     <IconButton
-                                        variant="basiced"
-                                        icon={<PasswordIcon color="fullBlack" boxSize={6} />}
+                                        size="inputElement"
+                                        icon={<PasswordIcon color="fullBlack" boxSize={5} />}
                                         onClick={() => setHidePassword(!hidePassword)}
                                     />
                                 </InputRightElement>
@@ -1090,6 +1188,7 @@ const Styleguide = () => {
                     <SimpleGrid columns={{sm: 1, md: 2}} spacing={10} mb="30px">
                         <FormControl variant="floating" isInvalid={errors.selectOne} isRequired>
                             <Select
+                                icon={<ChevronDownIcon />}
                                 id="selectOne"
                                 name="selectOne"
                                 placeholder=""
@@ -1114,7 +1213,13 @@ const Styleguide = () => {
                         </FormControl>
 
                         <FormControl variant="floating" isRequired>
-                            <Select id="selectTwo" name="selectTwo" placeholder="" variant="basic">
+                            <Select
+                                icon={<ChevronDownIcon />}
+                                id="selectTwo"
+                                name="selectTwo"
+                                placeholder=""
+                                variant="basic"
+                            >
                                 <option value="fr">France</option>
                                 <option value="usa">United States of America</option>
                                 <option value="gb">United Kingdom</option>
@@ -1127,6 +1232,7 @@ const Styleguide = () => {
 
                         <FormControl variant="floating" isRequired isDisabled>
                             <Select
+                                icon={<ChevronDownIcon />}
                                 id="selectThree"
                                 name="selectThree"
                                 placeholder=""
@@ -1150,6 +1256,7 @@ const Styleguide = () => {
                             isDisabled
                         >
                             <Select
+                                icon={<ChevronDownIcon />}
                                 id="selectFour"
                                 name="selectFour"
                                 placeholder=""
@@ -1180,6 +1287,7 @@ const Styleguide = () => {
                             isDisabled
                         >
                             <Select
+                                icon={<ChevronDownIcon />}
                                 id="selectFive"
                                 name="selectFive"
                                 placeholder=""
@@ -1201,6 +1309,63 @@ const Styleguide = () => {
                                 Default select, empty value for first option, validation, disabled
                             </FormHelperText>
                         </FormControl>
+                    </SimpleGrid>
+
+                    <Heading fontSize="18px" mb="15px">
+                        Phone
+                    </Heading>
+
+                    <SimpleGrid columns={{sm: 1, md: 2}} spacing={10} mb="30px">
+                        <PhoneField
+                            name="phone"
+                            label="Label"
+                            defaultCountry="FR"
+                            isRequired
+                            countries={[
+                                {icon: <FlagFRIcon boxSize={8} />, value: 'FR', label: 'France'},
+                                {
+                                    icon: <FlagUSIcon boxSize={8} />,
+                                    value: 'US',
+                                    label: 'United States'
+                                }
+                            ]}
+                            control={control}
+                            error={errors.phone}
+                            rules={{
+                                required: intl.formatMessage({
+                                    defaultMessage: 'Please enter your phone number.',
+                                    id: 'fieldex.phone'
+                                })
+                            }}
+                        />
+                    </SimpleGrid>
+
+                    <Heading fontSize="18px" mb="15px">
+                        Date
+                    </Heading>
+
+                    <SimpleGrid
+                        columns={{sm: 1, md: 2}}
+                        spacing={10}
+                        mb="30px"
+                        alignItems={'center'}
+                    >
+                        <DateField
+                            name="date"
+                            label="Label"
+                            control={control}
+                            error={errors.date}
+                            rules={{
+                                required: intl.formatMessage({
+                                    defaultMessage: 'Please enter your birth date.',
+                                    id: 'fieldex.date'
+                                })
+                            }}
+                        />
+                        <Text fontSize={'12px'}>{`${intl.formatMessage({
+                            defaultMessage: 'Selected date :',
+                            id: 'fieldex.selectedDate'
+                        })} ${watchDate || 'N/A'}`}</Text>
                     </SimpleGrid>
 
                     <Heading fontSize="18px" mb="15px">
@@ -1289,6 +1454,32 @@ const Styleguide = () => {
                             Click me to submit
                         </Button>
                     </Flex>
+                </form>
+                <form
+                    id="styleguide-form2"
+                    data-testid="sf-check-styleguide-form2"
+                    onSubmit={handleSubmit2(onSubmit)}
+                    noValidate
+                >
+                    <Heading fontSize="18px" mb="15px">
+                        Input with submit
+                    </Heading>
+
+                    <SimpleGrid columns={{sm: 1, md: 2}} spacing={10} mb="30px">
+                        <InputWithSubmit
+                            name="inputwithsubmit"
+                            label="Label"
+                            control={control2}
+                            error={errors2.inputwithsubmit}
+                            rules={{
+                                required: intl.formatMessage({
+                                    defaultMessage: 'Please enter something',
+                                    id: 'fieldex.inputwithsubmit'
+                                })
+                            }}
+                            isSubmitting={isSubmitting2}
+                        />
+                    </SimpleGrid>
                 </form>
             </Container>
         </Box>

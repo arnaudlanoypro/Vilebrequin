@@ -8,6 +8,7 @@ import styles from '../theme/foundations/styles'
 import {fontSizes, fontWeights, lineHeights} from '../theme/foundations/typography'
 import fonts from '../theme/foundations/fonts'
 import space from '../theme/foundations/space'
+import shadows from '../theme/foundations/shadows'
 
 // Base component style overrides
 import Button from './components/base/button'
@@ -29,7 +30,9 @@ import Drawer from './components/base/drawer'
 // Project Component style overrides
 import App from './components/project/_app'
 import Breadcrumb from './components/project/breadcrumb'
-import Footer from './components/project/footer'
+import PhoneField from './components/project/phoneField'
+import DateField from './components/project/dateField'
+// import Footer from './components/project/footer'
 
 // Please refer to the Chakra-Ui theme customization docs found
 // here https://chakra-ui.com/docs/theming/customize-theme to learn
@@ -46,6 +49,7 @@ export const overrides = {
     fontSizes,
     fontWeights,
     lineHeights,
+    shadows,
     components: {
         ...retailReactAppTheme.components,
 
@@ -69,7 +73,9 @@ export const overrides = {
         // project components
         App,
         Breadcrumb,
-        Footer,
+        PhoneField,
+        DateField
+        // Footer
     }
 }
 

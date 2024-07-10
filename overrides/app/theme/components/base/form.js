@@ -4,32 +4,35 @@ export default {
             container: {
                 _focusWithin: {
                     label: {
-                        transform: "scale(0.85) translateY(-28px)"
+                        transform: 'scale(0.9) translateY(-29px)',
+                        backgroundColor: 'white'
                     }
                 },
-                "input:not(:placeholder-shown) + label, .chakra-select__wrapper + label, textarea:not(:placeholder-shown) ~ label, .chakra-input__group:has(input:not(:placeholder-shown)) + label, .chakra-input__group:has(.chakra-select__wrapper) + label": {
-                    transform: "scale(0.85) translateY(-28px)"
-                },
+                'input:not(:placeholder-shown) + label, .chakra-select__wrapper + label, textarea:not(:placeholder-shown) ~ label, .chakra-input__group:has(input:not(:placeholder-shown)) + label, .chakra-input__group:has(.chakra-select__wrapper) + label':
+                    {
+                        transform: 'scale(0.9) translateY(-29px)',
+                        backgroundColor: 'white'
+                    },
                 label: {
-                    top: "11px",
+                    top: '17px',
                     left: 0,
                     zIndex: 2,
-                    position: "absolute",
-                    backgroundColor: "white",
-                    pointerEvents: "none",
-                    my: "1px",
-                    ml: "14px",
-                    px: "6px",
-                    transformOrigin: "left top",
-                    fontSize: "12px",
-                    lineHeight: "2",
-                    color: "darkGray",
-                    _disabled : {
-                        opacity: "1",
-                        color: "dimGray",
+                    position: 'absolute',
+                    pointerEvents: 'none',
+                    my: '1px',
+                    ml: '14px',
+                    px: '6px',
+                    transformOrigin: 'left top',
+                    fontSize: '12px',
+                    fontWeight: 'normal',
+                    lineHeight: '1.25',
+                    color: 'darkGray',
+                    _disabled: {
+                        opacity: '1',
+                        color: 'dimGray'
                     },
-                    _invalid : {
-                        color: "red",
+                    _invalid: {
+                        color: 'red'
                     }
                 }
             }

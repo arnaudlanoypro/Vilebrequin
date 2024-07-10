@@ -6,22 +6,34 @@ export default {
     variants: {
         basic: {
             field: {
-                borderWidth: "1px",
-                borderColor: "borderGray",
-                h: "50px",
-                borderRadius: "0",
-                px: "20",
+                borderWidth: '1px',
+                borderColor: 'borderGray',
+                h: '50px',
+                borderRadius: '0',
+                px: '18',
                 _focus: {
-                    borderColor: 'fullBlack',
+                    borderColor: 'fullBlack'
                 },
                 _disabled: {
-                    opacity: "1",
-                    borderColor: "borderGray",
-                    backgroundColor: "whiteSmoke",
+                    opacity: '1',
+                    borderColor: 'borderGray',
+                    backgroundColor: 'whiteSmoke'
                 },
                 _invalid: {
-                    borderColor: "red",
+                    color: 'red',
+                    borderColor: 'red'
                 },
+                _focusVisible: {
+                    boxShadow: `0 0 0 1px lightBlue`
+                }
+            },
+            icon: {
+                zIndex: 1,
+                fontSize: '16px',
+                width: '50px',
+                _invalid: {
+                    color: 'red'
+                }
             }
         }
     }

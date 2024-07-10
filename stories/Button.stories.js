@@ -52,3 +52,9 @@ export const InvertedOutline = {
         variant: 'invertedOutline'
     }
 }
+
+export const Link = {
+    args: {
+        variant: 'link'
+    }
+}

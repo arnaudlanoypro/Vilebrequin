@@ -1,28 +1,35 @@
+import colors from '../../foundations/colors'
+
+const buttonBaseStyle = {
+    _active: {
+        color: 'white',
+        bg: 'fullBlack',
+        border: 'none'
+    },
+    _disabled: {
+        opacity: 1
+    }
+}
+
 export default {
     baseStyle: {
+        bg: 'transparent',
+        color: 'fullBlack',
         borderRadius: 'none',
         fontSize: 'md',
-        bg: 'fullBlack',
-        color: 'white',
         textTransform: 'uppercase',
-        fontWeight: 'medium',
-        _focus: {
-            outline: '3px solid #4794F7',
-            outlineOffset: '0'
-        },
-        _active: {
-            color: 'white',
-            bg: 'fullBlack',
-            border: 'none'
-        },
-        _disabled: {
-            opacity: 1
-        }
+        fontWeight: 'medium'
     },
     variants: {
         primary: {
+            ...buttonBaseStyle,
+            bg: 'fullBlack',
+            color: 'white',
             _hover: {
-                backgroundColor: 'darkGray'
+                backgroundColor: 'darkGray',
+                _disabled: {
+                    bg: 'borderGray'
+                }
             },
             _disabled: {
                 color: 'darkGray',
@@ -30,13 +37,17 @@ export default {
             }
         },
         secondary: {
+            ...buttonBaseStyle,
             color: 'fullBlack',
             border: '1px solid',
             borderColor: 'gray',
             bg: 'transparent',
             _hover: {
                 backgroundColor: 'transparent',
-                borderColor: 'darkGray'
+                borderColor: 'darkGray',
+                _disabled: {
+                    borderColor: 'borderGray'
+                }
             },
             _focus: {
                 color: 'white',
@@ -49,17 +60,23 @@ export default {
             }
         },
         tertiary: {
+            ...buttonBaseStyle,
             color: 'fullBlack',
             bg: 'white',
             _hover: {
                 color: 'white',
-                backgroundColor: 'fullBlack'
+                backgroundColor: 'fullBlack',
+                _disabled: {
+                    color: 'darkGray',
+                    bg: 'white'
+                }
             },
             _disabled: {
                 color: 'darkGray'
             }
         },
         invertedOutline: {
+            ...buttonBaseStyle,
             color: 'white',
             bg: 'transparent',
             border: '1px solid',
@@ -67,16 +84,33 @@ export default {
             _hover: {
                 color: 'fullBlack',
                 backgroundColor: 'white',
-                border: 'none'
+                borderColor: 'transparent',
+                _disabled: {
+                    color: 'white',
+                    borderColor: 'white'
+                }
             },
             _focus: {
                 color: 'white',
                 bg: 'fullBlack',
                 borderColor: 'fullBlack'
             }
+        },
+        link: {
+            ...buttonBaseStyle,
+            color: 'fullBlack',
+            textTransform: 'none',
+            textDecoration: 'underline',
+            fontWeight: 'medium',
+            lineHeight: '110%',
+            letterSpacing: '0.01em'
         }
     },
     sizes: {
+        inputElement: {
+            height: '40px',
+            width: '40px'
+        },
         md: {
             height: '50px',
             minWidth: 11,

@@ -1,27 +1,41 @@
+import {element} from 'prop-types'
+
 export default {
     sizes: {},
     baseStyle: {
-        field: {}
+        field: {},
+        element: {
+            height: '50px',
+            mr: '8px'
+        }
     },
     variants: {
         basic: {
             field: {
-                borderWidth: "1px",
-                borderColor: "borderGray",
-                h: "50px",
-                borderRadius: "0",
-                px: "20",
+                borderWidth: '1px',
+                borderColor: 'borderGray',
+                height: '50px',
+                borderRadius: '0',
+                paddingX: '18',
                 _focus: {
-                    borderColor: 'fullBlack',
+                    borderWidth: '1px',
+                    borderColor: 'fullBlack'
                 },
                 _disabled: {
-                    opacity: "1",
-                    borderColor: "borderGray",
-                    backgroundColor: "whiteSmoke",
+                    opacity: '1',
+                    borderColor: 'borderGray',
+                    backgroundColor: 'whiteSmoke'
                 },
                 _invalid: {
-                    borderColor: "red",
+                    color: 'red',
+                    borderColor: 'red',
+                    _focus: {
+                        borderColor: 'red'
+                    }
                 },
+                _focusVisible: {
+                    boxShadow: `0 0 0 1px lightBlue`
+                }
             }
         }
     }

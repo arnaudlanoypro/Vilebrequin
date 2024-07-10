@@ -18,11 +18,7 @@ import {
     Select,
     Checkbox
 } from '@salesforce/retail-react-app/app/components/shared/ui'
-import {
-    VisibilityIcon,
-    VisibilityOffIcon,
-    AlertIcon
-} from '@salesforce/retail-react-app/app/components/icons'
+import {VisibilityIcon, VisibilityOffIcon, ChevronDownIcon} from '../icons'
 import {useIntl} from 'react-intl'
 
 const Field = ({
@@ -33,12 +29,12 @@ const Field = ({
     options = [],
     rules = {},
     error,
-    placeholder,
     inputProps,
     control,
     autoComplete,
     defaultValue,
     helpText,
+    isDisabled,
     children
 }) => {
     const intl = useIntl()
@@ -70,6 +66,7 @@ const Field = ({
                         variant="floating"
                         id={name}
                         isInvalid={error}
+                        isDisabled={isDisabled}
                     >
                         <InputGroup>
                             {['text', 'password', 'email', 'phone', 'tel', 'number'].includes(
@@ -100,9 +97,9 @@ const Field = ({
                             {type === 'password' && (
                                 <InputRightElement>
                                     <IconButton
-                                        variant="ghosted"
+                                        size="inputElement"
                                         aria-label={passwordIconLabel}
-                                        icon={<PasswordIcon color="gray.500" boxSize={6} />}
+                                        icon={<PasswordIcon color="fullBlack" boxSize={5} />}
                                         onClick={() => setHidePassword(!hidePassword)}
                                     />
                                 </InputRightElement>
@@ -110,6 +107,7 @@ const Field = ({
 
                             {type === 'select' && (
                                 <Select
+                                    icon={<ChevronDownIcon />}
                                     variant="basic"
                                     ref={ref}
                                     onChange={onChange}
@@ -173,11 +171,11 @@ Field.propTypes = {
     options: PropTypes.arrayOf(PropTypes.shape({label: PropTypes.string, value: PropTypes.any})),
     rules: PropTypes.object,
     error: PropTypes.shape({message: PropTypes.string}),
-    placeholder: PropTypes.string,
     inputProps: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
     control: PropTypes.object,
     defaultValue: PropTypes.any,
     helpText: PropTypes.any,
+    isDisabled: PropTypes.bool,
     children: PropTypes.any
 }
 
