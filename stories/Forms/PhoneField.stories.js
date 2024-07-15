@@ -1,11 +1,12 @@
 import React from 'react'
 import {useForm} from 'react-hook-form'
-import Field from '../../overrides/app/components/field'
+import PhoneField from '../../overrides/app/components/phone-field'
+import {FlagFRIcon, FlagUSIcon} from '../../overrides/app/components/icons'
 import {IntlProvider} from 'react-intl'
 
 export default {
-    title: 'Molecules/Fields/Select',
-    component: Field,
+    title: 'Forms/PhoneField',
+    component: PhoneField,
     decorators: [
         (Story) => (
             <IntlProvider locale="en">
@@ -19,30 +20,27 @@ export default {
     tags: ['autodocs'],
     args: {
         name: 'default',
-        label: 'Label',
-        formLabel: null,
-        type: 'select',
-        options: [
-            {label: 'Select an option...', value: ''},
-            {label: 'France', value: 'fr'},
-            {label: 'United States of America', value: 'usa'},
-            {label: 'United Kingdom', value: 'gb'}
+        label: 'Phone number',
+        defaultCountry: 'FR',
+        countries: [
+            {icon: <FlagFRIcon boxSize={8} />, value: 'FR', label: 'France'},
+            {
+                icon: <FlagUSIcon boxSize={8} />,
+                value: 'US',
+                label: 'United States'
+            }
         ],
-        rules: {},
-        error: null,
-        inputProps: null,
-        autoComplete: null,
-        defaultValue: '',
-        helpText: '',
-        children: null
+        rules: {
+            required: 'Please enter your phone number.'
+        }
     }
 }
 
 const Template = (args) => {
     const form = useForm()
     return (
-        <Field
-            error={form.formState.errors[`${args.name}Select`]}
+        <PhoneField
+            error={form.formState.errors[`${args.name}PhoneField`]}
             control={form.control}
             {...args}
         />
@@ -60,7 +58,7 @@ Error.args = {
     name: 'error',
     defaultValue: 'Input',
     error: {
-        message: 'Error Message'
+        message: 'Please enter your phone number.'
     }
 }
 

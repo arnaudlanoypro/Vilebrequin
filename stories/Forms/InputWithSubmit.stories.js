@@ -4,7 +4,7 @@ import InputWithSubmit from '../../overrides/app/components/input-with-submit'
 import {IntlProvider} from 'react-intl'
 
 export default {
-    title: 'Molecules/Fields/InputWithSubmit',
+    title: 'Forms/InputWithSubmit',
     component: InputWithSubmit,
     decorators: [
         (Story) => (

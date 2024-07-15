@@ -6,6 +6,7 @@ export default {
     variants: {
         basic: {
             field: {
+                fontSize: ['md', 'md', 'md', '2xl'],
                 borderWidth: '1px',
                 borderColor: 'borderGray',
                 h: '50px',

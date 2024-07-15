@@ -1,4 +1,6 @@
 /** @type { import('@storybook/react-webpack5').StorybookConfig } */
+const NodePolyfillPlugin = require("node-polyfill-webpack-plugin");
+
 const config = {
     stories: ['../stories/**/*.mdx', '../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
     addons: [
@@ -46,6 +48,8 @@ const config = {
                 }
             }
         });
+
+        config.plugins.push(new NodePolyfillPlugin());
 
         return config
     },

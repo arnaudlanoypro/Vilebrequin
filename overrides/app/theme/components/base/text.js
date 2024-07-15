@@ -2,18 +2,18 @@ export default {
     variants: {
         eyeBrowLarge: {
             fontSize: 'xl',
-            fontWeight: 'semibold',
+            fontFamily: 'bodySemiBold',
             letterSpacing: '0.01em'
         },
         eyeBrowSmall: {
             fontSize: 'md',
-            fontWeight: 'medium',
+            fontFamily: 'bodyMedium',
             lineHeight: '120%',
             letterSpacing: '0.01em'
         },
         bodyLarge1: {
             fontSize: 'lg',
-            fontWeight: 'medium',
+            fontFamily: 'bodyMedium',
             lineHeight: '140%',
             letterSpacing: '0.01em'
         },
@@ -24,7 +24,7 @@ export default {
         },
         bodyBase1: {
             fontSize: 'md',
-            fontWeight: 'medium',
+            fontFamily: 'bodyMedium',
             lineHeight: '140%',
             letterSpacing: '0.01em'
         },
@@ -45,7 +45,7 @@ export default {
         },
         descriptor: {
             fontSize: 'xs',
-            fontWeight: 'medium',
+            fontFamily: 'bodyMedium',
             lineHeight: '120%',
             letterSpacing: '0.06em'
         }

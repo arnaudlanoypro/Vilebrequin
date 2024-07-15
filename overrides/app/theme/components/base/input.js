@@ -1,5 +1,3 @@
-import {element} from 'prop-types'
-
 export default {
     sizes: {},
     baseStyle: {
@@ -12,6 +10,7 @@ export default {
     variants: {
         basic: {
             field: {
+                fontSize: ['md', 'md', 'md', '2xl'],
                 borderWidth: '1px',
                 borderColor: 'borderGray',
                 height: '50px',

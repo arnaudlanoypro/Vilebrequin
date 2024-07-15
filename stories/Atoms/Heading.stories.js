@@ -1,7 +1,7 @@
 import {Heading} from '@salesforce/retail-react-app/app/components/shared/ui/Heading'
 
 export default {
-    title: 'Atoms/Typography/Heading',
+    title: 'Atoms/Heading',
     component: Heading,
     parameters: {
         layout: 'centered'

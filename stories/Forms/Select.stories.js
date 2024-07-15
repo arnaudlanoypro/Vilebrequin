@@ -4,7 +4,7 @@ import Field from '../../overrides/app/components/field'
 import {IntlProvider} from 'react-intl'
 
 export default {
-    title: 'Molecules/Fields/BasicInput',
+    title: 'Forms/Select',
     component: Field,
     decorators: [
         (Story) => (
@@ -21,8 +21,13 @@ export default {
         name: 'default',
         label: 'Label',
         formLabel: null,
-        type: 'text',
-        options: [],
+        type: 'select',
+        options: [
+            {label: 'Select an option...', value: ''},
+            {label: 'France', value: 'fr'},
+            {label: 'United States of America', value: 'usa'},
+            {label: 'United Kingdom', value: 'gb'}
+        ],
         rules: {},
         error: null,
         inputProps: null,
@@ -37,7 +42,7 @@ const Template = (args) => {
     const form = useForm()
     return (
         <Field
-            error={form.formState.errors[`${args.name}BasicInput`]}
+            error={form.formState.errors[`${args.name}Select`]}
             control={form.control}
             {...args}
         />

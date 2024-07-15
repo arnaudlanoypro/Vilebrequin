@@ -1,7 +1,7 @@
 import {Text} from '@salesforce/retail-react-app/app/components/shared/ui/Text'
 
 export default {
-    title: 'Atoms/Typography/Text',
+    title: 'Atoms/Text',
     component: Text,
     parameters: {
         layout: 'centered'

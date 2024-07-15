@@ -32,6 +32,7 @@ import App from './components/project/_app'
 import Breadcrumb from './components/project/breadcrumb'
 import PhoneField from './components/project/phoneField'
 import DateField from './components/project/dateField'
+import RadioCard from './components/project/radioCard'
 // import Footer from './components/project/footer'
 
 // Please refer to the Chakra-Ui theme customization docs found
@@ -74,7 +75,8 @@ export const overrides = {
         App,
         Breadcrumb,
         PhoneField,
-        DateField
+        DateField,
+        RadioCard
         // Footer
     }
 }

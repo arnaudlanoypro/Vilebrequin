@@ -19,7 +19,7 @@ const colors = {
     pink: '#E3C9CF',
     orange: '#FE7502',
     red: '#F22F2F',
-    green: '#32592D',
-};
+    green: '#32592D'
+}
 
-export default colors;
+export default colors

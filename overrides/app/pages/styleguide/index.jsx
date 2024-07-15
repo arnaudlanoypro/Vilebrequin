@@ -13,7 +13,6 @@ import {
     Text,
     Grid,
     GridItem,
-    Spacer,
     useDisclosure,
     Modal,
     ModalHeader,
@@ -49,16 +48,16 @@ import {
     Accordion,
     AccordionItem,
     AccordionButton,
-    AccordionPanel,
-    AccordionIcon
+    AccordionPanel
 } from '@chakra-ui/react'
-import {MinusIcon, AddIcon} from '@chakra-ui/icons'
 import {
     VisibilityIcon,
     VisibilityOffIcon,
     ChevronDownIcon,
     FlagFRIcon,
-    FlagUSIcon
+    FlagUSIcon,
+    MinusIcon,
+    PlusIcon
 } from '../../components/icons'
 import {CustomIcon} from '../../components/custom-icons/index'
 import {ResponsivePicture} from '../../components/responsive-picture/index'
@@ -157,7 +156,7 @@ const Styleguide = () => {
     }
 
     const CustomAccordionIcon = ({isExpanded}) => {
-        return isExpanded ? <MinusIcon w={'10px'} h={'10px'} /> : <AddIcon w={'10px'} h={'10px'} />
+        return isExpanded ? <MinusIcon boxSize={'12px'} /> : <PlusIcon boxSize={'12px'} />
     }
 
     return (

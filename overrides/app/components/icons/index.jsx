@@ -20,6 +20,7 @@ import '@salesforce/retail-react-app/app/assets/svg/account.svg'
 import '/overrides/app/assets/svg/basket.svg'
 import '/overrides/app/assets/svg/book.svg'
 import '/overrides/app/assets/svg/check.svg'
+import '/overrides/app/assets/svg/checkbox.svg'
 import '@salesforce/retail-react-app/app/assets/svg/check-circle.svg'
 import '/overrides/app/assets/svg/chevron-up.svg'
 import '/overrides/app/assets/svg/chevron-down.svg'
@@ -70,7 +71,6 @@ import '/overrides/app/assets/svg/visibility.svg'
 import '/overrides/app/assets/svg/visibility-off.svg'
 import '/overrides/app/assets/svg/whatsapp.svg'
 import '/overrides/app/assets/svg/wishlist.svg'
-import '/overrides/app/assets/svg/wishlist-fill.svg'
 import '@salesforce/retail-react-app/app/assets/svg/heart.svg'
 import '@salesforce/retail-react-app/app/assets/svg/heart-solid.svg'
 
@@ -161,6 +161,7 @@ export const BrandLogo = icon('brand-logo', {viewBox: BrandLogoSymbol.viewBox})
 export const BasketIcon = icon('basket')
 export const BookIcon = icon('book')
 export const CheckIcon = icon('check')
+export const CheckboxIcon = icon('checkbox')
 export const CheckCircleIcon = icon('check-circle')
 export const ChevronDownIcon = icon('chevron-down')
 export const ChevronLeftIcon = icon('chevron-left')
@@ -231,6 +232,5 @@ export const VisibilityIcon = icon('visibility')
 export const VisibilityOffIcon = icon('visibility-off')
 export const WhatsAppIcon = icon('whatsapp')
 export const WishlistIcon = icon('wishlist')
-export const WishlistFillIcon = icon('wishlist-fill')
 export const HeartIcon = icon('heart')
 export const HeartSolidIcon = icon('heart-solid')

@@ -1,6 +1,9 @@
-import colors from '../../foundations/colors'
-
 const buttonBaseStyle = {
+    textTransform: 'uppercase',
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    textDecoration: 'none',
     _active: {
         color: 'white',
         bg: 'fullBlack',
@@ -17,8 +20,8 @@ export default {
         color: 'fullBlack',
         borderRadius: 'none',
         fontSize: 'md',
-        textTransform: 'uppercase',
-        fontWeight: 'medium'
+        fontFamily: 'bodyMedium',
+        fontWeight: 'normal'
     },
     variants: {
         primary: {
@@ -26,7 +29,9 @@ export default {
             bg: 'fullBlack',
             color: 'white',
             _hover: {
+                color: 'white',
                 backgroundColor: 'darkGray',
+                textDecoration: 'none',
                 _disabled: {
                     bg: 'borderGray'
                 }
@@ -45,6 +50,7 @@ export default {
             _hover: {
                 backgroundColor: 'transparent',
                 borderColor: 'darkGray',
+                textDecoration: 'none',
                 _disabled: {
                     borderColor: 'borderGray'
                 }
@@ -66,6 +72,7 @@ export default {
             _hover: {
                 color: 'white',
                 backgroundColor: 'fullBlack',
+                textDecoration: 'none',
                 _disabled: {
                     color: 'darkGray',
                     bg: 'white'
@@ -85,6 +92,7 @@ export default {
                 color: 'fullBlack',
                 backgroundColor: 'white',
                 borderColor: 'transparent',
+                textDecoration: 'none',
                 _disabled: {
                     color: 'white',
                     borderColor: 'white'
@@ -101,9 +109,10 @@ export default {
             color: 'fullBlack',
             textTransform: 'none',
             textDecoration: 'underline',
-            fontWeight: 'medium',
+            fontFamily: 'bodyMedium',
             lineHeight: '110%',
-            letterSpacing: '0.01em'
+            letterSpacing: '0.01em',
+            display: 'inline'
         }
     },
     sizes: {

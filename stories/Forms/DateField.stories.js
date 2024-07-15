@@ -4,7 +4,7 @@ import DateField from '../../overrides/app/components/date-field'
 import {IntlProvider} from 'react-intl'
 
 export default {
-    title: 'Molecules/Fields/DateField',
+    title: 'Forms/DateField',
     component: DateField,
     decorators: [
         (Story) => (

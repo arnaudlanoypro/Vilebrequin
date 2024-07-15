@@ -29,8 +29,8 @@ module.exports = {
         commerceAPI: {
             proxyPath: '/mobify/proxy/api',
             parameters: {
-                clientId: '53fb374f-55ef-43ef-a6d1-378e5efd1be3',
-                organizationId: 'f_ecom_blgh_006',
+                clientId: '1fd1bb0f-ed82-4c8c-a1f8-b190162fb7f2',
+                organizationId: 'f_ecom_blgh_002',
                 shortCode: 'kechoqs6',
                 siteId: 'VBQ-EU'
             }
@@ -73,7 +73,7 @@ module.exports = {
                 path: 'api'
             },
             {
-                host: 'blgh-006.dx.commercecloud.salesforce.com',
+                host: 'blgh-002.dx.commercecloud.salesforce.com',
                 path: 'ocapi'
             }
         ]

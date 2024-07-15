@@ -3,33 +3,34 @@ export default {
         container: {display: 'flex'},
         label: {
             width: 'full',
-            fontSize: "12px"
+            fontSize: '12px',
+            lineHeight: '16.8px'
         },
         control: {
-            width: "16px",
-            height: "16px",
+            width: '12px',
+            height: '12px',
             backgroundColor: 'white',
             borderColor: 'darkGray',
-            borderWidth: "1px",
+            borderWidth: '1px',
             _checked: {
                 backgroundColor: 'white',
                 borderColor: 'fullBlack',
                 _before: {
-                    width: "12px",
-                    height: "12px",
-                    backgroundColor: 'fullBlack',
+                    width: '8px',
+                    height: '8px',
+                    backgroundColor: 'fullBlack'
                 },
                 _disabled: {
                     backgroundColor: 'white',
                     borderColor: 'gray',
                     _before: {
-                        backgroundColor: 'gray',
-                    },
+                        backgroundColor: 'gray'
+                    }
                 }
             },
             _disabled: {
                 backgroundColor: 'white',
-                borderColor: 'gray',
+                borderColor: 'gray'
             }
         }
     }

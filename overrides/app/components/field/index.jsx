@@ -18,8 +18,18 @@ import {
     Select,
     Checkbox
 } from '@salesforce/retail-react-app/app/components/shared/ui'
-import {VisibilityIcon, VisibilityOffIcon, ChevronDownIcon} from '../icons'
+import {VisibilityIcon, VisibilityOffIcon, ChevronDownIcon, CheckboxIcon} from '../icons'
 import {useIntl} from 'react-intl'
+
+const CustomCheckboxIcon = (props) => {
+    const {isChecked, ...rest} = props
+
+    return <>{isChecked ? <CheckboxIcon boxSize={2} {...rest} /> : null}</>
+}
+
+CustomCheckboxIcon.propTypes = {
+    isChecked: PropTypes.bool
+}
 
 const Field = ({
     name,
@@ -63,7 +73,7 @@ const Field = ({
 
                 return (
                     <FormControl
-                        variant="floating"
+                        variant={!['checkbox', 'radio', 'hidden'].includes(type) ? 'floating' : ''}
                         id={name}
                         isInvalid={error}
                         isDisabled={isDisabled}
@@ -125,6 +135,8 @@ const Field = ({
 
                             {type === 'checkbox' && (
                                 <Checkbox
+                                    icon={<CustomCheckboxIcon />}
+                                    iconSize="0.1rem"
                                     ref={ref}
                                     onChange={(e) => onChange(e.target.checked)}
                                     isChecked={value}

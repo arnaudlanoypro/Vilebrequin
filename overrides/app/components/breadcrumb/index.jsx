@@ -37,8 +37,8 @@ const Breadcrumb = ({categories, product, ...rest}) => {
         <ChakraBreadcrumb
             className="sf-breadcrumb"
             {...styles.container}
-            separator={"/"}
-            spacing={"3"}
+            separator={'/'}
+            spacing={'3'}
             {...rest}
         >
             {categories.map((category) => (
@@ -52,19 +52,11 @@ const Breadcrumb = ({categories, product, ...rest}) => {
                     </ChakraBreadcrumbLink>
                 </ChakraBreadcrumbItem>
             ))}
-            {product &&
-                <ChakraBreadcrumbItem
-                    key={product.id}
-                    data-testid="sf-crumb-item"
-                    isCurrentPage
-                >
-                    <ChakraBreadcrumbLink
-                        {...styles.lastitem}
-                    >
-                        {product.name}
-                    </ChakraBreadcrumbLink>
+            {product && (
+                <ChakraBreadcrumbItem key={product.id} data-testid="sf-crumb-item" isCurrentPage>
+                    <ChakraBreadcrumbLink {...styles.lastitem}>{product.name}</ChakraBreadcrumbLink>
                 </ChakraBreadcrumbItem>
-            }
+            )}
         </ChakraBreadcrumb>
     )
 }
@@ -75,7 +67,11 @@ Breadcrumb.propTypes = {
     /**
      * The categories to be displayed in this breadcrumb.
      */
-    categories: PropTypes.array
+    categories: PropTypes.array,
+    product: PropTypes.shape({
+        id: PropTypes.string,
+        name: PropTypes.string
+    })
 }
 
 export default Breadcrumb

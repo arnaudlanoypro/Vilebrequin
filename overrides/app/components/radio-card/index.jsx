@@ -6,54 +6,27 @@
  */
 import React from 'react'
 import PropTypes from 'prop-types'
-import {Box, useRadio, useRadioGroup} from '@salesforce/retail-react-app/app/components/shared/ui'
-import {CheckIcon} from '@salesforce/retail-react-app/app/components/icons'
+import {
+    Box,
+    Flex,
+    useRadio,
+    useRadioGroup,
+    useMultiStyleConfig
+} from '@salesforce/retail-react-app/app/components/shared/ui'
 
 const RadioCardGroupContext = React.createContext()
 
 export const RadioCard = (props) => {
+    const styles = useMultiStyleConfig('RadioCard')
     const getRadioProps = React.useContext(RadioCardGroupContext)
     const {getInputProps, getCheckboxProps} = useRadio(getRadioProps(props))
 
     const input = getInputProps()
     const checkbox = getCheckboxProps()
     return (
-        <Box as="label">
+        <Box as="label" {...styles.label}>
             <input {...input} />
-            <Box
-                {...checkbox}
-                aria-hidden={false}
-                position="relative"
-                cursor="pointer"
-                border="1px solid"
-                borderColor="gray.200"
-                borderRadius="base"
-                height="full"
-                _checked={{
-                    borderColor: 'blue.600'
-                }}
-                _focus={{
-                    boxShadow: 'outline'
-                }}
-                px={4}
-                py={4}
-            >
-                {input.checked && (
-                    <Box
-                        position="absolute"
-                        top={0}
-                        right={0}
-                        w={0}
-                        h={0}
-                        borderStyle="solid"
-                        borderWidth="0 38px 38px 0"
-                        borderColor="transparent"
-                        borderRightColor="blue.600"
-                    >
-                        <CheckIcon color="white" position="absolute" right="-40px" top="1px" />
-                    </Box>
-                )}
-
+            <Box {...checkbox} aria-hidden={false} {...styles.card}>
                 {props.children}
             </Box>
         </Box>
@@ -66,7 +39,9 @@ export const RadioCardGroup = (props) => {
 
     return (
         <RadioCardGroupContext.Provider value={getRadioProps}>
-            <Box {...group}>{props.children}</Box>
+            <Flex {...group} w="100%">
+                {props.children}
+            </Flex>
         </RadioCardGroupContext.Provider>
     )
 }

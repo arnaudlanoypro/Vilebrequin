@@ -1,22 +1,27 @@
 export default {
     baseStyle: {
         header: {
-            fontSize: "16px",
-            fontWeight: "semibold"
+            fontSize: '14px',
+            fontFamily: 'bodySemiBold',
+            px: 0,
+            py: 0
         },
         dialog: {
+            p: '24px',
             borderRadius: '0'
         },
         body: {
-            fontSize: "13px",
+            fontSize: '13px',
+            px: 0,
+            py: '16px'
         },
         closeButton: {
-            top: "24px",
-            right: "24px",
+            top: '18px',
+            right: '16px',
             _focus: {
                 outline: '3px solid #4794F7',
                 outlineOffset: '0'
-            },
+            }
         }
     },
     sizes: {

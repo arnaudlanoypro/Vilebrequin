@@ -1,24 +1,28 @@
-
 export default {
     baseStyle: {
         container: {style: {alignItems: 'baseline'}},
         label: {
             width: 'full',
-            fontSize: "12px"
+            fontSize: '12px',
+            lineHeight: '16.8px',
+            letterSpacing: '0.01em'
         },
         control: {
-            marginTop: '2px',
+            borderWidth: '1px',
+            borderRadius: '0',
             borderColor: 'darkGray',
+            width: '12px',
+            height: '12px',
             _checked: {
                 backgroundColor: 'fullBlack',
                 borderColor: 'fullBlack',
                 _disabled: {
                     backgroundColor: 'gray',
-                    borderColor: 'gray',
+                    borderColor: 'gray'
                 }
             },
             _disabled: {
-                borderColor: 'gray',
+                borderColor: 'gray'
             }
         }
     }
