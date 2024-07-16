@@ -54,3 +54,27 @@ For more information on working with the PWA Kit, refer to:
 -   [Routing](https://developer.salesforce.com/docs/commerce/pwa-kit-managed-runtime/guide/routing.html)
 -   [Phased Headless Rollouts](https://developer.salesforce.com/docs/commerce/pwa-kit-managed-runtime/guide/phased-headless-rollouts.html)
 -   [Launch Your Storefront](https://developer.salesforce.com/docs/commerce/pwa-kit-managed-runtime/guide/launching-your-storefront.html)
+
+
+
+## Configurations in Composable Storefront
+
+### Configuration Files
+
+-  [read here about configuration files](https://developer.salesforce.com/docs/commerce/pwa-kit-managed-runtime/guide/configuration-options.html)
+-  find app configuration in [config folder](https://github.com/OSFDigital/FR-VBQ-ETB-Replatforming-Composable-frontend/tree/develop/config)
+-  notice gitignored [local configuration](https://github.com/OSFDigital/FR-VBQ-ETB-Replatforming-Composable-frontend/blob/develop/.gitignore#L16)
+
+### [Environment-Specific Configurations](https://developer.salesforce.com/docs/commerce/pwa-kit-managed-runtime/guide/configuration-options.html)
+
+1. **`config/default.js`**: This file contains the default configuration settings that apply to all environments unless overridden by environment-specific files.
+2. **`config/local.js`**: This file is used for local development settings. It usually overrides the default settings with values specific to your local environment.
+3. **`config/MRT-site-name.js`**: Configuration for the MRT-site-name environment, e.g.: **`config/pwa-development.js`**
+
+### Run the Project Locally
+
+To run app locally with gitignored **`config/local.js`** configuration
+
+```bash
+npm start
+```
