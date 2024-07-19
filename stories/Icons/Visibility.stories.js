@@ -1,10 +1,16 @@
-import {VisibilityIcon} from '../../overrides/app/components/icons'
+import {VisibilityIcon} from '../../overrides/app/components/custom-icons'
 
 export default {
-    title: 'Icons/Visibility',
+    title: 'Icons/VisibilityIcon',
     component: VisibilityIcon,
     parameters: {
         layout: 'centered'
+    },
+    tags: ['autodocs'],
+    argTypes: {
+        color: {
+            control: {type: 'color'}
+        }
     },
     args: {color: 'fullBlack', boxSize: 6}
 }

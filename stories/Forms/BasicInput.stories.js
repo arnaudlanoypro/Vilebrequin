@@ -1,18 +1,10 @@
 import React from 'react'
 import {useForm} from 'react-hook-form'
 import Field from '../../overrides/app/components/field'
-import {IntlProvider} from 'react-intl'
 
 export default {
     title: 'Forms/BasicInput',
     component: Field,
-    decorators: [
-        (Story) => (
-            <IntlProvider locale="en">
-                <Story />
-            </IntlProvider>
-        )
-    ],
     parameters: {
         layout: 'centered'
     },

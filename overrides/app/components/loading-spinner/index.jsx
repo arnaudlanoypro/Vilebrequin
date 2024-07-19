@@ -5,7 +5,8 @@
  * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 import React from 'react'
-import {Box, Spinner} from '@salesforce/retail-react-app/app/components/shared/ui'
+import {Box} from '@salesforce/retail-react-app/app/components/shared/ui'
+import {LoaderIcon} from '../custom-icons'
 import PropTypes from 'prop-types'
 
 const LoadingSpinner = ({wrapperStyles = {}, spinnerStyles = {}}) => {
@@ -17,22 +18,18 @@ const LoadingSpinner = ({wrapperStyles = {}, spinnerStyles = {}}) => {
             left="0"
             right="0"
             bottom="0"
-            background="whiteAlpha.800"
+            background="rgba(0, 0, 0, 0.5)"
+            display="flex"
+            justifyContent={'center'}
+            alignItems={'center'}
             {...wrapperStyles}
         >
-            <Spinner
+            <LoaderIcon
                 data-testid="loading"
                 {...spinnerStyles}
                 position="absolute"
-                top="50%"
-                left="50%"
-                ml="-1.5em"
-                mt="-1.5em"
-                thickness="4px"
-                speed="0.65s"
-                emptyColor="gray.200"
-                color="blue.600"
-                size="xl"
+                width="10%"
+                height="auto"
             />
         </Box>
     )

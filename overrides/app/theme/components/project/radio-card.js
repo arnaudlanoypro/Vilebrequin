@@ -1,5 +1,3 @@
-import Button from '../base/button'
-
 export default {
     baseStyle: {
         label: {

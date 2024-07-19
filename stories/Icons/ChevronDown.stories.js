@@ -1,10 +1,16 @@
-import {ChevronDownIcon} from '../../overrides/app/components/icons'
+import {ChevronDownIcon} from '../../overrides/app/components/custom-icons'
 
 export default {
-    title: 'Icons/ChevronDown',
+    title: 'Icons/ChevronDownIcon',
     component: ChevronDownIcon,
     parameters: {
         layout: 'centered'
+    },
+    tags: ['autodocs'],
+    argTypes: {
+        color: {
+            control: {type: 'color'}
+        }
     },
     args: {color: 'fullBlack', boxSize: 6}
 }

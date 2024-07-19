@@ -54,12 +54,10 @@ import {
     VisibilityIcon,
     VisibilityOffIcon,
     ChevronDownIcon,
-    FlagFRIcon,
-    FlagUSIcon,
     MinusIcon,
     PlusIcon
-} from '../../components/icons'
-import {CustomIcon} from '../../components/custom-icons/index'
+} from '../../components/custom-icons'
+import {FlagFRIcon, FlagUSIcon} from '../../components/icons'
 import {ResponsivePicture} from '../../components/responsive-picture/index'
 import Breadcrumb from '../../components/breadcrumb'
 import PhoneField from '../../components/phone-field'
@@ -222,20 +220,9 @@ const Styleguide = () => {
                     Icons
                 </Heading>
                 <Divider my="15px" />
-                <CustomIcon
-                    boxSize="50px"
-                    color="blue"
-                    aria-label={intl.formatMessage({
-                        defaultMessage: 'Aria label for custom icon',
-                        id: 'aria.label.customicon'
-                    })}
-                    aria-describedby={intl.formatMessage({
-                        defaultMessage: 'Describe by for custom icon',
-                        id: 'describeby.customicon'
-                    })}
-                    aria-hidden="false"
-                />
-                <CustomIcon svgTitle="overwrite custom title" />
+                <PlusIcon />
+                <MinusIcon />
+                <VisibilityIcon />
                 {/* Button */}
                 <Heading fontSize="24px" mt="50px">
                     Button

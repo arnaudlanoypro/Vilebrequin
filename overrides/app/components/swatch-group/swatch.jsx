@@ -9,8 +9,7 @@ import React, {useCallback, useEffect, useState} from 'react'
 import PropTypes from 'prop-types'
 import {
     Button,
-    Box,
-    Center,
+    Text,
     useMultiStyleConfig
 } from '@salesforce/retail-react-app/app/components/shared/ui'
 import {Link as RouteLink} from 'react-router-dom'
@@ -32,7 +31,7 @@ const Swatch = ({
     handleSelect,
     variant = 'square'
 }) => {
-    const styles = useMultiStyleConfig('SwatchGroup', {variant, disabled, selected})
+    const styles = useMultiStyleConfig('SwatchGroup', {variant, disabled, selected, value})
     const isDesktop = useBreakpointValue({base: false, lg: true})
     const [selectHandlers, setSelectHandlers] = useState({})
 
@@ -50,9 +49,10 @@ const Swatch = ({
         }
 
         setSelectHandlers({
-            [isDesktop ? 'onMouseEnter' : 'onClick']: onSelect
+            //[isDesktop ? 'onMouseEnter' : 'onClick']: onSelect
+            ['onClick']: onSelect
         })
-    }, [onSelect, isDesktop])
+    }, [onSelect])
 
     return (
         <Button
@@ -68,10 +68,12 @@ const Swatch = ({
             tabIndex={isFocusable ? 0 : -1}
             {...(href ? {} : selectHandlers)}
         >
-            <Center {...styles.swatchButton}>
-                {children}
-                {label && <Box>{label}</Box>}
-            </Center>
+            {children}
+            {label && (
+                <Text variant="bodySmall" {...styles.text}>
+                    {label}
+                </Text>
+            )}
         </Button>
     )
 }
@@ -95,7 +97,7 @@ Swatch.propTypes = {
     /**
      * The shape of the Swatch
      */
-    variant: PropTypes.oneOf(['square', 'circle']),
+    variant: PropTypes.oneOf(['color', 'size', 'buttonWithChip']),
     /**
      * The label of the option.
      */

@@ -1,7 +1,29 @@
 /** @type { import('@storybook/react').Preview } */
+import React from 'react'
 import theme from '../overrides/app/theme'
+import {reactIntl} from './reactIntl';
+import {IntlProvider} from 'react-intl'
+import { DocsContainer } from '@storybook/blocks';
+
+const DocContainer = ({ children, ...props }) => {
+    return <DocsContainer {...props}><IntlProvider locale="en-GB">{children}</IntlProvider></DocsContainer>;
+  };
 
 const preview = {
+    globals: {
+        locale: reactIntl.defaultLocale,
+        locales: {
+            'en-GB': 'English',
+            'de-DE': 'Deutsche',  
+        },
+    },
+    decorators: [
+        (Story) => (
+            <IntlProvider locale="en-GB">
+                <Story />
+            </IntlProvider>
+        )
+    ],
     parameters: {
         chakra: {
             theme
@@ -35,8 +57,12 @@ const preview = {
         },
         options: {
             storySort: {
-              order: ['Atoms', 'Molecules'],
+                method: 'alphabetical',
+                order: ['Atoms', 'Molecules', 'Icons', 'Forms'],
             },
+        },
+        docs: {
+            container: DocContainer,
         },
     }
 }

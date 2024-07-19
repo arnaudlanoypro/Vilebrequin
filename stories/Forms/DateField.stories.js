@@ -1,34 +1,39 @@
 import React from 'react'
 import {useForm} from 'react-hook-form'
-import DateField from '../../overrides/app/components/date-field'
-import {IntlProvider} from 'react-intl'
+import Field from '../../overrides/app/components/field'
 
 export default {
     title: 'Forms/DateField',
-    component: DateField,
-    decorators: [
-        (Story) => (
-            <IntlProvider locale="en">
-                <Story />
-            </IntlProvider>
-        )
-    ],
+    component: Field,
     parameters: {
         layout: 'centered'
     },
     tags: ['autodocs'],
     args: {
-        name: 'date',
-        label: 'Date of birth',
-        rules: {
-            required: 'Please enter your birth date.'
-        }
+        name: 'default',
+        label: 'Label',
+        formLabel: null,
+        type: 'date',
+        options: [],
+        rules: {},
+        error: null,
+        inputProps: null,
+        autoComplete: null,
+        defaultValue: '',
+        helpText: '',
+        children: null
     }
 }
 
 const Template = (args) => {
     const form = useForm()
-    return <DateField error={form.formState.errors.date} control={form.control} {...args} />
+    return (
+        <Field
+            error={form.formState.errors[`${args.name}BasicInput`]}
+            control={form.control}
+            {...args}
+        />
+    )
 }
 
 export const Default = Template.bind({})
@@ -42,6 +47,13 @@ Error.args = {
     name: 'error',
     defaultValue: 'Input',
     error: {
-        message: 'Please enter your birth date.'
+        message: 'Error Message'
     }
+}
+
+export const Disabled = Template.bind({})
+Disabled.args = {
+    name: 'disabled',
+    defaultValue: '',
+    isDisabled: true
 }

@@ -11,6 +11,7 @@ import {
     Flex,
     useRadio,
     useRadioGroup,
+    useStyleConfig,
     useMultiStyleConfig
 } from '@salesforce/retail-react-app/app/components/shared/ui'
 
@@ -34,13 +35,18 @@ export const RadioCard = (props) => {
 }
 
 export const RadioCardGroup = (props) => {
+    const styles = useStyleConfig('RadioCardGroup')
     const {getRootProps, getRadioProps} = useRadioGroup(props)
     const group = getRootProps()
 
     return (
         <RadioCardGroupContext.Provider value={getRadioProps}>
-            <Flex {...group} w="100%">
-                {props.children}
+            <Flex as="ul" {...group} {...styles.list} w="100%">
+                {props.children.map((child) => (
+                    <Flex as="li" key={child.props.value} {...styles.item}>
+                        {child}
+                    </Flex>
+                ))}
             </Flex>
         </RadioCardGroupContext.Provider>
     )

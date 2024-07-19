@@ -9,18 +9,10 @@ import {
     DrawerBody
 } from '@salesforce/retail-react-app/app/components/shared/ui'
 import {CloseIcon} from '../../overrides/app/components/icons'
-import {IntlProvider} from 'react-intl'
 
 export default {
     title: 'Molecules/Drawer',
     component: Drawer,
-    decorators: [
-        (Story) => (
-            <IntlProvider locale="en">
-                <Story />
-            </IntlProvider>
-        )
-    ],
     parameters: {
         layout: 'centered'
     },

@@ -47,9 +47,3 @@ export const Heading6 = {
         fontSize: 'xl'
     }
 }
-export const Heading7 = {
-    args: {
-        as: 'h7',
-        fontSize: 'md'
-    }
-}

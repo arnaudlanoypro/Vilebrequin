@@ -11,7 +11,9 @@ export default {
                 borderColor: 'borderGray',
                 h: '50px',
                 borderRadius: '0',
-                px: '18',
+                pl: '18',
+                pr: '38',
+                textOverflow: 'ellipsis',
                 _focus: {
                     borderColor: 'fullBlack'
                 },

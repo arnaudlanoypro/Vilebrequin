@@ -8,7 +8,8 @@ export default {
         },
         dialog: {
             p: '24px',
-            borderRadius: '0'
+            borderRadius: '0',
+            bg: 'white'
         },
         body: {
             fontSize: '13px',

@@ -18,13 +18,13 @@ import {
     Select,
     Checkbox
 } from '@salesforce/retail-react-app/app/components/shared/ui'
-import {VisibilityIcon, VisibilityOffIcon, ChevronDownIcon, CheckboxIcon} from '../icons'
+import {VisibilityIcon, VisibilityOffIcon, ChevronDownIcon, CheckIcon} from '../custom-icons'
 import {useIntl} from 'react-intl'
 
 const CustomCheckboxIcon = (props) => {
     const {isChecked, ...rest} = props
 
-    return <>{isChecked ? <CheckboxIcon boxSize={2} {...rest} /> : null}</>
+    return <>{isChecked ? <CheckIcon boxSize={'10px'} {...rest} /> : null}</>
 }
 
 CustomCheckboxIcon.propTypes = {
@@ -79,9 +79,15 @@ const Field = ({
                         isDisabled={isDisabled}
                     >
                         <InputGroup>
-                            {['text', 'password', 'email', 'phone', 'tel', 'number'].includes(
-                                type
-                            ) && (
+                            {[
+                                'text',
+                                'password',
+                                'email',
+                                'phone',
+                                'tel',
+                                'number',
+                                'date'
+                            ].includes(type) && (
                                 <Input
                                     variant="basic"
                                     ref={ref}
@@ -178,7 +184,8 @@ Field.propTypes = {
         'tel',
         'select',
         'checkbox',
-        'hidden'
+        'hidden',
+        'date'
     ]),
     options: PropTypes.arrayOf(PropTypes.shape({label: PropTypes.string, value: PropTypes.any})),
     rules: PropTypes.object,

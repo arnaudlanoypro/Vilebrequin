@@ -18,7 +18,7 @@ import {
     InputGroup,
     useStyleConfig
 } from '@salesforce/retail-react-app/app/components/shared/ui'
-import {RightArrowIcon} from '../icons'
+import {RightArrowIcon} from '../custom-icons'
 
 const InputWithSubmit = ({
     name,

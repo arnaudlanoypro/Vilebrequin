@@ -3530,5 +3530,11 @@
       "type": 0,
       "value": "Please sign in to continue!"
     }
+  ],
+  "your.title.messageId": [
+    {
+      "type": 0,
+      "value": "Coucou"
+    }
   ]
 }

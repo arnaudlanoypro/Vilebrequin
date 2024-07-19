@@ -4,10 +4,48 @@ import {Meta, Title} from '@storybook/blocks'
 
 # Breakpoints
 
-<ul>
-  <li>sm: 320px</li>
-  <li>md: 768px</li>
-  <li>lg: 1200px</li>
-  <li>xl: 1440px</li>
-  <li>2xl: 1920px</li>
-</ul>
+By default the breakpoints are set directly from Chakra UI, more information regarding the breakpoints can be found here [Responsive Styles](https://v2.chakra-ui.com/docs/styled-system/responsive-styles) 
+
+So, in order to overwrite the default values, a new file breakpoints.js has been created in the foundations folder overrides\app\theme\foundations.
+
+*overrides\app\theme\foundations\breakpoints.js* 
+
+```
+const breakpoints = {
+    base: '0em',
+    sm: '320px',
+    md: '768px',
+    lg: '1200px',
+    xl: '1440px',
+    '2xl': '1920px'
+}
+
+export default breakpoints
+```
+
+## Setting the max-width
+
+For the max-width limit of the site, it is set at 2520px as per Design System conclusion. It has been added to one of the main parent elements in the DOM, in order to have the max-width constraint applied at a global scale throughout the site.
+
+*overrides\app\theme\foundations\styles.js*
+
+```
+export default {
+    global: {
+        'html, body': {
+            backgroundColor: 'white',
+            color: 'fullBlack',
+            fontFamily: 'body'
+        },
+        body: {
+            minHeight: '100vh',
+            color: 'fullBlack',
+        },
+        '.react-target': {
+            display: 'flex',
+            minHeight: '100vh',
+            maxWidth: '2520px'
+        }
+    }
+}
+```

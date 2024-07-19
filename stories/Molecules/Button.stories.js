@@ -1,5 +1,7 @@
+import React from 'react'
 import {fn} from '@storybook/test'
 import {Button} from '@salesforce/retail-react-app/app/components/shared/ui/Button'
+import {LoaderIcon} from '../../overrides/app/components/custom-icons'
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 export default {
@@ -22,11 +24,18 @@ export default {
         },
         isDisabled: {
             control: {type: 'boolean'}
+        },
+        isLoading: {
+            control: {type: 'boolean'}
         }
     },
     // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args
-    args: {onClick: fn(), children: 'Button'}
+    args: {onClick: fn(), children: 'Button', spinner: <LoaderIcon size={8} />}
 }
+
+// const Template = (args) => {
+//     return <Button {...args} />
+// }
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Primary = {

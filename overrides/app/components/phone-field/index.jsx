@@ -18,7 +18,7 @@ import {
     Select,
     useStyleConfig
 } from '@salesforce/retail-react-app/app/components/shared/ui'
-import {ChevronDownIcon} from '../icons'
+import {ChevronDownIcon} from '../custom-icons'
 
 const PhoneField = ({
     name,

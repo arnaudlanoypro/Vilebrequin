@@ -1,17 +1,9 @@
 import React from 'react'
 import {Tooltip, Button} from '@salesforce/retail-react-app/app/components/shared/ui'
-import {IntlProvider} from 'react-intl'
 
 export default {
     title: 'Molecules/Tooltip',
     component: Tooltip,
-    decorators: [
-        (Story) => (
-            <IntlProvider locale="en">
-                <Story />
-            </IntlProvider>
-        )
-    ],
     parameters: {
         layout: 'centered'
     },

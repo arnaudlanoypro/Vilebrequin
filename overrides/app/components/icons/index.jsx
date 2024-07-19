@@ -20,7 +20,6 @@ import '@salesforce/retail-react-app/app/assets/svg/account.svg'
 import '/overrides/app/assets/svg/basket.svg'
 import '/overrides/app/assets/svg/book.svg'
 import '/overrides/app/assets/svg/check.svg'
-import '/overrides/app/assets/svg/checkbox.svg'
 import '@salesforce/retail-react-app/app/assets/svg/check-circle.svg'
 import '/overrides/app/assets/svg/chevron-up.svg'
 import '/overrides/app/assets/svg/chevron-down.svg'
@@ -161,7 +160,6 @@ export const BrandLogo = icon('brand-logo', {viewBox: BrandLogoSymbol.viewBox})
 export const BasketIcon = icon('basket')
 export const BookIcon = icon('book')
 export const CheckIcon = icon('check')
-export const CheckboxIcon = icon('checkbox')
 export const CheckCircleIcon = icon('check-circle')
 export const ChevronDownIcon = icon('chevron-down')
 export const ChevronLeftIcon = icon('chevron-left')

@@ -13,7 +13,7 @@ export default {
         },
         body: {
             minHeight: '100vh',
-            color: 'fullBlack',
+            color: 'fullBlack'
         },
         '.react-target': {
             display: 'flex',

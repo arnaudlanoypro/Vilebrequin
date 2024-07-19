@@ -30,9 +30,11 @@ import Drawer from './components/base/drawer'
 // Project Component style overrides
 import App from './components/project/_app'
 import Breadcrumb from './components/project/breadcrumb'
-import PhoneField from './components/project/phoneField'
-import DateField from './components/project/dateField'
-import RadioCard from './components/project/radioCard'
+import PhoneField from './components/project/phone-field'
+import DateField from './components/project/date-field'
+import RadioCard from './components/project/radio-card'
+import RadioCardGroup from './components/project/radio-card-group'
+import SwatchGroup from './components/project/swatch-group'
 // import Footer from './components/project/footer'
 
 // Please refer to the Chakra-Ui theme customization docs found
@@ -76,7 +78,9 @@ export const overrides = {
         Breadcrumb,
         PhoneField,
         DateField,
-        RadioCard
+        RadioCard,
+        RadioCardGroup,
+        SwatchGroup
         // Footer
     }
 }

@@ -21,7 +21,10 @@ export default {
         borderRadius: 'none',
         fontSize: 'md',
         fontFamily: 'bodyMedium',
-        fontWeight: 'normal'
+        fontWeight: 'normal',
+        _loading: {
+            opacity: 1
+        }
     },
     variants: {
         primary: {
@@ -39,6 +42,9 @@ export default {
             _disabled: {
                 color: 'darkGray',
                 bg: 'borderGray'
+            },
+            _loading: {
+                backgroundColor: 'fullBlack'
             }
         },
         secondary: {
@@ -63,6 +69,10 @@ export default {
             _disabled: {
                 color: 'darkGray',
                 borderColor: 'borderGray'
+            },
+            _loading: {
+                backgroundColor: 'transparent',
+                border: '1px solid gray'
             }
         },
         tertiary: {
@@ -80,6 +90,9 @@ export default {
             },
             _disabled: {
                 color: 'darkGray'
+            },
+            _loading: {
+                backgroundColor: 'white'
             }
         },
         invertedOutline: {
@@ -102,6 +115,9 @@ export default {
                 color: 'white',
                 bg: 'fullBlack',
                 borderColor: 'fullBlack'
+            },
+            _loading: {
+                backgroundColor: 'transparent'
             }
         },
         link: {
@@ -112,7 +128,10 @@ export default {
             fontFamily: 'bodyMedium',
             lineHeight: '110%',
             letterSpacing: '0.01em',
-            display: 'inline'
+            display: 'inline',
+            _loading: {
+                backgroundColor: 'transparent'
+            }
         }
     },
     sizes: {
@@ -122,7 +141,7 @@ export default {
         },
         md: {
             height: '50px',
-            minWidth: 11,
+            minWidth: 10,
             px: '32px'
         }
     }

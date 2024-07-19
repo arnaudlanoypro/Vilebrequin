@@ -11,7 +11,8 @@ import {
     Flex,
     Box,
     HStack,
-    useStyleConfig
+    useStyleConfig,
+    Grid
 } from '@salesforce/retail-react-app/app/components/shared/ui'
 import {FormattedMessage} from 'react-intl'
 import {noop} from '@salesforce/retail-react-app/app/utils/utils'
@@ -26,9 +27,17 @@ const DIRECTIONS = {
  * Each Swatch is a link with will direct to a href passed to them
  */
 const SwatchGroup = (props) => {
-    const {ariaLabel, displayName, children, label = '', value, handleChange = noop} = props
+    const {
+        ariaLabel,
+        displayName,
+        children,
+        label = '',
+        value,
+        handleChange = noop,
+        variant
+    } = props
 
-    const styles = useStyleConfig('SwatchGroup')
+    const styles = useStyleConfig('SwatchGroup', {variant})
     const [selectedIndex, setSelectedIndex] = useState(0)
     const wrapperRef = useRef(null)
 
@@ -42,7 +51,7 @@ const SwatchGroup = (props) => {
                 index = index < 0 ? children.length - Math.abs(index) : Math.abs(index) // We we are dealing with a negative we have to invert the index
 
                 // Get a reference to the newly selected swatch as we are going to focus it later.
-                const swatchEl = wrapperRef?.current?.children[index]
+                const swatchEl = wrapperRef?.current?.children[index].children[0]
 
                 // Set the new index that is always in the arrays range.
                 setSelectedIndex(index)
@@ -103,16 +112,20 @@ const SwatchGroup = (props) => {
                         <Box>{displayName}</Box>
                     </HStack>
                 )}
-                <Flex ref={wrapperRef} {...styles.swatchesWrapper}>
+                <Grid as="ul" ref={wrapperRef} {...styles.swatchesWrapper}>
                     {Children.toArray(children).map((child, index) => {
                         const selected = child.props.value === value
-                        return React.cloneElement(child, {
-                            handleSelect: handleChange,
-                            selected,
-                            isFocusable: value ? selected : index === 0
-                        })
+                        return (
+                            <Box as="li" key={child.props.value} listStyleType="none">
+                                {React.cloneElement(child, {
+                                    handleSelect: handleChange,
+                                    selected,
+                                    isFocusable: value ? selected : index === 0
+                                })}
+                            </Box>
+                        )
                     })}
-                </Flex>
+                </Grid>
             </Flex>
         </Box>
     )
@@ -145,7 +158,11 @@ SwatchGroup.propTypes = {
     /**
      * The currentvalue for the option.
      */
-    value: PropTypes.string
+    value: PropTypes.string,
+    /**
+     * The variant style
+     */
+    variant: PropTypes.string
 }
 
 export default SwatchGroup

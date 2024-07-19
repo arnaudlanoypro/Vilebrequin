@@ -1,7 +1,6 @@
 import React from 'react'
 import {MemoryRouter} from 'react-router-dom'
 import Breadcrumb from '../../overrides/app/components/breadcrumb'
-import {IntlProvider} from 'react-intl'
 
 export default {
     title: 'Molecules/Breadcrumbs',
@@ -12,9 +11,7 @@ export default {
     decorators: [
         (Story) => (
             <MemoryRouter>
-                <IntlProvider locale="en">
-                    <Story />
-                </IntlProvider>
+                <Story />
             </MemoryRouter>
         )
     ],

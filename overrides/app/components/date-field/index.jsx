@@ -16,7 +16,7 @@ import {
     Select,
     useStyleConfig
 } from '@salesforce/retail-react-app/app/components/shared/ui'
-import {ChevronDownIcon} from '../icons'
+import {ChevronDownIcon} from '../custom-icons'
 import {useDateSelect} from 'react-ymd-date-select'
 
 const CustomDateSelect = ({value, onChange}) => {

@@ -8,15 +8,14 @@
 import React from 'react'
 import {
     Box,
+    Flex,
     SimpleGrid,
-    HStack,
     Text,
     Button,
-    Center,
     useMultiStyleConfig
 } from '@salesforce/retail-react-app/app/components/shared/ui'
 import PropTypes from 'prop-types'
-import {cssColorGroups} from '@salesforce/retail-react-app/app/constants'
+import {cssColorGroups} from '../../../constants'
 import {useIntl} from 'react-intl'
 import {
     ADD_FILTER_HIT_COUNT,
@@ -26,79 +25,67 @@ import {
 const ColorRefinements = ({filter, toggleFilter, selectedFilters}) => {
     const intl = useIntl()
     const styles = useMultiStyleConfig('SwatchGroup', {
-        variant: 'circle',
+        variant: 'buttonWithChip',
         disabled: false
     })
 
     return (
-        <SimpleGrid columns={2} spacing={2} mt={1}>
+        <SimpleGrid as="ul" columns={[4, null, 6]} spacingY={5} mt={1}>
             {filter.values.map((value, idx) => {
                 const isSelected = selectedFilters.includes(value.value)
+                const bgColor = cssColorGroups[value.presentationId.toLowerCase()]
 
                 // Don't display refinements with no results, unless we got there by selecting too
                 // many refinements
                 if (value.hitCount === 0 && !isSelected) return
 
                 return (
-                    <Box key={idx}>
-                        <HStack
+                    <Flex as="li" key={idx} listStyleType="none">
+                        <Button
+                            {...styles.swatch}
                             onClick={() => toggleFilter(value, filter.attributeId, isSelected)}
-                            spacing={1}
-                            cursor="pointer"
+                            aria-checked={isSelected}
+                            borderColor={isSelected ? 'fullBlack' : 'gray'}
+                            bgColor={isSelected ? 'fullBlack' : 'transparent'}
+                            zIndex={isSelected ? 1 : 0}
+                            variant="outline"
+                            aria-label={intl.formatMessage(
+                                isSelected ? REMOVE_FILTER_HIT_COUNT : ADD_FILTER_HIT_COUNT,
+                                value
+                            )}
                         >
-                            <Button
-                                {...styles.swatch}
-                                color={isSelected ? 'black' : 'gray.200'}
-                                border={isSelected ? '1px' : '0'}
-                                aria-checked={isSelected}
-                                variant="outline"
+                            <Box
+                                {...styles.chip}
                                 marginRight={0}
-                                marginBottom="-1px"
-                                aria-label={intl.formatMessage(
-                                    isSelected ? REMOVE_FILTER_HIT_COUNT : ADD_FILTER_HIT_COUNT,
-                                    value
-                                )}
-                            >
-                                <Center
-                                    {...styles.swatchButton}
-                                    marginRight={0}
-                                    border="1px solid black"
-                                >
-                                    <Box
-                                        marginRight={0}
-                                        height="100%"
-                                        width="100%"
-                                        minWidth="32px"
-                                        backgroundRepeat="no-repeat"
-                                        backgroundSize="cover"
-                                        backgroundColor={
-                                            cssColorGroups[value.presentationId.toLowerCase()]
-                                        }
-                                        background={
-                                            value.presentationId.toLowerCase() ===
-                                                'miscellaneous' &&
-                                            cssColorGroups[value.presentationId.toLowerCase()]
-                                        }
-                                    />
-                                </Center>
-                            </Button>
+                                backgroundRepeat="no-repeat"
+                                backgroundSize="cover"
+                                backgroundColor={bgColor}
+                                background={
+                                    value.presentationId.toLowerCase() === 'miscellaneous' &&
+                                    bgColor
+                                }
+                                borderWidth={
+                                    value.label.toLowerCase() === 'white' ||
+                                    (value.label.toLowerCase() === 'black' && isSelected)
+                                        ? '1px'
+                                        : 0
+                                }
+                                borderColor={
+                                    value.label.toLowerCase() === 'black' && isSelected
+                                        ? 'white'
+                                        : 'gray'
+                                }
+                            />
                             <Text
-                                display="flex"
-                                alignItems="center"
-                                fontSize="sm"
-                                marginBottom="1px"
+                                variant={'bodySmall'}
+                                {...styles.text}
+                                color={isSelected ? 'white' : 'darkGray'}
                                 aria-hidden="true" // avoid redundant readout since swatch has aria label
                             >
-                                {intl.formatMessage(
-                                    {
-                                        id: 'colorRefinements.label.hitCount',
-                                        defaultMessage: '{colorLabel} ({colorHitCount})'
-                                    },
-                                    {colorLabel: value.label, colorHitCount: value.hitCount}
-                                )}
+                                {value.label}
                             </Text>
-                        </HStack>
-                    </Box>
+                        </Button>
+                    </Flex>
                 )
             })}
         </SimpleGrid>

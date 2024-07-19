@@ -1,17 +1,9 @@
 import React from 'react'
 import {RadioGroup, Radio, Stack} from '@salesforce/retail-react-app/app/components/shared/ui'
-import {IntlProvider} from 'react-intl'
 
 export default {
     title: 'Forms/Radio',
     component: RadioGroup,
-    decorators: [
-        (Story) => (
-            <IntlProvider locale="en">
-                <Story />
-            </IntlProvider>
-        )
-    ],
     parameters: {
         layout: 'centered'
     },

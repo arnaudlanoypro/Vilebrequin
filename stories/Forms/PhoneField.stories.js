@@ -2,18 +2,10 @@ import React from 'react'
 import {useForm} from 'react-hook-form'
 import PhoneField from '../../overrides/app/components/phone-field'
 import {FlagFRIcon, FlagUSIcon} from '../../overrides/app/components/icons'
-import {IntlProvider} from 'react-intl'
 
 export default {
     title: 'Forms/PhoneField',
     component: PhoneField,
-    decorators: [
-        (Story) => (
-            <IntlProvider locale="en">
-                <Story />
-            </IntlProvider>
-        )
-    ],
     parameters: {
         layout: 'centered'
     },

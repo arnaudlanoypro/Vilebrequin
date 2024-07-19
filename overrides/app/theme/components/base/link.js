@@ -8,9 +8,6 @@ export default {
         lineHeight: '110%',
         letterSpacing: '0.01em',
         textDecoration: 'underline',
-        _hover: {
-            color: 'blue'
-        },
         _focus: {
             outline: '3px solid #4794F7',
             outlineOffset: '0'

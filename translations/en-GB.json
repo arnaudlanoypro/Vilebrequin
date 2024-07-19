@@ -1533,5 +1533,8 @@
   },
   "with_registration.info.please_sign_in": {
     "defaultMessage": "Please sign in to continue!"
+  },
+  "your.title.messageId": {
+    "defaultMessage": "Coucou"
   }
 }

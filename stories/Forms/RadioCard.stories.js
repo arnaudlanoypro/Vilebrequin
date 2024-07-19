@@ -1,21 +1,20 @@
 import React from 'react'
-import {Box} from '@salesforce/retail-react-app/app/components/shared/ui'
 import {RadioCardGroup, RadioCard} from '../../overrides/app/components/radio-card'
-import {IntlProvider} from 'react-intl'
+import {Box} from '@salesforce/retail-react-app/app/components/shared/ui'
 
 export default {
     title: 'Forms/RadioCard',
     component: RadioCardGroup,
-    decorators: [
-        (Story) => (
-            <IntlProvider locale="en">
-                <Story />
-            </IntlProvider>
-        )
-    ],
     parameters: {
         layout: 'centered'
     },
+    decorators: [
+        (Story) => (
+            <Box w="400px" maxWidth="calc(100vw - 32px)">
+                <Story></Story>
+            </Box>
+        )
+    ],
     tags: ['autodocs'],
     args: {
         name: 'default',
@@ -39,17 +38,15 @@ export default {
 const Template = (args) => {
     const [value, setValue] = React.useState('1')
     return (
-        <Box w={['calc(100vw - 32px)', null, '400px']} maxWidth="100%">
-            <RadioCardGroup name={args.name} onChange={setValue} value={value} w="400px">
-                {args.options.map((opt) => {
-                    return (
-                        <RadioCard key={opt.value} value={opt.value}>
-                            {opt.label}
-                        </RadioCard>
-                    )
-                })}
-            </RadioCardGroup>
-        </Box>
+        <RadioCardGroup name={args.name} onChange={setValue} value={value}>
+            {args.options.map((opt) => {
+                return (
+                    <RadioCard key={opt.value} value={opt.value}>
+                        {opt.label}
+                    </RadioCard>
+                )
+            })}
+        </RadioCardGroup>
     )
 }
 

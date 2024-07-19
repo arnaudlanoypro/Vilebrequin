@@ -13,18 +13,10 @@ import {
     Button
 } from '@salesforce/retail-react-app/app/components/shared/ui'
 import {CloseIcon} from '../../overrides/app/components/icons'
-import {IntlProvider} from 'react-intl'
 
 export default {
     title: 'Molecules/Modal',
     component: Modal,
-    decorators: [
-        (Story) => (
-            <IntlProvider locale="en">
-                <Story />
-            </IntlProvider>
-        )
-    ],
     parameters: {
         layout: 'centered'
     },

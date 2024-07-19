@@ -1,18 +1,10 @@
 import React from 'react'
 import {Button, Link} from '@salesforce/retail-react-app/app/components/shared/ui'
 import {useToast} from '../../overrides/app/hooks/use-toast'
-import {IntlProvider} from 'react-intl'
 
 export default {
     title: 'Molecules/Toast',
     component: Button,
-    decorators: [
-        (Story) => (
-            <IntlProvider locale="en">
-                <Story />
-            </IntlProvider>
-        )
-    ],
     parameters: {
         layout: 'centered'
     },
