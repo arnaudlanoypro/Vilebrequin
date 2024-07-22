@@ -4,7 +4,6 @@ export default {
             position: 'relative'
         },
         countries: {
-            color: 'white',
             width: '92px',
             mr: '-1px',
             _focus: {
@@ -23,7 +22,7 @@ export default {
             position: 'absolute',
             zIndex: 2,
             top: '9px',
-            left: '17px'
+            left: '20px'
         },
         label: {
             left: '85px !important'

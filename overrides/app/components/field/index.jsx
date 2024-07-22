@@ -77,6 +77,7 @@ const Field = ({
                         id={name}
                         isInvalid={error}
                         isDisabled={isDisabled}
+                        isRequired={Object.prototype.hasOwnProperty.call(rules, 'required')}
                     >
                         <InputGroup>
                             {[
@@ -146,6 +147,10 @@ const Field = ({
                                     ref={ref}
                                     onChange={(e) => onChange(e.target.checked)}
                                     isChecked={value}
+                                    isRequired={Object.prototype.hasOwnProperty.call(
+                                        rules,
+                                        'required'
+                                    )}
                                     {..._inputProps}
                                 >
                                     {formLabel || label}

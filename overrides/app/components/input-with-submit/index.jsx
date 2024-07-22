@@ -53,6 +53,7 @@ const InputWithSubmit = ({
                             id={name}
                             isInvalid={error}
                             isDisabled={isDisabled}
+                            isRequired={Object.prototype.hasOwnProperty.call(rules, 'required')}
                         >
                             <InputGroup>
                                 <Input

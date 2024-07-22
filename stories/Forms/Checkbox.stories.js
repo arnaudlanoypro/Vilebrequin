@@ -12,7 +12,8 @@ export default {
     args: {
         name: 'default',
         label: 'Label',
-        type: 'checkbox'
+        type: 'checkbox',
+        rules: {required: 'This field is required'}
     }
 }
 

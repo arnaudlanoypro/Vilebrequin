@@ -6,7 +6,8 @@ export default {
         text: {
             color: 'red',
             fontSize: '11px',
-            mt: '10px'
+            mt: '10px',
+            textAlign: 'left'
         }
     }
 }

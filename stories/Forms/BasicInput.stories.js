@@ -1,6 +1,7 @@
 import React from 'react'
 import {useForm} from 'react-hook-form'
 import Field from '../../overrides/app/components/field'
+import {Box} from '@salesforce/retail-react-app/app/components/shared/ui'
 
 export default {
     title: 'Forms/BasicInput',
@@ -8,6 +9,13 @@ export default {
     parameters: {
         layout: 'centered'
     },
+    decorators: [
+        (Story) => (
+            <Box textAlign={'center'} w={['calc(100vw - 32px)', null, '300px']} maxWidth="100%">
+                <Story />
+            </Box>
+        )
+    ],
     tags: ['autodocs'],
     args: {
         name: 'default',
@@ -15,7 +23,7 @@ export default {
         formLabel: null,
         type: 'text',
         options: [],
-        rules: {},
+        rules: {required: 'This field is required'},
         error: null,
         inputProps: null,
         autoComplete: null,

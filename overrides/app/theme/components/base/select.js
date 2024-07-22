@@ -33,7 +33,8 @@ export default {
             icon: {
                 zIndex: 1,
                 fontSize: '16px',
-                width: '50px',
+                width: '45px',
+                color: 'fullBlack',
                 _invalid: {
                     color: 'red'
                 }

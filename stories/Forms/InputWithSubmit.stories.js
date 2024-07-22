@@ -10,7 +10,11 @@ export default {
     },
     tags: ['autodocs'],
     args: {
-        label: 'Label'
+        name: 'inputwithsubmit',
+        label: 'Label',
+        rules: {
+            required: 'Please enter something'
+        }
     }
 }
 
@@ -37,13 +41,9 @@ const Template = (args) => {
             noValidate
         >
             <InputWithSubmit
-                name="inputwithsubmit"
                 error={errors.inputwithsubmit}
                 control={control}
                 isSubmitting={isSubmitting}
-                rules={{
-                    required: 'Please enter something'
-                }}
                 {...args}
             />
         </form>

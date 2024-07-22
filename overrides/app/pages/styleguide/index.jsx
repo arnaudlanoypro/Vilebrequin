@@ -60,6 +60,7 @@ import {
 import {FlagFRIcon, FlagUSIcon} from '../../components/icons'
 import {ResponsivePicture} from '../../components/responsive-picture/index'
 import Breadcrumb from '../../components/breadcrumb'
+import Field from '../../components/field'
 import PhoneField from '../../components/phone-field'
 import DateField from '../../components/date-field'
 import InputWithSubmit from '../../components/input-with-submit'
@@ -1295,6 +1296,14 @@ const Styleguide = () => {
                                 Default select, empty value for first option, validation, disabled
                             </FormHelperText>
                         </FormControl>
+                        <Field
+                            name="testField"
+                            type="text"
+                            label="test field"
+                            error={errors['testField']}
+                            control={control}
+                            rules={{required: 'This field is required'}}
+                        />
                     </SimpleGrid>
 
                     <Heading fontSize="18px" mb="15px">
