@@ -1,10 +1,11 @@
 import { create } from '@storybook/theming/create';
+import logo from '../overrides/app/static/img/logo.png'
 
 export default create({
   base: 'light',
   brandTitle: 'Vilebrequin Styleguide',
   brandUrl: 'https://vilebrequin.com',
-  brandImage: '/img/logo.png',
+  brandImage: logo,
 
   colorPrimary: '#e3eaf4',
   colorSecondary: '#0c315d',

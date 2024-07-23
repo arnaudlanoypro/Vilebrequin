@@ -4,6 +4,8 @@ import {MemoryRouter} from 'react-router-dom'
 import SwatchGroup from '../../overrides/app/components/swatch-group'
 import Swatch from '../../overrides/app/components/swatch-group/swatch'
 import {useIntl} from 'react-intl'
+import swatchExample from '../../overrides/app/static/img/swatch-example.png'
+import swatchExample2 from '../../overrides/app/static/img/swatch-example2.png'
 
 export default {
     title: 'Molecules/ColorSelectorPDP',
@@ -32,8 +34,8 @@ export default {
                 value: 'turtles-blue',
                 image: {
                     alt: 'Checked Silk Tie, Turtles-blue, swatch',
-                    disBaseLink: '/img/swatch-example.png',
-                    link: '/img/swatch-example.png',
+                    disBaseLink: swatchExample,
+                    link: swatchExample,
                     title: 'Checked Silk Tie, Turtles-blue'
                 }
             },
@@ -43,8 +45,8 @@ export default {
                 value: 'turtles-black',
                 image: {
                     alt: 'Checked Silk Tie, Turtles-black, swatch',
-                    disBaseLink: '/img/swatch-example2.png',
-                    link: '/img/swatch-example2.png',
+                    disBaseLink: swatchExample2,
+                    link: swatchExample2,
                     title: 'Checked Silk Tie, Turtles-black'
                 }
             },
