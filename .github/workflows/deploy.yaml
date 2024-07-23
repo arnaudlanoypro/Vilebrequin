@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - "develop" # change to the branch you wish to deploy from
+      - "feature/VRAM-148" # change to the branch you wish to deploy from
 
 permissions:
   contents: read
